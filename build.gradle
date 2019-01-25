@@ -1,0 +1,5 @@
+task getHomeDir {
+    doLast {
+        println gradle.gradleHomeDir
+    }
+}
