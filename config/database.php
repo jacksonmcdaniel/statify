@@ -67,7 +67,7 @@ return [
            'prefix'     => '',
            'prefix_indexes' => true,
            'strict'     => true,
-
+        ],
 
         'pgsql' => [
             'driver' => 'pgsql',
