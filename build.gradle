@@ -1,5 +1,4 @@
-task getHomeDir {
-    doLast {
-        println gradle.gradleHomeDir
-    }
+task npmInstall(type: Exec) {
+    workingDir './'
+    commandLine 'npm', 'run', 'dev'
 }
