@@ -42,9 +42,9 @@ return [
 
         'mysql' => [
             'driver' => 'mysql',
-            'host' => env('DB_HOST', '127.0.0.1'),
+            'host' => env('DB_HOST', '52.53.240.63'),
             'port' => env('DB_PORT', '3306'),
-            'database' => env('DB_DATABASE', 'forge'),
+            'database' => env('DB_DATABASE', 'statify'),
             'username' => env('DB_USERNAME', 'forge'),
             'password' => env('DB_PASSWORD', ''),
             'unix_socket' => env('DB_SOCKET', ''),
@@ -54,6 +54,19 @@ return [
             'prefix_indexes' => true,
             'strict' => true,
             'engine' => null,
+        ],
+
+        'testing' => [
+           'driver'     => 'mysql',
+           'host'       => env('DB_TEST_HOST', '127.0.0.1'),
+           'database'   => env('DB_TEST_DATABASE', 'statify_test'),
+           'username'   => env('DB_USERNAME', 'statify'),
+           'password'   => env('DB_PASSWORD', ''),
+           'charset'    => 'utf8mb4',
+           'collation'  => 'utf8mb4_unicode_ci',
+           'prefix'     => '',
+           'prefix_indexes' => true,
+           'strict'     => true,
         ],
 
         'pgsql' => [
