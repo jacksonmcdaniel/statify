@@ -14,14 +14,14 @@
 </head>
 
 <body>
-    <div id="navBar"> </div>
+    <div id="IconTabs" style="margin-top: 10px;"></div>
     <script src="js/app.js"></script>
 
     @yield('content')
     
     <ul>
         <li><a href='/'>Welcome</a></li>
-        <li><a href='/contact'>Contact</a></li>
+        <li><a href='/account'>Account</a></li>
     </ul>
 </body>
 </html>

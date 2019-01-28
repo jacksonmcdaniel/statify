@@ -1,7 +1,7 @@
 @extends('template')
 
 @section('title')
-    <title>Recommendations</title>
+    <title>Statify Recommendations</title>
 
 @endsection
 

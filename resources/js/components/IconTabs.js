@@ -11,6 +11,7 @@ import statify_logo from '../../../Assets/statify_logo.png';
 import SearchAppBar from './SearchAppBar.js';
 import Typography from '@material-ui/core/Typography';
 import ReactDOM from 'react-dom';
+import {Link, BrowserRouter} from 'react-router-dom';
 
 const styles = {
   root: {
@@ -24,47 +25,35 @@ const styles = {
 };
 
 class IconTabs extends React.Component {
-  //state = {
-  //  value: 0,
-  //};
-
-  /*handleChange = (event, value) => {
-    this.setState({ value });
-  };
-
-  changePageHome = (event, value) => {
-    this.props.changePage(event, "Home")
-  };
-
-  changePageTrends = (event, value) => {
-    this.props.changePage(event, "Trends")
-  };
-
-  changePageRec = (event, value) => {
-    this.props.changePage(event, "Recommendations")
-  };
-
-  changePageAccount = (event, value) => {
-    this.props.changePage(event, "Account")
-  };*/
 
   render() {
-    //const { classes } = this.props;
 
     return (
+      <div>
+      <BrowserRouter> 
       <Paper square >
         <Tabs
           variant="fullWidth"
           indicatorColor="primary"
           textColor="primary"
         >
-          <Tab icon=<img src={statify_logo} width="80px" height="80px" />/>
-          <Tab label="Trends" />
-          <Tab label="Recommendations" />
+          <Tab icon=<img src={statify_logo} width="80px" height="80px" />  href="/home" >
+          <a href='/home'></a>
+          </Tab>
+          <Tab label="Trends" href='/trends'>
+          <a href='/trends'></a>
+          </Tab>
+          <Tab label="Recommendations" href='/recommendations'>
+          <a href='/recommendations'></a>
+          </Tab>
           <SearchAppBar/>
-          <Tab icon={<AccountIcon/>} />
+          <Tab icon={<AccountIcon/>} width="80px" height="80px" href='/account'>
+          <a href='/account'></a>
+          </Tab>
         </Tabs>
       </Paper>
+      </BrowserRouter>
+      </div>
     );
   }
 }

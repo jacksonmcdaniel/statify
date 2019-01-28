@@ -1,7 +1,7 @@
 @extends('template')
 
 @section('title')
-    <title>account</title>
+    <title>Statify Account</title>
 
 @endsection
 
