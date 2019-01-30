@@ -17,3 +17,9 @@ echo '   Installing material-ui/icons...  '
 echo '------------------------------------'
 npm install @material-ui/icons
 echo $'DONE\n\n'
+
+echo '------------------------------------'
+echo '   Installing material-ui/core...  '
+echo '------------------------------------'
+npm install @material-ui/core
+echo $'DONE\n\n'
