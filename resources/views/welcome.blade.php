@@ -12,7 +12,7 @@
         <!-- Styles -->
     </head>
     <body>
-        <div id="IconTabs" style="margin-top: 10px;"></div>
+        <div id="NavBar" style="margin-top: 10px;"></div>
         <script src="js/app.js"></script>
     </body>
     

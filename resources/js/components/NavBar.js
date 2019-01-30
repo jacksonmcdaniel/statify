@@ -24,7 +24,7 @@ const styles = {
   },
 };
 
-class IconTabs extends React.Component {
+class NavBar extends React.Component {
 
   render() {
 
@@ -63,6 +63,6 @@ class IconTabs extends React.Component {
 };*/
 
 //export default withStyles(styles)(IconTabs);
-if (document.getElementById('IconTabs')) {
-    ReactDOM.render(<IconTabs />, document.getElementById('IconTabs'));
+if (document.getElementById('NavBar')) {
+    ReactDOM.render(<NavBar />, document.getElementById('NavBar'));
 }
