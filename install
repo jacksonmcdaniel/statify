@@ -1,0 +1,19 @@
+#!/bin/bash
+
+echo '------------------------------------'
+echo '         Installing npm...          '
+echo '------------------------------------'
+npm install
+echo $'DONE\n\n'
+
+echo '------------------------------------'
+echo '   Installing react-router-dom...   '
+echo '------------------------------------'
+npm install react-router-dom
+echo $'DONE\n\n'
+
+echo '------------------------------------'
+echo '   Installing material-ui/icons...  '
+echo '------------------------------------'
+npm install @material-ui/icons
+echo $'DONE\n\n'
