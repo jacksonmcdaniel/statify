@@ -7,7 +7,7 @@ import Tab from '@material-ui/core/Tab';
 import PhoneIcon from '@material-ui/icons/Phone';
 import AccountIcon from '@material-ui/icons/AccountCircle';
 import PersonPinIcon from '@material-ui/icons/PersonPin';
-import statify_logo from '/var/www/assets/statify_logo.png';
+//import statify_logo from '/var/www/assets/statify_logo.png';
 import SearchAppBar from './SearchAppBar.js';
 import Typography from '@material-ui/core/Typography';
 import ReactDOM from 'react-dom';
@@ -26,6 +26,7 @@ const styles = {
 
 class NavBar extends React.Component {
 
+
   render() {
 
     return (
@@ -33,7 +34,7 @@ class NavBar extends React.Component {
          <BrowserRouter> 
             <Paper square>
                <Tabs variant="fullWidth" indicatorColor="primary" textColor="primary">
-                  <Tab icon=<img src={statify_logo} width="80px" height="80px" />  href="/home" >
+                  <Tab href="/home" >
                      <a href='/home'></a>
                   </Tab>
                   <Tab label="Trends" href='/trends'>
@@ -54,11 +55,12 @@ class NavBar extends React.Component {
   }
 }
 
-/*IconTabs.propTypes = {
-  classes: PropTypes.object.isRequired,
-};*/
+// NavBar.propTypes = {
+//   classes: PropTypes.object.isRequired,
+// };
 
-//export default withStyles(styles)(IconTabs);
+export default withStyles(styles)(NavBar);
+
 if (document.getElementById('NavBar')) {
-    ReactDOM.render(<NavBar />, document.getElementById('NavBar'));
+    ReactDOM.render(<NavBar/>, document.getElementById('NavBar'));
 }

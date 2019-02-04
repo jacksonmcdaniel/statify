@@ -14,11 +14,12 @@
 </head>
 
 <body>
-    <div id="NavBar" style="margin-top: 10px;"></div>
-    <script src="js/app.js"></script>
+
+    <div id="NavBar"></div>
 
     @yield('content')
-    
+    <script src="{{ mix('js/app.js') }}"></script>
+
     <ul>
         <li><a href='/'>Welcome</a></li>
         <li><a href='/account'>Account</a></li>
