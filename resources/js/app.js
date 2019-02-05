@@ -14,3 +14,5 @@ require('./bootstrap');
  */
 
 require('./components/Example');
+//require('./components/SeachAppBar');
+require('./components/NavBar');
