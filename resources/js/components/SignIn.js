@@ -12,6 +12,9 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import withStyles from '@material-ui/core/styles/withStyles';
+import green from '@material-ui/core/colors/green';
+import grey from '@material-ui/core/colors/grey';
+import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 
 const styles = theme => ({
   main: {
@@ -45,12 +48,19 @@ const styles = theme => ({
   },
 });
 
+const theme = createMuiTheme({
+  palette: {
+    primary: green,
+  },
+});
+
 class SignIn extends React.Component {
 
   render() {
   const { classes } = this.props;
 
   return (
+    <MuiThemeProvider theme = {theme}>
     <main className={classes.main}>
       <CssBaseline />
       <Paper className={classes.paper}>
@@ -85,6 +95,7 @@ class SignIn extends React.Component {
         </form>
       </Paper>
     </main>
+    </MuiThemeProvider>
   );
 }
 }
