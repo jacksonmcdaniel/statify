@@ -88,7 +88,6 @@ class SignIn extends React.Component {
         </form>
       </Paper>
     </main>
-    </MuiThemeProvider>
   );
 }
 }
