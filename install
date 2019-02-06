@@ -7,6 +7,12 @@ npm install
 echo $'DONE\n\n'
 
 echo '------------------------------------'
+echo '      Installing prop-types...      '
+echo '------------------------------------'
+npm install --save prop-types
+echo $'DONE\n\n'
+
+echo '------------------------------------'
 echo '   Installing react-router-dom...   '
 echo '------------------------------------'
 npm install react-router-dom
