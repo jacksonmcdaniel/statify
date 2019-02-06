@@ -38,7 +38,7 @@ class NavBar extends React.Component {
         <MuiThemeProvider theme={theme}>
          <BrowserRouter> 
             <Paper square>
-               <Tabs variant="fullWidth" indicatorColor="secondary" textColor="green">
+               <Tabs variant="fullWidth" indicatorColor="secondary" textColor="primary">
                   <Tab href="/home" >
                   </Tab>
                   <Tab label="Trends" href='/trends'>

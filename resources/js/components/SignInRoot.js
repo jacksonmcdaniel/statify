@@ -12,7 +12,6 @@ export default class SignInRoot extends React.Component {
 
             <div className="container">
             <SignIn/>
-            hi
             </div>
             </MuiThemeProvider>
         );
