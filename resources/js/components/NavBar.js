@@ -8,11 +8,14 @@ import PhoneIcon from '@material-ui/icons/Phone';
 import AccountIcon from '@material-ui/icons/AccountCircle';
 import PersonPinIcon from '@material-ui/icons/PersonPin';
 //import statify_logo from '/var/www/assets/statify_logo.png';
-import statify_logo from '../../../public/images/statify_logo.png';
+//import statify_logo from '../../../public/images/statify_logo.png';
 import SearchAppBar from './SearchAppBar.js';
 import Typography from '@material-ui/core/Typography';
 import ReactDOM from 'react-dom';
 import {Link, BrowserRouter} from 'react-router-dom';
+import theme from './statify-core/StatifyTheme';
+import { MuiThemeProvider } from '@material-ui/core/styles';
+import green from '@material-ui/core/colors/green';
 
 const styles = {
   root: {
@@ -29,36 +32,33 @@ class NavBar extends React.Component {
 
 
   render() {
+    const { classes } = this.props;
 
     return (
-      <div>
+        <MuiThemeProvider theme={theme}>
          <BrowserRouter> 
             <Paper square>
-               <Tabs variant="fullWidth" indicatorColor="primary" textColor="primary">
-                  <Tab icon=<img src={statify_logo} width="80px" height="80px" /> href="/home" >
-                     <a href='/home'></a>
+               <Tabs variant="fullWidth" indicatorColor="secondary" textColor="green">
+                  <Tab href="/home" >
                   </Tab>
                   <Tab label="Trends" href='/trends'>
-                     <a href='/trends'></a>
                   </Tab>
                   <Tab label="Recommendations" href='/recommendations'>
-                     <a href='/recommendations'></a>
                   </Tab>
                   <SearchAppBar/>
                   <Tab icon={<AccountIcon/>} width="80px" height="80px" href='/account'>
-                     <a href='/account'></a>
                   </Tab>
                </Tabs>
             </Paper>
          </BrowserRouter>
-      </div>
+        </MuiThemeProvider>
     );
   }
 }
 
-// NavBar.propTypes = {
-//   classes: PropTypes.object.isRequired,
-// };
+NavBar.propTypes = {
+  classes: PropTypes.object.isRequired,
+};
 
 export default withStyles(styles)(NavBar);
 

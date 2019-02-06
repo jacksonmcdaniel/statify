@@ -48,23 +48,16 @@ const styles = theme => ({
   },
 });
 
-const theme = createMuiTheme({
-  palette: {
-    primary: green,
-  },
-});
-
 class SignIn extends React.Component {
 
   render() {
   const { classes } = this.props;
 
   return (
-    <MuiThemeProvider theme = {theme}>
     <main className={classes.main}>
       <CssBaseline />
       <Paper className={classes.paper}>
-        <Avatar className={classes.avatar}>
+        <Avatar>
           <LockOutlinedIcon />
         </Avatar>
         <Typography component="h1" variant="h5">
@@ -100,8 +93,8 @@ class SignIn extends React.Component {
 }
 }
 
-// SignIn.propTypes = {
-//   classes: PropTypes.object.isRequired,
-// };
+SignIn.propTypes = {
+  classes: PropTypes.object.isRequired,
+};
 
 export default withStyles(styles)(SignIn);
