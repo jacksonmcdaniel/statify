@@ -1,0 +1,31 @@
+#!/bin/bash
+
+echo '------------------------------------'
+echo '         Installing npm...          '
+echo '------------------------------------'
+npm install
+echo $'DONE\n\n'
+
+echo '------------------------------------'
+echo '      Installing prop-types...      '
+echo '------------------------------------'
+npm install --save prop-types
+echo $'DONE\n\n'
+
+echo '------------------------------------'
+echo '   Installing react-router-dom...   '
+echo '------------------------------------'
+npm install react-router-dom
+echo $'DONE\n\n'
+
+echo '------------------------------------'
+echo '   Installing material-ui/icons...  '
+echo '------------------------------------'
+npm install @material-ui/icons
+echo $'DONE\n\n'
+
+echo '------------------------------------'
+echo '   Installing material-ui/core...  '
+echo '------------------------------------'
+npm install @material-ui/core
+echo $'DONE\n\n'
