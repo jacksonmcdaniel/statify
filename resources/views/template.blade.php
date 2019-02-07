@@ -10,7 +10,7 @@
 <head>
     @yield('title')
 
-    <title>hi</title>
+    <title>Statify</title>
 </head>
 
 <body>

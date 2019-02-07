@@ -16,6 +16,7 @@ import {Link, BrowserRouter} from 'react-router-dom';
 import theme from './statify-core/StatifyTheme';
 import { MuiThemeProvider } from '@material-ui/core/styles';
 import green from '@material-ui/core/colors/green';
+import SignInRoot from './SignInRoot.js';
 
 const styles = {
   root: {
@@ -30,15 +31,15 @@ const styles = {
 
 class NavBar extends React.Component {
 
-
   render() {
     const { classes } = this.props;
+    const { value } = this.props;
 
     return (
         <MuiThemeProvider theme={theme}>
          <BrowserRouter> 
             <Paper square>
-               <Tabs variant="fullWidth" indicatorColor="secondary" textColor="primary">
+               <Tabs value={value} variant="fullWidth" indicatorColor="secondary" textColor="primary">
                   <Tab href="/home" >
                   </Tab>
                   <Tab label="Trends" href='/trends'>
@@ -63,5 +64,5 @@ NavBar.propTypes = {
 export default withStyles(styles)(NavBar);
 
 if (document.getElementById('NavBar')) {
-    ReactDOM.render(<NavBar/>, document.getElementById('NavBar'));
+    ReactDOM.render(<NavBar value={4} classes={<SignInRoot/>} />, document.getElementById('NavBar'));
 }
