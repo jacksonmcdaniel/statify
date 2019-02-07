@@ -14,6 +14,10 @@ const theme = createMuiTheme({
     // My business variables
     danger: green[500],
   },
+
+    typography: {
+    useNextVariants: true,
+  },
 });
 
 export default theme;
