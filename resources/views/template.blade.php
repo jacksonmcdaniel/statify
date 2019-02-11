@@ -15,7 +15,7 @@
 
 <body>
 
-    <div id="NavBar"></div>
+    <div id="SignInRoot"></div>
 
     @yield('content')
     <script src="{{ mix('js/app.js') }}"></script>

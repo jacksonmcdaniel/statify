@@ -6,7 +6,6 @@
 @endsection
 
 @section('content')
-    <div id="SignInRoot" style="margin-top: 10px;"></div>
 
     <h1>Account</h1>
 

@@ -15,6 +15,7 @@ import withStyles from '@material-ui/core/styles/withStyles';
 import green from '@material-ui/core/colors/green';
 import grey from '@material-ui/core/colors/grey';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+import NavBar from './NavBar.js';
 
 const styles = theme => ({
   main: {
@@ -56,6 +57,8 @@ class SignIn extends React.Component {
 
   return (
     <main className={classes.main}>
+                <NavBar/>
+
       <CssBaseline />
       <Paper className={classes.paper}>
         <Avatar>
@@ -83,6 +86,7 @@ class SignIn extends React.Component {
             variant="contained"
             color="primary"
             className={classes.submit}
+             href='/trends'
           >
             Sign in
           </Button>

@@ -16,12 +16,14 @@ import {Link, BrowserRouter} from 'react-router-dom';
 import theme from './statify-core/StatifyTheme';
 import { MuiThemeProvider } from '@material-ui/core/styles';
 import green from '@material-ui/core/colors/green';
-import SignInRoot from './SignInRoot.js';
+import Root from './statify-core/Root.js';
+import AppBar from '@material-ui/core/AppBar';
 
 const styles = {
   root: {
     flexGrow: 1,
     maxWidth: 500,
+    top: "64px",
   },
   styleForLogo: {
     width: "100%",
@@ -39,14 +41,13 @@ class NavBar extends React.Component {
         <MuiThemeProvider theme={theme}>
          <BrowserRouter> 
             <Paper square>
-               <Tabs value={value} variant="fullWidth" indicatorColor="secondary" textColor="primary">
+               <Tabs value={value} variant="fullWidth" indicatorColor="secondary" textColor="primary" >
                   <Tab href="/home" >
                   </Tab>
                   <Tab label="Trends" href='/trends'>
                   </Tab>
                   <Tab label="Recommendations" href='/recommendations'>
                   </Tab>
-                  <SearchAppBar/>
                   <Tab icon={<AccountIcon/>} width="80px" height="80px" href='/account'>
                   </Tab>
                </Tabs>
@@ -64,5 +65,5 @@ NavBar.propTypes = {
 export default withStyles(styles)(NavBar);
 
 if (document.getElementById('NavBar')) {
-    ReactDOM.render(<NavBar value={4} classes={<SignInRoot/>} />, document.getElementById('NavBar'));
+    ReactDOM.render(<NavBar value={4} classes={<Root/>} />, document.getElementById('NavBar'));
 }
