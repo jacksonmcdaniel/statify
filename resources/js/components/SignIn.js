@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import ReactDOM from 'react-dom';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -14,8 +15,9 @@ import Typography from '@material-ui/core/Typography';
 import withStyles from '@material-ui/core/styles/withStyles';
 import green from '@material-ui/core/colors/green';
 import grey from '@material-ui/core/colors/grey';
-import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+import { MuiThemeProvider } from '@material-ui/core/styles';
 import NavBar from './NavBar.js';
+import SignInRoot from './SignInRoot.js';
 
 const styles = theme => ({
   main: {
@@ -53,9 +55,10 @@ const styles = theme => ({
 class SignIn extends React.Component {
 
   render() {
-  const { classes } = this.props;
+  const { classes, theme } = this.props;
 
   return (
+                <MuiThemeProvider theme={theme}>
     <main className={classes.main}>
       <CssBaseline />
       <Paper className={classes.paper}>
@@ -91,6 +94,8 @@ class SignIn extends React.Component {
         </form>
       </Paper>
     </main>
+                </MuiThemeProvider>
+
   );
 }
 }
@@ -100,3 +105,7 @@ SignIn.propTypes = {
 };
 
 export default withStyles(styles)(SignIn);
+
+if (document.getElementById('SignIn')) {
+    ReactDOM.render(<SignIn classes={<SignInRoot/>}/>, document.getElementById('SignIn'));
+}
