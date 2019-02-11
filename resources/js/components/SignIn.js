@@ -57,8 +57,6 @@ class SignIn extends React.Component {
 
   return (
     <main className={classes.main}>
-                <NavBar/>
-
       <CssBaseline />
       <Paper className={classes.paper}>
         <Avatar>

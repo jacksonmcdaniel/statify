@@ -42,13 +42,11 @@ class NavBar extends React.Component {
          <BrowserRouter> 
             <Paper square>
                <Tabs value={value} variant="fullWidth" indicatorColor="secondary" textColor="primary" >
-                  <Tab href="/home" >
+                  <Tab label="All Time" href='/trends'>
                   </Tab>
-                  <Tab label="Trends" href='/trends'>
+                  <Tab label="Monthly" href='/trends'>
                   </Tab>
-                  <Tab label="Recommendations" href='/recommendations'>
-                  </Tab>
-                  <Tab icon={<AccountIcon/>} width="80px" height="80px" href='/account'>
+                  <Tab label="Weekly" href='/trends'>
                   </Tab>
                </Tabs>
             </Paper>

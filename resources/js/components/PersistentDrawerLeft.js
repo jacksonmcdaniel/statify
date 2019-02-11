@@ -25,6 +25,7 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import {Link, BrowserRouter} from 'react-router-dom';
 import Button from '@material-ui/core/Button';
+import NavBar from './NavBar.js';
 
 const drawerWidth = 240;
 
@@ -160,6 +161,8 @@ class PersistentDrawerLeft extends React.Component {
               </IconButton>
             </div>
           </Toolbar>
+                      <NavBar/>
+
         </AppBar>
         <Drawer
           className={classes.drawer}

@@ -18,3 +18,4 @@ require('./components/Example');
 require('./components/NavBar');
 require('./components/SignIn');
 require('./components/SignInRoot');
+require('./components/statify-core/Root');
