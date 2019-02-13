@@ -13,27 +13,22 @@ function createData(name, count) {
   return { id, name, count };
 }
 
-const songs = [
-  createData('Song1', 159),
-  createData('Song2', 237),
-  createData('Song3', 262),
-  createData('Song4', 305),
-  createData('Song5', 356),
-];
 export default class TrendRoot extends React.Component {
 
     render() {
-        return (
-            <MuiThemeProvider theme={theme}>
-              <StatifyTable songs={songs}/>
-            </MuiThemeProvider>
-        );
+      const { songs } = this.props;
+
+      return (
+          <MuiThemeProvider theme={theme}>
+            <StatifyTable songs={songs}/>
+          </MuiThemeProvider>
+      );
     }
 }
 
 if (document.getElementById('TrendRoot')) {
     var element = document.getElementById('TrendRoot');
     var name = element.getAttribute("name");
-    console.log(name);
-    ReactDOM.render(<TrendRoot />, document.getElementById('TrendRoot'));
+    var songs = element.getAttribute("songs");
+    ReactDOM.render(<TrendRoot songs={JSON.parse(songs)}/>, document.getElementById('TrendRoot'));
 }
