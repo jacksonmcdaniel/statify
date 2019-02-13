@@ -26,6 +26,9 @@ import MoreIcon from '@material-ui/icons/MoreVert';
 import {Link, BrowserRouter} from 'react-router-dom';
 import Button from '@material-ui/core/Button';
 import NavBar from './NavBar.js';
+import MusicNoteIcon from '@material-ui/icons/MusicNote';
+import LibraryMusicIcon from '@material-ui/icons/LibraryMusic';
+import HomeIcon from '@material-ui/icons/Home';
 
 const drawerWidth = 240;
 
@@ -98,7 +101,7 @@ const styles = theme => ({
 class PersistentDrawerLeft extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { open: false};
+    this.state = { open: false, trends: this.props.trends };
 
     this.handleDrawerOpen = () => {
       this.setState({ open: true });
@@ -107,11 +110,29 @@ class PersistentDrawerLeft extends React.Component {
     this.handleDrawerClose = () => {
       this.setState({ open: false });
     };
+
+     this.handleTrendsPage = () => {
+      this.setState({ trends: true });
+    };
+
+    this.handleTrendsPageOff = () =>  {
+      this.setState({ trends: false });
+    };
+
+    
   }
 
   render() {
     const { classes, theme } = this.props;
     const { open, handleDrawerClose, handleDrawerOpen} = this.state;
+    const { trends, handleTrendsPage, handleTrendsPageOff }  = this.state;
+
+    let button;
+    if (trends) {
+      button = <NavBar />;
+    }else{
+      button = <null />;
+    }
 
     return (
       <div className={classes.root}>
@@ -138,19 +159,10 @@ class PersistentDrawerLeft extends React.Component {
 
             <SearchAppBar/>
             <div className={classes.sectionDesktop}>
-              <IconButton color="inherit">
-                <Badge badgeContent={4} color="secondary">
-                  <MailIcon />
-                </Badge>
-              </IconButton>
-              <IconButton color="inherit">
-                <Badge badgeContent={17} color="secondary">
-                  <NotificationsIcon />
-                </Badge>
-              </IconButton>
               <IconButton
                 aria-haspopup="true"
                 color="inherit"
+                href="/account"
               >
                 <AccountCircle />
               </IconButton>
@@ -161,7 +173,7 @@ class PersistentDrawerLeft extends React.Component {
               </IconButton>
             </div>
           </Toolbar>
-                      <NavBar/>
+          {button}
 
         </AppBar>
         <Drawer
@@ -182,30 +194,26 @@ class PersistentDrawerLeft extends React.Component {
         <BrowserRouter>
 
           <List>
-              <ListItem button key={"trend"} component="a" href="/trends">
-                <ListItemIcon><MailIcon /></ListItemIcon>
-                <ListItemText primary={"trend"} />
+              <ListItem button key={"home"} component="a" onClick={this.handleTrendsPageOff} href="/home" >
+                <ListItemIcon><HomeIcon /></ListItemIcon>
+                <ListItemText primary={"Home"} />
               </ListItem>
-              <ListItem button key={"recommendations"} component="a" href="/recommendations">
-                <ListItemIcon><InboxIcon /></ListItemIcon>
-                <ListItemText primary={"recommendations"} />
+              <ListItem button key={"trend"} component="a" onClick={this.handleTrendsPage} href="/trends">
+                <ListItemIcon><MusicNoteIcon /></ListItemIcon>
+                <ListItemText primary={"Trends"} />
               </ListItem>
-                <ListItem button key={"account"} component="a" href="/account">
-                <ListItemIcon><MailIcon /></ListItemIcon>
-                <ListItemText primary={"account"} />
+              <ListItem button key={"recommendations"} component="a" onClick={this.handleTrendsPage} href="/recommendations">
+                <ListItemIcon><LibraryMusicIcon /></ListItemIcon>
+                <ListItemText primary={"Recommendations"} />
+              </ListItem>
+                <ListItem button key={"account"} component="a" onClick={this.handleTrendsPageOff} href="/account">
+                <ListItemIcon><AccountCircle /></ListItemIcon>
+                <ListItemText primary={"Account"} />
               </ListItem>
           </List>
                     </BrowserRouter>
 
-          <Divider />
-          <List>
-            {['All mail', 'Trash', 'Spam'].map((text, index) => (
-              <ListItem button key={text}>
-                <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-                <ListItemText primary={text} />
-              </ListItem>
-            ))}
-          </List>      
+          <Divider />    
         </Drawer>
       </div>
     );
@@ -215,6 +223,7 @@ class PersistentDrawerLeft extends React.Component {
 PersistentDrawerLeft.propTypes = {
   classes: PropTypes.object.isRequired,
   theme: PropTypes.object.isRequired,
+  trends: PropTypes.bool.isRequired
 };
 
 export default withStyles(styles, { withTheme: true })(PersistentDrawerLeft);

@@ -8,6 +8,13 @@
 @section('content')
     <div id="TrendRoot" name={{ $name }}></div>
 
+
+    @yield('content')
+  
+
+    <h1>Trends</h1>
+
     <h1>{{ $name }}</h1>
+
 
 @endsection
