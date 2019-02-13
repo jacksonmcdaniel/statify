@@ -11,6 +11,7 @@ import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import AccountPaper from './statify-core/AccountPaper';
+import DeleteAccount from './statify-core/DeleteAccount';
 
 export default class AccountRoot extends React.Component {
 
@@ -22,10 +23,10 @@ export default class AccountRoot extends React.Component {
     render() {
         return (
             <MuiThemeProvider theme={theme}>
-            <Grid container spacing={0} direction="column" alignItems="center" 
-			justify="center" style={{ minHeight: '100vh' }}>
-             	
-                <AccountPaper/>
+            <Grid container spacing={0} alignItems="center" 
+			justify="space-evenly" style={{ minHeight: '100vh' }}>
+            <AccountPaper/>
+            <DeleteAccount/>
             </Grid>
             </MuiThemeProvider>
         );

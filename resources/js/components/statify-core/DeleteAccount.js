@@ -14,6 +14,8 @@ import EmailIcon from '@material-ui/icons/Email';
 import PlaceIcon from '@material-ui/icons/Place';
 import PersonIcon from '@material-ui/icons/PersonOutline';
 import WorldIcon from '@material-ui/icons/Language';
+import Button from '@material-ui/core/Button';
+import Grid from '@material-ui/core/Grid';
 
 const styles = theme => ({
   root: {
@@ -21,56 +23,39 @@ const styles = theme => ({
     maxWidth: 360,
     backgroundColor: theme.palette.background.paper,
   },
-  
+  margin: {
+    margin: "center",
+  },
 });
 
-function AccountPaper(props) {
+function DeleteAccount(props) {
   const { classes } = props;
   return (
     <List className={classes.root}>
-      <ListItem>
-        <Avatar>
-          <AccountCircle />
-        </Avatar>
-        <ListItemText primary="Profile"/>
-      </ListItem>
-      <li>
-        <Divider variant="inset" />
-      </li>
+    
       <ListItem>
         <Avatar>
           <PersonIcon />
         </Avatar>
-        <ListItemText primary="Username" secondary="statify_username" />
+        <ListItemText primary="Delete Account?" secondary="Once you delete your account, we will no longer have access to your Spotify lsitening habits." />
       </ListItem>
       <Divider variant="inset" component="li" />
       <ListItem>
-        <Avatar>
-          <EmailIcon />
-        </Avatar>
-        <ListItemText primary="e-mail" secondary="statify@gmail.com" />
+      <Grid container spacing={0} direction="column" alignItems="center" 
+      justify="center" >
+        <Button size="medium" color="primary" className={classes.margin}>
+          Delete Account
+        </Button>
+        </Grid>
       </ListItem>
-      <Divider variant="inset" component="li" />
-      <ListItem>
-        <Avatar>
-          <WorldIcon />
-        </Avatar>
-        <ListItemText primary="Country" secondary="US" />
-      </ListItem>
-      <Divider variant="inset" component="li" />
-      <ListItem>
-        <Avatar>
-          <PlaceIcon />
-        </Avatar>
-        <ListItemText primary="Postal Code" secondary="93407" />
-      </ListItem>
+     
 
     </List>
   );
 }
 
-AccountPaper.propTypes = {
+DeleteAccount.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(AccountPaper);
+export default withStyles(styles)(DeleteAccount);
