@@ -60021,8 +60021,8 @@ if (document.getElementById('example')) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/brianishii/Documents/Cal_Poly/classes/junior/winter/csc309/statify/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /Users/brianishii/Documents/Cal_Poly/classes/junior/winter/csc309/statify/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Users/shannonmarquiss/code/statify/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /Users/shannonmarquiss/code/statify/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
