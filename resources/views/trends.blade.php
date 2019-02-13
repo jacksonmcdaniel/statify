@@ -7,7 +7,7 @@
 
 @section('content')
     <div id="TrendRoot"></div>
-   
+
     <h1>Trends</h1>
 
 @endsection
