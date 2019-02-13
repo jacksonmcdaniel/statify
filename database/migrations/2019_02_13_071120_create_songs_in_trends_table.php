@@ -17,6 +17,7 @@ class CreateSongsInTrendsTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('tid');
             $table->unsignedInteger('sid');
+            $table->unsignedInteger('sid');
 
             $table->timestamps();
 
