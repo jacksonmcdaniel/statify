@@ -20,5 +20,8 @@ export default class TrendRoot extends React.Component {
 }
 
 if (document.getElementById('TrendRoot')) {
+    var element = document.getElementById('TrendRoot');
+    var name = element.getAttribute("name");
+    console.log(name);
     ReactDOM.render(<TrendRoot />, document.getElementById('TrendRoot'));
 }

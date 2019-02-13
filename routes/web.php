@@ -23,9 +23,7 @@ Route::get('/home', function () {
     return view('home');
 });
 
-Route::get('/trends', function () {
-    return view('trends');
-});
+Route::get('/trends', 'TrendController@index');
 
 Route::get('/recommendations', function () {
     return view('recommendations');
