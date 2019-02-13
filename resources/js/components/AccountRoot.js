@@ -10,8 +10,9 @@ import { MuiThemeProvider } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
+import AccountPaper from './statify-core/AccountPaper';
 
-export default class HomeRoot extends React.Component {
+export default class AccountRoot extends React.Component {
 
 	constructor(props) {
 		super(props);
@@ -23,15 +24,14 @@ export default class HomeRoot extends React.Component {
             <MuiThemeProvider theme={theme}>
             <Grid container spacing={0} direction="column" alignItems="center" 
 			justify="center" style={{ minHeight: '100vh' }}>
-             	<Typography variant="h3" color="inherit" align="center" p={2000}>
-              	Welcome to your Statify home!
-            	</Typography>
+             	
+                <AccountPaper/>
             </Grid>
             </MuiThemeProvider>
         );
     }
 }
 
-if (document.getElementById('HomeRoot')) {
-    ReactDOM.render(<HomeRoot />, document.getElementById('HomeRoot'));
+if (document.getElementById('AccountRoot')) {
+    ReactDOM.render(<AccountRoot />, document.getElementById('AccountRoot'));
 }
