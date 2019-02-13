@@ -19,10 +19,6 @@
 
     @yield('content')
     <script src="{{ mix('js/app.js') }}"></script>
-
-    <ul>
-        <li><a href='/'>Welcome</a></li>
-        <li><a href='/account'>Account</a></li>
     </ul>
 </body>
 </html>

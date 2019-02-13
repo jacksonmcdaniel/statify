@@ -98,7 +98,7 @@ const styles = theme => ({
 class PersistentDrawerLeft extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { open: true};
+    this.state = { open: false};
 
     this.handleDrawerOpen = () => {
       this.setState({ open: true });
