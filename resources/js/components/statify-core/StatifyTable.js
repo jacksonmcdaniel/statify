@@ -7,11 +7,12 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
+import Grid from '@material-ui/core/Grid';
 
 const styles = theme => ({
   root: {
     width: '100%',
-    marginTop: theme.spacing.unit * 3,
+    marginTop: theme.spacing.unit * 9,
     overflowX: 'auto',
     flexGrow: 1,
   },
@@ -23,6 +24,7 @@ const styles = theme => ({
 let id = 0;
 function createData(name, calories, fat, carbs, protein) {
   id += 1;
+  console.log({ id, name, calories, fat, carbs, protein });
   return { id, name, calories, fat, carbs, protein };
 }
 
@@ -37,41 +39,41 @@ const rows = [
 class StatifyTable extends React.Component {
 
   render () {
-  const { classes } = this.props;
+  const { classes, songs } = this.props;
 
   return (
+                <Grid container justify="center" spacing={16}>
+
+              <Grid item>
     <Paper className={classes.root}>
       <Table className={classes.table}>
         <TableHead>
           <TableRow>
-            <TableCell>Dessert (100g serving)</TableCell>
-            <TableCell align="right">Calories</TableCell>
-            <TableCell align="right">Fat (g)</TableCell>
-            <TableCell align="right">Carbs (g)</TableCell>
-            <TableCell align="right">Protein (g)</TableCell>
+            <TableCell>SongName</TableCell>
+            <TableCell align="left">Count</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map(row => (
-            <TableRow key={row.id}>
+          {songs.map(song => (
+            <TableRow key={song.id}>
               <TableCell component="th" scope="row">
-                {row.name}
+                {song.name}
               </TableCell>
-              <TableCell align="right">{row.calories}</TableCell>
-              <TableCell align="right">{row.fat}</TableCell>
-              <TableCell align="right">{row.carbs}</TableCell>
-              <TableCell align="right">{row.protein}</TableCell>
+              <TableCell align="left">{song.count}</TableCell>
             </TableRow>
           ))}
         </TableBody>
       </Table>
     </Paper>
+                  </Grid>
+                  </Grid>
   );
 }
 }
 
 StatifyTable.propTypes = {
   classes: PropTypes.object.isRequired,
+  songs: PropTypes.array.isRequired,
 };
 
 export default withStyles(styles)(StatifyTable);
