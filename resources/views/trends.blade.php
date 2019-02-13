@@ -8,6 +8,9 @@
 @section('content')
     <div id="TrendRoot"></div>
 
+    @yield('content')
+  
+
     <h1>Trends</h1>
 
 @endsection

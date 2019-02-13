@@ -13,6 +13,7 @@ export default class TrendRoot extends React.Component {
     render() {
         return (
             <MuiThemeProvider theme={theme}>
+            
               <StatifyTable/>
             </MuiThemeProvider>
         );

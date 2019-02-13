@@ -8,23 +8,18 @@ import theme from './statify-core/StatifyTheme';
 import StatifyTable from './statify-core/StatifyTable';
 import { MuiThemeProvider } from '@material-ui/core/styles';
 
-export default class SignInRoot extends React.Component {
-
-	constructor(props) {
-     super(props);
-     this.state={ trends: true };
-    }
+export default class HomeRoot extends React.Component {
 
     render() {
         return (
             <MuiThemeProvider theme={theme}>
-
-            <PersistentDrawerLeft trends={this.state.trends} />
+            
+             <StatifyTable/>
             </MuiThemeProvider>
         );
     }
 }
 
-if (document.getElementById('SignInRoot')) {
-    ReactDOM.render(<SignInRoot />, document.getElementById('SignInRoot'));
+if (document.getElementById('HomeRoot')) {
+    ReactDOM.render(<HomeRoot />, document.getElementById('HomeRoot'));
 }
