@@ -16,3 +16,8 @@ require('./bootstrap');
 require('./components/Example');
 //require('./components/SeachAppBar');
 require('./components/NavBar');
+require('./components/SignIn');
+require('./components/SignInRoot');
+require('./components/TrendRoot');
+require('./components/statify-core/Root');
+require('./components/statify-core/StatifyTable');

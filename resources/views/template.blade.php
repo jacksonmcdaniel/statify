@@ -10,18 +10,15 @@
 <head>
     @yield('title')
 
-    <title>hi</title>
+    <title>Statify</title>
 </head>
 
 <body>
-    <div id="NavBar" style="margin-top: 10px;"></div>
-    <script src="js/app.js"></script>
+
+    <div id="SignInRoot"></div>
 
     @yield('content')
-    
-    <ul>
-        <li><a href='/'>Welcome</a></li>
-        <li><a href='/account'>Account</a></li>
+    <script src="{{ mix('js/app.js') }}"></script>
     </ul>
 </body>
 </html>

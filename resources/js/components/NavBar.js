@@ -7,16 +7,23 @@ import Tab from '@material-ui/core/Tab';
 import PhoneIcon from '@material-ui/icons/Phone';
 import AccountIcon from '@material-ui/icons/AccountCircle';
 import PersonPinIcon from '@material-ui/icons/PersonPin';
-import statify_logo from '/var/www/assets/statify_logo.png';
+//import statify_logo from '/var/www/assets/statify_logo.png';
+//import statify_logo from '../../../public/images/statify_logo.png';
 import SearchAppBar from './SearchAppBar.js';
 import Typography from '@material-ui/core/Typography';
 import ReactDOM from 'react-dom';
 import {Link, BrowserRouter} from 'react-router-dom';
+import theme from './statify-core/StatifyTheme';
+import { MuiThemeProvider } from '@material-ui/core/styles';
+import green from '@material-ui/core/colors/green';
+import Root from './statify-core/Root.js';
+import AppBar from '@material-ui/core/AppBar';
 
 const styles = {
   root: {
     flexGrow: 1,
     maxWidth: 500,
+    top: "64px",
   },
   styleForLogo: {
     width: "100%",
@@ -27,38 +34,34 @@ const styles = {
 class NavBar extends React.Component {
 
   render() {
+    const { classes } = this.props;
+    const { value } = this.props;
 
     return (
-      <div>
+        <MuiThemeProvider theme={theme}>
          <BrowserRouter> 
             <Paper square>
-               <Tabs variant="fullWidth" indicatorColor="primary" textColor="primary">
-                  <Tab icon=<img src={statify_logo} width="80px" height="80px" />  href="/home" >
-                     <a href='/home'></a>
+               <Tabs value={value} variant="fullWidth" indicatorColor="secondary" textColor="primary" >
+                  <Tab label="All Time" href='/trends'>
                   </Tab>
-                  <Tab label="Trends" href='/trends'>
-                     <a href='/trends'></a>
+                  <Tab label="Monthly" href='/trends'>
                   </Tab>
-                  <Tab label="Recommendations" href='/recommendations'>
-                     <a href='/recommendations'></a>
-                  </Tab>
-                  <SearchAppBar/>
-                  <Tab icon={<AccountIcon/>} width="80px" height="80px" href='/account'>
-                     <a href='/account'></a>
+                  <Tab label="Weekly" href='/trends'>
                   </Tab>
                </Tabs>
             </Paper>
          </BrowserRouter>
-      </div>
+        </MuiThemeProvider>
     );
   }
 }
 
-/*IconTabs.propTypes = {
+NavBar.propTypes = {
   classes: PropTypes.object.isRequired,
-};*/
+};
 
-//export default withStyles(styles)(IconTabs);
+export default withStyles(styles)(NavBar);
+
 if (document.getElementById('NavBar')) {
-    ReactDOM.render(<NavBar />, document.getElementById('NavBar'));
+    ReactDOM.render(<NavBar value={4} classes={<Root/>} />, document.getElementById('NavBar'));
 }
