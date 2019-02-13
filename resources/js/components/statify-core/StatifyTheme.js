@@ -19,6 +19,9 @@ const theme = createMuiTheme({
     typography: {
     useNextVariants: true,
   },
+  paper: {    
+      padding: '40px',   
+      },
 });
 
 export default theme;

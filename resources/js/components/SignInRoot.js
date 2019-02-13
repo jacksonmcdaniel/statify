@@ -10,12 +10,16 @@ import { MuiThemeProvider } from '@material-ui/core/styles';
 
 export default class SignInRoot extends React.Component {
 
+	constructor(props) {
+     super(props);
+     this.state={ trends: true };
+    }
+
     render() {
         return (
             <MuiThemeProvider theme={theme}>
 
-            <PersistentDrawerLeft/>
-            <NavBar/>
+            <PersistentDrawerLeft trends={this.state.trends} />
             </MuiThemeProvider>
         );
     }

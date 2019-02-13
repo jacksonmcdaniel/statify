@@ -7,6 +7,7 @@
 
 @section('content')
 
+	<div id="AccountRoot"></div>
     <h1>Account</h1>
 
 
