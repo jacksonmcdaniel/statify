@@ -12,7 +12,7 @@ import Grid from '@material-ui/core/Grid';
 const styles = theme => ({
   root: {
     width: '100%',
-    marginTop: theme.spacing.unit * 9,
+    marginTop: theme.spacing.unit * 15,
     overflowX: 'auto',
     flexGrow: 1,
   },
