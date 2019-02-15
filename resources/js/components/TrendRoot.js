@@ -16,13 +16,12 @@ function createData(name, count) {
 export default class TrendRoot extends React.Component {
 
     render() {
-      const { songs } = this.props;
-
-      return (
-          <MuiThemeProvider theme={theme}>
-            <StatifyTable songs={songs}/>
-          </MuiThemeProvider>
-      );
+        const { songs } = this.props;
+        return (
+            <MuiThemeProvider theme={theme}>
+              <StatifyTable songs={songs}/>
+            </MuiThemeProvider>
+        );
     }
 }
 

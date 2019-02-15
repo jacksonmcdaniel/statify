@@ -41,9 +41,8 @@ class StatifyTable extends React.Component {
   const { classes, songs } = this.props;
 
   return (
-                <Grid container justify="center" spacing={16}>
-
-              <Grid item>
+   <Grid container justify="center" spacing={16}>
+    <Grid item>
     <Paper className={classes.root}>
       <Table className={classes.table}>
         <TableHead>
@@ -54,18 +53,18 @@ class StatifyTable extends React.Component {
         </TableHead>
         <TableBody>
           {songs.map(song => (
-            <TableRow key={song.id}>
+            <TableRow key={song.sid}>
               <TableCell component="th" scope="row">
                 {song.name}
               </TableCell>
-              <TableCell align="left">{song.count}</TableCell>
+              <TableCell align="left">{song.artist}</TableCell>
             </TableRow>
           ))}
         </TableBody>
       </Table>
     </Paper>
-                  </Grid>
-                  </Grid>
+    </Grid>
+    </Grid>
   );
 }
 }
