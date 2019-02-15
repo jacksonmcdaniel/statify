@@ -10,7 +10,7 @@ use App\Song;
 class TrendController extends Controller
 {
     public function index() {
-        $songs = Song::all('name','artist');
+        $songs = Song::all('sid','name','artist');
 
         return view('trends', [
             'songs' => $songs,
