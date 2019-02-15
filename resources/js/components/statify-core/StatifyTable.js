@@ -7,11 +7,12 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
+import Grid from '@material-ui/core/Grid';
 
 const styles = theme => ({
   root: {
     width: '100%',
-    marginTop: theme.spacing.unit * 3,
+    marginTop: theme.spacing.unit * 15,
     overflowX: 'auto',
     flexGrow: 1,
   },
@@ -40,12 +41,14 @@ class StatifyTable extends React.Component {
   const { classes, songs } = this.props;
 
   return (
+   <Grid container justify="center" spacing={16}>
+    <Grid item>
     <Paper className={classes.root}>
       <Table className={classes.table}>
         <TableHead>
           <TableRow>
-            <TableCell>Song</TableCell>
-            <TableCell align="right">Artist</TableCell>
+            <TableCell>SongName</TableCell>
+            <TableCell align="left">Count</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -60,6 +63,8 @@ class StatifyTable extends React.Component {
         </TableBody>
       </Table>
     </Paper>
+    </Grid>
+    </Grid>
   );
 }
 }

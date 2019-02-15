@@ -7,6 +7,11 @@ import PersistentDrawerLeft from './PersistentDrawerLeft.js';
 import theme from './statify-core/StatifyTheme';
 import StatifyTable from './statify-core/StatifyTable';
 import { MuiThemeProvider } from '@material-ui/core/styles';
+let id = 0;
+function createData(name, count) {
+  id += 1;
+  return { id, name, count };
+}
 
 export default class TrendRoot extends React.Component {
 
@@ -22,8 +27,7 @@ export default class TrendRoot extends React.Component {
 
 if (document.getElementById('TrendRoot')) {
     var element = document.getElementById('TrendRoot');
-    var name = "trends";
-    var songs = element.getAttribute('songs');
-    console.log(songs);
-    ReactDOM.render(<TrendRoot songs={JSON.parse(songs)} />, document.getElementById('TrendRoot'));
+    var name = element.getAttribute("name");
+    var songs = element.getAttribute("songs");
+    ReactDOM.render(<TrendRoot songs={JSON.parse(songs)}/>, document.getElementById('TrendRoot'));
 }

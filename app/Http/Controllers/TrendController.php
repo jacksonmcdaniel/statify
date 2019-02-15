@@ -12,7 +12,8 @@ class TrendController extends Controller
     public function index() {
         $songs = Song::all('name','artist');
 
-
-        return view('trends', ['songs' => $songs, 'name' => "Trend"]);
+        return view('trends', [
+            'songs' => $songs,
+            'name' => "Trend"]);
     }
 }
