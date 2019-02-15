@@ -89857,9 +89857,12 @@ function (_React$Component) {
   _createClass(TrendRoot, [{
     key: "render",
     value: function render() {
+      var songs = this.props.songs;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_8__["MuiThemeProvider"], {
         theme: _statify_core_StatifyTheme__WEBPACK_IMPORTED_MODULE_6__["default"]
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_statify_core_StatifyTable__WEBPACK_IMPORTED_MODULE_7__["default"], null));
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_statify_core_StatifyTable__WEBPACK_IMPORTED_MODULE_7__["default"], {
+        songs: songs
+      }));
     }
   }]);
 
@@ -89869,7 +89872,13 @@ function (_React$Component) {
 
 
 if (document.getElementById('TrendRoot')) {
-  react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(TrendRoot, null), document.getElementById('TrendRoot'));
+  var element = document.getElementById('TrendRoot');
+  var name = "trends";
+  var songs = element.getAttribute('songs');
+  console.log(songs);
+  react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(TrendRoot, {
+    songs: JSON.parse(songs)
+  }), document.getElementById('TrendRoot'));
 }
 
 /***/ }),
@@ -90049,34 +90058,24 @@ function (_React$Component) {
   _createClass(StatifyTable, [{
     key: "render",
     value: function render() {
-      var classes = this.props.classes;
+      var _this$props = this.props,
+          classes = _this$props.classes,
+          songs = _this$props.songs;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Paper__WEBPACK_IMPORTED_MODULE_8___default.a, {
         className: classes.root
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Table__WEBPACK_IMPORTED_MODULE_3___default.a, {
         className: classes.table
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_TableHead__WEBPACK_IMPORTED_MODULE_6___default.a, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_TableRow__WEBPACK_IMPORTED_MODULE_7___default.a, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_TableCell__WEBPACK_IMPORTED_MODULE_5___default.a, null, "Dessert (100g serving)"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_TableCell__WEBPACK_IMPORTED_MODULE_5___default.a, {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_TableHead__WEBPACK_IMPORTED_MODULE_6___default.a, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_TableRow__WEBPACK_IMPORTED_MODULE_7___default.a, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_TableCell__WEBPACK_IMPORTED_MODULE_5___default.a, null, "Song"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_TableCell__WEBPACK_IMPORTED_MODULE_5___default.a, {
         align: "right"
-      }, "Calories"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_TableCell__WEBPACK_IMPORTED_MODULE_5___default.a, {
-        align: "right"
-      }, "Fat (g)"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_TableCell__WEBPACK_IMPORTED_MODULE_5___default.a, {
-        align: "right"
-      }, "Carbs (g)"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_TableCell__WEBPACK_IMPORTED_MODULE_5___default.a, {
-        align: "right"
-      }, "Protein (g)"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_TableBody__WEBPACK_IMPORTED_MODULE_4___default.a, null, rows.map(function (row) {
+      }, "Artist"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_TableBody__WEBPACK_IMPORTED_MODULE_4___default.a, null, songs.map(function (song) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_TableRow__WEBPACK_IMPORTED_MODULE_7___default.a, {
-          key: row.id
+          key: song.sid
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_TableCell__WEBPACK_IMPORTED_MODULE_5___default.a, {
           component: "th",
           scope: "row"
-        }, row.name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_TableCell__WEBPACK_IMPORTED_MODULE_5___default.a, {
-          align: "right"
-        }, row.calories), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_TableCell__WEBPACK_IMPORTED_MODULE_5___default.a, {
-          align: "right"
-        }, row.fat), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_TableCell__WEBPACK_IMPORTED_MODULE_5___default.a, {
-          align: "right"
-        }, row.carbs), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_TableCell__WEBPACK_IMPORTED_MODULE_5___default.a, {
-          align: "right"
-        }, row.protein));
+        }, song.name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_TableCell__WEBPACK_IMPORTED_MODULE_5___default.a, {
+          align: "left"
+        }, song.artist));
       }))));
     }
   }]);
@@ -90085,7 +90084,8 @@ function (_React$Component) {
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
 StatifyTable.propTypes = {
-  classes: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.object.isRequired
+  classes: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.object.isRequired,
+  songs: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.array.isRequired
 };
 /* harmony default export */ __webpack_exports__["default"] = (Object(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_2__["withStyles"])(styles)(StatifyTable));
 
@@ -90159,8 +90159,8 @@ var theme = Object(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_4__["create
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/shannonmarquiss/code/statify/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /Users/shannonmarquiss/code/statify/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Users/brianishii/code/statify/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /Users/brianishii/code/statify/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

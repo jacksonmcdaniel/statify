@@ -11,9 +11,10 @@ import { MuiThemeProvider } from '@material-ui/core/styles';
 export default class TrendRoot extends React.Component {
 
     render() {
+        const { songs } = this.props;
         return (
             <MuiThemeProvider theme={theme}>
-              <StatifyTable/>
+              <StatifyTable songs={songs}/>
             </MuiThemeProvider>
         );
     }
@@ -21,7 +22,8 @@ export default class TrendRoot extends React.Component {
 
 if (document.getElementById('TrendRoot')) {
     var element = document.getElementById('TrendRoot');
-    var name = element.getAttribute("name");
-    console.log(name);
-    ReactDOM.render(<TrendRoot />, document.getElementById('TrendRoot'));
+    var name = "trends";
+    var songs = element.getAttribute('songs');
+    console.log(songs);
+    ReactDOM.render(<TrendRoot songs={JSON.parse(songs)} />, document.getElementById('TrendRoot'));
 }

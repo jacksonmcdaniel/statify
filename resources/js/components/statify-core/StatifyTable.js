@@ -37,30 +37,24 @@ const rows = [
 class StatifyTable extends React.Component {
 
   render () {
-  const { classes } = this.props;
+  const { classes, songs } = this.props;
 
   return (
     <Paper className={classes.root}>
       <Table className={classes.table}>
         <TableHead>
           <TableRow>
-            <TableCell>Dessert (100g serving)</TableCell>
-            <TableCell align="right">Calories</TableCell>
-            <TableCell align="right">Fat (g)</TableCell>
-            <TableCell align="right">Carbs (g)</TableCell>
-            <TableCell align="right">Protein (g)</TableCell>
+            <TableCell>Song</TableCell>
+            <TableCell align="right">Artist</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map(row => (
-            <TableRow key={row.id}>
+          {songs.map(song => (
+            <TableRow key={song.sid}>
               <TableCell component="th" scope="row">
-                {row.name}
+                {song.name}
               </TableCell>
-              <TableCell align="right">{row.calories}</TableCell>
-              <TableCell align="right">{row.fat}</TableCell>
-              <TableCell align="right">{row.carbs}</TableCell>
-              <TableCell align="right">{row.protein}</TableCell>
+              <TableCell align="left">{song.artist}</TableCell>
             </TableRow>
           ))}
         </TableBody>
@@ -72,6 +66,7 @@ class StatifyTable extends React.Component {
 
 StatifyTable.propTypes = {
   classes: PropTypes.object.isRequired,
+  songs: PropTypes.array.isRequired,
 };
 
 export default withStyles(styles)(StatifyTable);

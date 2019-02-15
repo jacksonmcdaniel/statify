@@ -4,11 +4,15 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+
+use App\Song;
+
 class TrendController extends Controller
 {
     public function index() {
-        $trends = ["trend1", "trend2"];
+        $songs = Song::all('name','artist');
 
-        return view('trends', ['trends' => $trends, 'name' => "Trend"]);
+
+        return view('trends', ['songs' => $songs, 'name' => "Trend"]);
     }
 }

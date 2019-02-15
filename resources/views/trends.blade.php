@@ -6,8 +6,7 @@
 @endsection
 
 @section('content')
-    <div id="TrendRoot" name={{ $name }}></div>
-
-    <h1>{{ $name }}</h1>
+    <div id="TrendRoot" songs={{$songs}}></div>
+    <h1>Trends</h1>
 
 @endsection
