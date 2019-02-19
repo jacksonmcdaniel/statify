@@ -14,6 +14,6 @@ class TrendController extends Controller
 
         return view('trends', [
             'songs' => $songs,
-            'name' => "Trend"]);
+            'name' => "Trends"]);
     }
 }
