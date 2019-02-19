@@ -129,7 +129,7 @@ class PersistentDrawerLeft extends React.Component {
 
     let button;
     if (trends) {
-      button = <NavBar />;
+      button = <NavBar value={0} />;
     }else{
       button = <null />;
     }
