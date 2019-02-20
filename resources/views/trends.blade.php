@@ -12,8 +12,6 @@
     @yield('content')
   
 
-    <h1>Trends</h1>
-
     <h1>{{ $name }}</h1>
 
 
