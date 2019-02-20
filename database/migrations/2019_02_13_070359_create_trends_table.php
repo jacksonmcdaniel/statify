@@ -15,6 +15,7 @@ class CreateTrendsTable extends Migration
     {
         Schema::create('trends', function (Blueprint $table) {
             $table->increments('tid');
+            $table->string('name');
             $table->unsignedInteger('uid');
             $table->timestamps();
 
