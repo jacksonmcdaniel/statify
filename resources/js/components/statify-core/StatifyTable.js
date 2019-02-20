@@ -8,16 +8,18 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
+import { unstable_Box as Box } from '@material-ui/core/Box';
 
 const styles = theme => ({
   root: {
     width: '100%',
     marginTop: theme.spacing.unit * 15,
-    overflowX: 'auto',
+    overflowX: 'visible',
     flexGrow: 1,
   },
   table: {
     minWidth: 700,
+    borderStyle: 'solid',
   },
 });
 

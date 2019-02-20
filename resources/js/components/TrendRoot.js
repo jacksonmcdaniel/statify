@@ -7,6 +7,10 @@ import PersistentDrawerLeft from './PersistentDrawerLeft.js';
 import theme from './statify-core/StatifyTheme';
 import StatifyTable from './statify-core/StatifyTable';
 import { MuiThemeProvider } from '@material-ui/core/styles';
+import Grid from '@material-ui/core/Grid';
+import Paper from '@material-ui/core/Paper';
+
+
 let id = 0;
 function createData(name, count) {
   id += 1;
@@ -23,7 +27,12 @@ export default class TrendRoot extends React.Component {
         const { songs } = this.props;
         return (
             <MuiThemeProvider theme={theme}>
-              <StatifyTable songs={songs}/>
+              <Paper style={theme.paperContainer3}>
+               <Grid container direction="column" alignItems="center" 
+                  style={{ minHeight: '100vh' }}>
+                  <StatifyTable songs={songs}/>
+                </Grid>
+              </Paper>
             </MuiThemeProvider>
         );
     }

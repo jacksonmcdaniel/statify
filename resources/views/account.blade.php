@@ -8,7 +8,5 @@
 @section('content')
 
 	<div id="AccountRoot" name={{$username}} email={{$email}}></div>
-    <h1>Account</h1>
-
-
+  
 @endsection

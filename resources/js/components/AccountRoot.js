@@ -24,11 +24,13 @@ export default class AccountRoot extends React.Component {
         const { email, name } = this.props;
         return (
             <MuiThemeProvider theme={theme}>
+            <Paper style={theme.paperContainer2}>
             <Grid container spacing={0} alignItems="center" 
 			justify="space-evenly" style={{ minHeight: '100vh' }}>
             <AccountPaper email={email} name={name}/>
             <DeleteAccount/>
             </Grid>
+            </Paper>
             </MuiThemeProvider>
         );
     }
