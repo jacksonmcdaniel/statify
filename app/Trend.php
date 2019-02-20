@@ -9,6 +9,9 @@ use App\Song;
 
 class Trend extends Model
 {
+    protected $fillable = [
+        'uid', 'name'
+    ];
     public function songs()
     {        
         return $this->songIDs()->hasMany(Song::class, 'sid', 'sid');

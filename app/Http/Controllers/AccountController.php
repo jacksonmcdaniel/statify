@@ -8,8 +8,6 @@ use Illuminate\Http\Request;
 class AccountController extends Controller
 {
     public function index() {
-        session(['uid' => 1]);
-
         $uid = session('uid');
         $userInfo = DB::table('users')
             ->select('uid', 'name', 'email')

@@ -18,10 +18,10 @@ class TrendController extends Controller
         $songs = DB::table('trends')
             ->join('songs_in_trends', 'trends.tid', '=', 'songs_in_trends.tid')
             ->join('songs', 'songs.sid' ,'=', 'songs_in_trends.sid')
-            ->select('songs.sid', 'songs.name', 'songs.artist', 'trends.tid', 'trends.uid')
+            ->where('trends.name', '=', 'allTime')
+            ->select('songs.sid', 'songs.name', 'songs.artist', 'trends.uid')
             ->get()
-            ->where('tid', '=', 1)
-            ->where('uid', '=', $uid);
+            ->where('uid', '=', $uid)->values();
 
         return view('trends', [
             'songs' => $songs,
@@ -29,20 +29,32 @@ class TrendController extends Controller
             'name' => "Trends"]);
     }
 
-    public function show($tid) {
-        $uid = 1; 
+    public function show($name) {
+        $uid = session('uid');
 
+        if ($name=="allTime")
+        {
+            $index = 0;
+        }
+        else if ($name=="Monthly")
+        {
+            $index = 1;
+        }
+        else
+        {
+            $index = 2;
+        }
         $songs = DB::table('trends')
             ->join('songs_in_trends', 'trends.tid', '=', 'songs_in_trends.tid')
             ->join('songs', 'songs.sid' ,'=', 'songs_in_trends.sid')
-            ->select('songs.sid', 'songs.name', 'songs.artist', 'trends.tid', 'trends.uid')
+            ->where('trends.name', '=', $name)
+            ->select('songs.sid', 'songs.name', 'songs.artist', 'trends.uid')
             ->get()
-            ->where('tid', '=', $tid)
-            ->where('uid', '=', $uid);
+            ->where('uid', '=', $uid)->values();
         
         return view('trends', [
             'songs' => $songs,
-            'tabIndex' => $tid-1,
+            'tabIndex' => $index,
             'name' => "Trends"]);
     }
 }
