@@ -44,19 +44,19 @@ class NavBar extends React.Component {
     };
   }
   render() {
-    const { classes } = this.props;
-    const { handleClick, value } = this.state;
+    const { classes, value } = this.props;
+    const { handleClick } = this.state;
 
     return (
         <MuiThemeProvider theme={theme}>
          <BrowserRouter> 
             <Paper square>
                <Tabs value={value} onChange={this.handleChange} variant="fullWidth" indicatorColor="secondary" textColor="primary" >
-                  <Tab label="All Time">
+                  <Tab label="All Time" href="/trends/1">
                   </Tab>
-                  <Tab label="Monthly">
+                  <Tab label="Monthly" href="/trends/2">
                   </Tab>
-                  <Tab label="Weekly">
+                  <Tab label="Weekly" href="/trends/3">
                   </Tab>
                </Tabs>
             </Paper>
@@ -72,7 +72,3 @@ NavBar.propTypes = {
 };
 
 export default withStyles(styles)(NavBar);
-
-if (document.getElementById('NavBar')) {
-    ReactDOM.render(<NavBar value={0} classes={<Root/>} />, document.getElementById('NavBar'));
-}

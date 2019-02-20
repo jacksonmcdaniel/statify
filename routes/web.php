@@ -19,4 +19,5 @@ Route::get('/account', 'AccountController@index');
 Route::get('/home', 'HomeController@index');
 Route::get('/', 'HomeController@index');
 Route::get('/trends', 'TrendController@index');
+Route::get('/trends/{tid}', 'TrendController@show');
 Route::get('/recommendations', 'RecommendationController@index');
