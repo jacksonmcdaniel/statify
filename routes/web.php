@@ -11,9 +11,9 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//Route::get('/', function () {
+//    return view('welcome');
+//});
 
 Route::get('/account', function () {
     return view('account');
@@ -24,6 +24,8 @@ Route::get('/home', function () {
 });
 
 Route::get('/trends', 'TrendController@index');
+
+Route::get('/', 'ApiConnectionController@index');
 
 Route::get('/recommendations', function () {
     return view('recommendations');

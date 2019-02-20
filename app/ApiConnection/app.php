@@ -6,7 +6,7 @@
  * Time: 17:04
  */
 
-require 'vendor/autoload.php';
+require '../../vendor/autoload.php';
 
 $api = new SpotifyWebAPI\SpotifyWebAPI();
 

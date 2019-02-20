@@ -14,6 +14,10 @@
     <body>
         <div id="NavBar" style="margin-top: 10px;"></div>
         <script src="js/app.js"></script>
+
+    <div>
+        {{ $name }}
+    </div>
     </body>
     
 

@@ -1,11 +1,11 @@
 <?php
 
-require 'vendor/autoload.php';
+require '../../vendor/autoload.php';
 
 $session = new SpotifyWebAPI\Session(
-'CLIENT_ID',
-'CLIENT_SECRET',
-'REDIRECT_URI'
+'6f65c21b83864f0dafc40d16f240a2fd',
+'0935252c7e634097b548663f53c2b082',
+'http://localhost:8000/callback'
 );
 
 // Request a access token using the code from Spotify
