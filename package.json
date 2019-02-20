@@ -28,6 +28,7 @@
     },
     "dependencies": {
         "@material-ui/core": "^3.9.1",
+        "@material-ui/styles": "^3.0.0-alpha.10",
         "npm-watch": "^0.6.0"
     }
 }

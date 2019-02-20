@@ -4,6 +4,8 @@ import orange from '@material-ui/core/colors/orange';
 import grey from '@material-ui/core/colors/grey';
 import { createMuiTheme } from '@material-ui/core/styles';
 import Background from '../../../../public/Assets/images/earphones.jpg';
+import BackgroundHeadPhones from '../../../../public/Assets/images/headphones.jpg';
+import BackgroundPhone from '../../../../public/Assets/images/phone_trends.jpg';
 
 const theme = createMuiTheme({
   palette: {
@@ -24,8 +26,18 @@ const theme = createMuiTheme({
   paper: {    
       padding: '40px',   
       },
-  paperContainer: {
+  paperContainer1: {
       backgroundImage: 'url('+ Background+')',
+      backgroundSize: 'cover',
+      overflow: 'hidden'
+      },
+  paperContainer2: {
+      backgroundImage: 'url('+ BackgroundHeadPhones+')',
+      backgroundSize: 'cover',
+      overflow: 'hidden'
+      },
+    paperContainer3: {
+      backgroundImage: 'url('+ BackgroundPhone+')',
       backgroundSize: 'cover',
       overflow: 'hidden'
       },
