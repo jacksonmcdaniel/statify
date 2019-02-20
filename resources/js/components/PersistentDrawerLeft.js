@@ -151,7 +151,7 @@ class PersistentDrawerLeft extends React.Component {
   }
 
   render() {
-    const { classes, theme, name } = this.props;
+    const { classes, theme, name, value } = this.props;
     const { open, handleDrawerClose, handleDrawerOpen} = this.state;
     const { trends, handleTrendsPage, handleTrendsPageOff }  = this.state;
     const { anchorEl } = this.state;
@@ -160,10 +160,10 @@ class PersistentDrawerLeft extends React.Component {
 
 
     let button;
-    if (trends) {
-      button = <NavBar value={0} />;
+    if (name=='Trends') {
+      button = <NavBar value={value} />;
     }else{
-      button = <null />;
+      button = <div />;
     }
 
     return (
@@ -289,7 +289,8 @@ PersistentDrawerLeft.propTypes = {
   classes: PropTypes.object.isRequired,
   theme: PropTypes.object.isRequired,
   trends: PropTypes.bool.isRequired,
-  name: PropTypes.string.isRequired
+  name: PropTypes.string.isRequired,
+  value: PropTypes.number.isRequired
 };
 
 const SimpleModalWrapped = withStyles(styles, { withTheme: true })(PersistentDrawerLeft);

@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 class RecommendationController extends Controller
 {
     public function index() {
-        return view('recommendations', ['name' => "Recommendations"]);
+        return view('recommendations', [
+            'tabIndex' => 0,
+            'name' => "Recommendations"]);
     }
 }

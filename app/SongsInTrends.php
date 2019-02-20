@@ -4,9 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Song extends Model
+class SongsInTrends extends Model
 {
     protected $fillable = [
-        'name', 'artist'
+        'tid', 'sid'
     ];
 }
