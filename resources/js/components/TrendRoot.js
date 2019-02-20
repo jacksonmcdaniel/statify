@@ -15,6 +15,10 @@ function createData(name, count) {
 
 export default class TrendRoot extends React.Component {
 
+	constructor(props) {
+     super(props);
+    }
+
     render() {
         const { songs } = this.props;
         return (

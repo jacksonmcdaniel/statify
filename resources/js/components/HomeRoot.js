@@ -10,23 +10,33 @@ import { MuiThemeProvider } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
+import statify_logo from '../../../public/Assets/images/statify_logo.png';
+import Image from '../../../public/Assets/images/music_listening.jpg';
+
 
 export default class HomeRoot extends React.Component {
 
 	constructor(props) {
 		super(props);
-		
-	}
+        
+    };
+
 
     render() {
         return (
             <MuiThemeProvider theme={theme}>
+            <Paper style={theme.paperContainer}>
             <Grid container spacing={0} direction="column" alignItems="center" 
 			justify="center" style={{ minHeight: '100vh' }}>
-             	<Typography variant="h3" color="inherit" align="center" p={2000}>
+             	<Typography variant="h3" color="default" align="center" p={2000} style={{textShadow: '0 0 3px #000000'}}>
               	Welcome to your Statify home!
             	</Typography>
+                <img src={statify_logo}  width={300} height={275} mode='fit'/>
+                <Typography variant="h6" color="default" align="center" p={2000} style={{textShadow: '0 0 3px #000000'}}>
+                This is where you can view all of your Spotify Trends.
+                </Typography>
             </Grid>
+            </Paper>
             </MuiThemeProvider>
         );
     }

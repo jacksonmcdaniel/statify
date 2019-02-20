@@ -7,5 +7,5 @@
 
 @section('content')
     <div id="TrendRoot" name={{$name}} songs={{$songs}}></div>
-  
+
 @endsection
