@@ -123,13 +123,13 @@ class PersistentDrawerLeft extends React.Component {
   }
 
   render() {
-    const { classes, theme } = this.props;
+    const { classes, theme, name } = this.props;
     const { open, handleDrawerClose, handleDrawerOpen} = this.state;
     const { trends, handleTrendsPage, handleTrendsPageOff }  = this.state;
 
     let button;
     if (trends) {
-      button = <NavBar />;
+      button = <NavBar value={0} />;
     }else{
       button = <null />;
     }
@@ -153,7 +153,7 @@ class PersistentDrawerLeft extends React.Component {
               <MenuIcon />
             </IconButton>
             <Typography variant="h6" color="inherit" noWrap>
-              Statify
+              {name}
             </Typography>
             <div className={classes.grow} />
 
@@ -223,7 +223,8 @@ class PersistentDrawerLeft extends React.Component {
 PersistentDrawerLeft.propTypes = {
   classes: PropTypes.object.isRequired,
   theme: PropTypes.object.isRequired,
-  trends: PropTypes.bool.isRequired
+  trends: PropTypes.bool.isRequired,
+  name: PropTypes.string.isRequired
 };
 
 export default withStyles(styles, { withTheme: true })(PersistentDrawerLeft);

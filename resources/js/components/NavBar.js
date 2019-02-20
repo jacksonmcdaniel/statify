@@ -32,21 +32,31 @@ const styles = {
 };
 
 class NavBar extends React.Component {
+  constructor(props) {
+    super(props);
+    
+    this.state = {
+      value: 0,
+    };
 
+    this.handleChange = (event, value) => {
+      this.setState({ value });
+    };
+  }
   render() {
     const { classes } = this.props;
-    const { value } = this.props;
+    const { handleClick, value } = this.state;
 
     return (
         <MuiThemeProvider theme={theme}>
          <BrowserRouter> 
             <Paper square>
-               <Tabs value={value} variant="fullWidth" indicatorColor="secondary" textColor="primary" >
-                  <Tab label="All Time" href='/trends'>
+               <Tabs value={value} onChange={this.handleChange} variant="fullWidth" indicatorColor="secondary" textColor="primary" >
+                  <Tab label="All Time">
                   </Tab>
-                  <Tab label="Monthly" href='/trends'>
+                  <Tab label="Monthly">
                   </Tab>
-                  <Tab label="Weekly" href='/trends'>
+                  <Tab label="Weekly">
                   </Tab>
                </Tabs>
             </Paper>
@@ -58,10 +68,11 @@ class NavBar extends React.Component {
 
 NavBar.propTypes = {
   classes: PropTypes.object.isRequired,
+  value: PropTypes.number.isRequired,
 };
 
 export default withStyles(styles)(NavBar);
 
 if (document.getElementById('NavBar')) {
-    ReactDOM.render(<NavBar value={4} classes={<Root/>} />, document.getElementById('NavBar'));
+    ReactDOM.render(<NavBar value={0} classes={<Root/>} />, document.getElementById('NavBar'));
 }

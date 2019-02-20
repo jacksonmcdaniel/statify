@@ -12,9 +12,7 @@
     
     <div id="Login" ></div>
     <script src="js/app.js"></script>
-    <p> hello </p>
-    @yield('content')
-    
+    <p> hello </p>    
     
 </body>
 

@@ -15,16 +15,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/account', function () {
-    return view('account');
-});
-
-Route::get('/home', function () {
-    return view('home');
-});
-
+Route::get('/account', 'AccountController@index');
+Route::get('/home', 'HomeController@index');
+Route::get('/', 'HomeController@index');
 Route::get('/trends', 'TrendController@index');
-
-Route::get('/recommendations', function () {
-    return view('recommendations');
-});
+Route::get('/recommendations', 'RecommendationController@index');
