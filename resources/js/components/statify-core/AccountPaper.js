@@ -25,7 +25,8 @@ const styles = theme => ({
 });
 
 function AccountPaper(props) {
-  const { classes } = props;
+  const { classes, name, email } = props;
+  
   return (
     <List className={classes.root}>
       <ListItem>
@@ -41,14 +42,14 @@ function AccountPaper(props) {
         <Avatar>
           <PersonIcon />
         </Avatar>
-        <ListItemText primary="Username" secondary="statify_username" />
+        <ListItemText primary="Username" secondary={name} />
       </ListItem>
       <Divider variant="inset" component="li" />
       <ListItem>
         <Avatar>
           <EmailIcon />
         </Avatar>
-        <ListItemText primary="e-mail" secondary="statify@gmail.com" />
+        <ListItemText primary="e-mail" secondary={email} />
       </ListItem>
       <Divider variant="inset" component="li" />
       <ListItem>
@@ -71,6 +72,8 @@ function AccountPaper(props) {
 
 AccountPaper.propTypes = {
   classes: PropTypes.object.isRequired,
+  email: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
 };
 
 export default withStyles(styles)(AccountPaper);

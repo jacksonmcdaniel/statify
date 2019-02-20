@@ -10,8 +10,11 @@ use App\Trend;
 
 class TrendController extends Controller
 {
+
     public function index() {
-        $uid = 1; 
+        session(['uid' => 1]);
+        //session()->forget('uid');
+        $uid = session('uid');
         $songs = DB::table('trends')
             ->join('songs_in_trends', 'trends.tid', '=', 'songs_in_trends.tid')
             ->join('songs', 'songs.sid' ,'=', 'songs_in_trends.sid')
@@ -36,7 +39,8 @@ class TrendController extends Controller
             ->get()
             ->where('tid', '=', $tid)
             ->where('uid', '=', $uid);
-                return view('trends', [
+        
+        return view('trends', [
             'songs' => $songs,
             'tabIndex' => $tid-1,
             'name' => "Trends"]);
