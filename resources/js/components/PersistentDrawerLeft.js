@@ -228,10 +228,11 @@ class PersistentDrawerLeft extends React.Component {
                           No
                       </Button>
                     </Grid>
+                  
                   </div>
                   </Grid>
-
                 </Modal>
+                <MenuItem onClick={this.handleClose}>Login</MenuItem>
               </Menu>
             </div>
             <div className={classes.sectionMobile}>
