@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -8,14 +9,15 @@
 <html>
 
 <head>
+    <title>Statify</title>
+
     @yield('title')
 
-    <title>Statify</title>
 </head>
 
 <body>
 
-    <div id="SignInRoot"></div>
+    <div id="SignInRoot" name={{$name}}></div>
 
     @yield('content')
     <script src="{{ mix('js/app.js') }}"></script>

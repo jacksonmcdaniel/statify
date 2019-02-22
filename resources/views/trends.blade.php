@@ -6,15 +6,6 @@
 @endsection
 
 @section('content')
-    <div id="TrendRoot" name={{ $name }} songs={{ json_encode($songs) }}></div>
-
-
-    @yield('content')
-  
-
-    <h1>Trends</h1>
-
-    <h1>{{ $name }}</h1>
-
+    <div id="TrendRoot" name={{$name}} songs={{$songs}}></div>
 
 @endsection

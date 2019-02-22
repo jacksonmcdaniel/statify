@@ -29,11 +29,9 @@ class ApiConnectionController
             ],
         ];
 
-        $user = "casey";
-
         header('Location: ' . $session->getAuthorizeUrl($options));
         die();
-//        return view('welcome', ['name' => $user]);
+
     }
 
 }

@@ -29,6 +29,7 @@ const styles = theme => ({
 });
 
 function DeleteAccount(props) {
+
   const { classes } = props;
   return (
     <List className={classes.root}>
