@@ -232,7 +232,7 @@ class PersistentDrawerLeft extends React.Component {
                   </div>
                   </Grid>
                 </Modal>
-                <MenuItem onClick={this.handleClose}>Login</MenuItem>
+                <MenuItem onClick={this.handleClose} component="a" href="/ApiConnection">Login</MenuItem>
               </Menu>
             </div>
             <div className={classes.sectionMobile}>

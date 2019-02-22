@@ -19,7 +19,7 @@ class ApiConnectionController
         $session = new SpotifyWebAPI\Session(
             '6f65c21b83864f0dafc40d16f240a2fd',
             '0935252c7e634097b548663f53c2b082',
-            'http://localhost:8000/callback'
+            'http://localhost:8000'
         );
 
         $options = [
