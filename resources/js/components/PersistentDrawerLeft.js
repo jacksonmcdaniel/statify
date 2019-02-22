@@ -29,6 +29,10 @@ import NavBar from './NavBar.js';
 import MusicNoteIcon from '@material-ui/icons/MusicNote';
 import LibraryMusicIcon from '@material-ui/icons/LibraryMusic';
 import HomeIcon from '@material-ui/icons/Home';
+import Menu from '@material-ui/core/Menu';
+import MenuItem from '@material-ui/core/MenuItem';
+import Modal from '@material-ui/core/Modal';
+import Grid from '@material-ui/core/Grid';
 
 const drawerWidth = 240;
 
@@ -96,12 +100,20 @@ const styles = theme => ({
     }),
     marginLeft: 0,
   },
+  paper: {
+    position: 'absolute',
+    width: theme.spacing.unit * 50,
+    backgroundColor: theme.palette.background.paper,
+    boxShadow: theme.shadows[5],
+    padding: theme.spacing.unit * 4,
+    outline: 'none',
+  },
 });
 
 class PersistentDrawerLeft extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { open: false, trends: this.props.trends };
+    this.state = { open: false, trends: this.props.trends, anchorEl: null, openModal: false};
 
     this.handleDrawerOpen = () => {
       this.setState({ open: true });
@@ -119,19 +131,39 @@ class PersistentDrawerLeft extends React.Component {
       this.setState({ trends: false });
     };
 
+    this.handleClick = event => {
+    this.setState({ anchorEl: event.currentTarget });
+    };
+
+    this.handleClose = () => {
+      this.setState({ anchorEl: null });
+    };
+
+    this.handleOpenModal = () => {
+    this.setState({ openModal: true });
+  };
+
+    this.handleCloseModal = () => {
+      this.setState({ openModal: false });
+    };
+
     
   }
 
   render() {
-    const { classes, theme, name } = this.props;
+    const { classes, theme, name, value } = this.props;
     const { open, handleDrawerClose, handleDrawerOpen} = this.state;
     const { trends, handleTrendsPage, handleTrendsPageOff }  = this.state;
+    const { anchorEl } = this.state;
+    const { openModal } = this.state;
+
+
 
     let button;
-    if (trends) {
-      button = <NavBar value={0} />;
+    if (name=='Trends') {
+      button = <NavBar value={value} />;
     }else{
-      button = <null />;
+      button = <div />;
     }
 
     return (
@@ -159,18 +191,52 @@ class PersistentDrawerLeft extends React.Component {
 
             <SearchAppBar/>
             <div className={classes.sectionDesktop}>
-              <IconButton
-                aria-haspopup="true"
-                color="inherit"
-                href="/account"
+              <IconButton aria-owns={anchorEl ? 'simple-menu' : undefined}
+                     aria-haspopup="true"
+                      onClick={this.handleClick} color="inherit"
               >
                 <AccountCircle />
               </IconButton>
+              <Menu
+                  id="simple-menu"
+                  anchorEl={anchorEl}
+                  open={Boolean(anchorEl)}
+                  onClose={this.handleClose}
+                >
+                <MenuItem button component="a" href="/account">My account</MenuItem>
+                <MenuItem onClick={this.handleOpenModal}>Logout</MenuItem>
+                
+                <Modal
+                aria-labelledby="simple-modal-title"
+                aria-describedby="simple-modal-description"
+                open={this.state.openModal}
+                onClose={this.handleCloseModal}
+                >
+                <Grid container spacing={0} alignItems="center" justify="space-evenly" style={{ minHeight: '100vh' }}>
+                  <div className={classes.paper}>
+                    <Typography variant="h6" id="modal-title">
+                      Are you sure you would like to logout?
+                    </Typography>
+                    <Grid container spacing={0} direction="row" alignItems="center" 
+                    justify="center" >
+                      <Button size="medium" color="primary" className={classes.margin}
+                      onClick={this.handleCloseModal}>
+                          Yes
+                      </Button>
+                      <Button size="medium" color="primary" className={classes.margin} 
+                      onClick={this.handleCloseModal}>
+                          No
+                      </Button>
+                    </Grid>
+                  
+                  </div>
+                  </Grid>
+                </Modal>
+                <MenuItem onClick={this.handleClose}>Login</MenuItem>
+              </Menu>
             </div>
             <div className={classes.sectionMobile}>
-              <IconButton aria-haspopup="true" onClick={this.handleMobileMenuOpen} color="inherit">
-                <MoreIcon />
-              </IconButton>
+              
             </div>
           </Toolbar>
           {button}
@@ -224,7 +290,10 @@ PersistentDrawerLeft.propTypes = {
   classes: PropTypes.object.isRequired,
   theme: PropTypes.object.isRequired,
   trends: PropTypes.bool.isRequired,
-  name: PropTypes.string.isRequired
+  name: PropTypes.string.isRequired,
+  value: PropTypes.number.isRequired
 };
+
+const SimpleModalWrapped = withStyles(styles, { withTheme: true })(PersistentDrawerLeft);
 
 export default withStyles(styles, { withTheme: true })(PersistentDrawerLeft);

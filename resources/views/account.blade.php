@@ -7,8 +7,6 @@
 
 @section('content')
 
-	<div id="AccountRoot"></div>
-    <h1>Account</h1>
-
-
+	<div id="AccountRoot" name={{$username}} email={{$email}}></div>
+  
 @endsection

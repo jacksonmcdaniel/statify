@@ -21,18 +21,26 @@ export default class AccountRoot extends React.Component {
 	}
 
     render() {
+        const { email, name } = this.props;
         return (
             <MuiThemeProvider theme={theme}>
+            <Paper style={theme.paperContainer2}>
             <Grid container spacing={0} alignItems="center" 
 			justify="space-evenly" style={{ minHeight: '100vh' }}>
-            <AccountPaper/>
+            <AccountPaper email={email} name={name}/>
             <DeleteAccount/>
             </Grid>
+            </Paper>
             </MuiThemeProvider>
         );
     }
 }
 
 if (document.getElementById('AccountRoot')) {
-    ReactDOM.render(<AccountRoot />, document.getElementById('AccountRoot'));
+        var element = document.getElementById('AccountRoot');
+    var email = element.getAttribute("email");
+    var name = element.getAttribute("name");
+    console.log(email);
+    console.log(name);
+    ReactDOM.render(<AccountRoot email={email} name={name}/>, document.getElementById('AccountRoot'));
 }
