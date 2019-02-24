@@ -15,13 +15,8 @@ class TrendController extends Controller
         session(['uid' => 1]);
         //session()->forget('uid');
         $uid = session('uid');
-        $songs = DB::table('trends')
-            ->join('songs_in_trends', 'trends.tid', '=', 'songs_in_trends.tid')
-            ->join('songs', 'songs.sid' ,'=', 'songs_in_trends.sid')
-            ->where('trends.name', '=', 'allTime')
-            ->select('songs.sid', 'songs.name', 'songs.artist', 'trends.uid')
-            ->get()
-            ->where('uid', '=', $uid)->values();
+
+        $songs = Trend::getSongs('allTime', $uid);
 
         return view('trends', [
             'songs' => $songs,
@@ -44,13 +39,8 @@ class TrendController extends Controller
         {
             $index = 2;
         }
-        $songs = DB::table('trends')
-            ->join('songs_in_trends', 'trends.tid', '=', 'songs_in_trends.tid')
-            ->join('songs', 'songs.sid' ,'=', 'songs_in_trends.sid')
-            ->where('trends.name', '=', $name)
-            ->select('songs.sid', 'songs.name', 'songs.artist', 'trends.uid')
-            ->get()
-            ->where('uid', '=', $uid)->values();
+
+        $songs = Trend::getSongs($name, $uid);
         
         return view('trends', [
             'songs' => $songs,
