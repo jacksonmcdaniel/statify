@@ -16,13 +16,13 @@ class Trend extends Model
 
     public static function getSongs($name, $uid)
     {
-    $songs = DB::table('trends')
-            ->join('songs_in_trends', 'trends.tid', '=', 'songs_in_trends.tid')
-            ->join('songs', 'songs.sid' ,'=', 'songs_in_trends.sid')
-            ->where('trends.name', '=', $name)
-            ->select('songs.sid', 'songs.name', 'songs.artist', 'trends.uid')
-            ->get()
-            ->where('uid', '=', $uid)->values();
+        $songs = DB::table('trends')
+                ->join('songs_in_trends', 'trends.tid', '=', 'songs_in_trends.tid')
+                ->join('songs', 'songs.sid' ,'=', 'songs_in_trends.sid')
+                ->where('trends.name', '=', $name)
+                ->select('songs.sid', 'songs.name', 'songs.artist', 'trends.uid')
+                ->get()
+                ->where('uid', '=', $uid)->values();
         return $songs;
     }
     

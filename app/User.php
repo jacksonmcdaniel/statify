@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -27,4 +28,13 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public static function getUserInfo($uid)
+    {
+        return DB::table('users')
+            ->select('uid', 'name', 'email')
+            ->get()
+            ->where('uid', '=', $uid)
+            ->first();
+    }
 }
