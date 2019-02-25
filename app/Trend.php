@@ -25,14 +25,4 @@ class Trend extends Model
                 ->where('uid', '=', $uid)->values();
         return $songs;
     }
-    
-    public function songs()
-    {        
-        return $this->songIDs()->hasMany(Song::class, 'sid', 'sid');
-    }
-
-    public function songIDs()
-    {
-        return $this->hasMany(SongsInTrends::class, 'tid', 'tid');
-    }
 }

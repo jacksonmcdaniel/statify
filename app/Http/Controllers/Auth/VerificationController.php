@@ -32,6 +32,11 @@ class VerificationController extends Controller
      *
      * @return void
      */
+
+
+    /**
+    * @codeCoverageIgnore
+    */
     public function __construct()
     {
         $this->middleware('auth');

@@ -35,6 +35,10 @@ class RegisterController extends Controller
      *
      * @return void
      */
+
+    /**
+    * @codeCoverageIgnore
+    */
     public function __construct()
     {
         $this->middleware('guest');
@@ -46,6 +50,10 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
+
+    /**
+    * @codeCoverageIgnore
+    */
     protected function validator(array $data)
     {
         return Validator::make($data, [
@@ -61,6 +69,10 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\User
      */
+
+    /**
+    * @codeCoverageIgnore
+    */
     protected function create(array $data)
     {
         return User::create([
