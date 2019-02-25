@@ -1,19 +1,24 @@
-@extends('template')
+<!DOCTYPE html>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
-@section('title')
+<link rel="stylesheet"
+  href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" />
+<link rel="stylesheet"
+  href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+<html>
+
+<head>
     <title>Statify Login</title>
 
-@endsection
+</head>
 
-@section('content')
-    <h1>Login</h1>
-    <body>
+
+<body>
 
     
-    <div id="Login" ></div>
-    <script src="js/app.js"></script>
-    <p> hello </p>    
+    <div id="NewLogin" ></div>
+    <script src="{{ mix('js/app.js') }}"></script>
+    </ul>
     
 </body>
-
-@endsection
+</html>
