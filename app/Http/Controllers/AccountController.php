@@ -11,7 +11,6 @@ class AccountController extends Controller
 {
     public function index() {
         $uid = session('uid');
-        
         $userInfo = User::getUserInfo($uid);
 
         return view('account', [

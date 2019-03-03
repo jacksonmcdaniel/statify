@@ -155,8 +155,6 @@ class PersistentDrawerLeft extends React.Component {
     const { open, handleDrawerClose, handleDrawerOpen, anchorEl, 
       openModal, trends, handleTrendsPage, handleTrendsPageOff }  = this.state;
 
-
-
     return (
       <div className={classes.root}>
         <CssBaseline />
@@ -284,7 +282,7 @@ PersistentDrawerLeft.propTypes = {
   trends: PropTypes.bool.isRequired,
   name: PropTypes.string.isRequired,
   value: PropTypes.number.isRequired,
-  uid: PropTypes.number.isRequired
+  uid: PropTypes.number
 };
 
 const SimpleModalWrapped = withStyles(styles, { withTheme: true })(PersistentDrawerLeft);

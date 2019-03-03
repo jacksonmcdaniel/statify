@@ -67,6 +67,10 @@ class ApiConnectionController extends Controller {
             DB::insert('insert into users (access_token, refresh_token, email) values (?, ?, ?)',
                 [$accessToken, $refreshToken, $email]);
         }
+
+        $users = DB::select('select * from users where email = ?', [$email]);
+        session(['uid' => $users['uid']]);
+
     }
 
 }
