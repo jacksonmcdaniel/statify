@@ -16,11 +16,11 @@ export default class SignInRoot extends React.Component {
     }
 
     render() {
-        const { name, value } = this.props;
+        const { name, value, uid } = this.props;
 
         return (
             <MuiThemeProvider theme={theme}>
-            <PersistentDrawerLeft trends={this.state.trends} value={value} name={name}/>
+            <PersistentDrawerLeft trends={this.state.trends} value={value} name={name} uid={uid}/>
             </MuiThemeProvider>
         );
     }
@@ -30,5 +30,6 @@ if (document.getElementById('SignInRoot')) {
     var element = document.getElementById('SignInRoot');
     var value = element.getAttribute("value");
     var name = element.getAttribute("name");
-    ReactDOM.render(<SignInRoot value={parseInt(value, 10)} name={name}/>, document.getElementById('SignInRoot'));
+    var uid = element.getAttribute("uid");
+    ReactDOM.render(<SignInRoot value={parseInt(value, 10)} name={name} uid={parseInt(uid, 10)}/>, document.getElementById('SignInRoot'));
 }
