@@ -35,7 +35,7 @@ class StatifyTable extends React.Component {
       <Table className={classes.table}>
         <TableHead>
           <TableRow>
-            <TableCell>SongName</TableCell>
+            <TableCell>Song Name</TableCell>
             <TableCell align="left">Artist</TableCell>
           </TableRow>
         </TableHead>
