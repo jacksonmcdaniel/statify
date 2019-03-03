@@ -6,8 +6,11 @@ use vendor\autoload;
 use SpotifyWebAPI;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use App\User;
 
 class ApiConnectionController extends Controller {
+
+    private $user = 1;
 
     public function index() {
         $session = new SpotifyWebAPI\Session(
@@ -47,8 +50,9 @@ class ApiConnectionController extends Controller {
         $this->spotify_api($accessToken, $refreshToken);
 
 		//Send the user along and fetch some data!
-		header('Location: /trends');
-        die();
+        session(['uid' => $this->user]);
+
+        return redirect('/home');
     }
 
     public function spotify_api($accessToken, $refreshToken) {
@@ -68,9 +72,7 @@ class ApiConnectionController extends Controller {
                 [$accessToken, $refreshToken, $email]);
         }
 
-        $user = DB::select('select * from users where email = ?', [$email]);
-        session(['uid' => ($user[0])->uid]);
-
+        $this->user = (DB::select('select * from users where email = ?', [$email])[0])->uid;
     }
 
 }
