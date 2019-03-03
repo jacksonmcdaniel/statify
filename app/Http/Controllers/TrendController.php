@@ -19,6 +19,7 @@ class TrendController extends Controller
         $songs = Trend::getSongs('allTime', $uid);
 
         return view('trends', [
+            'uid' => $uid,
             'songs' => $songs,
             'tabIndex' => 0,
             'name' => "Trends"]);
@@ -43,6 +44,7 @@ class TrendController extends Controller
         $songs = Trend::getSongs($name, $uid);
         
         return view('trends', [
+            'uid' => $uid,
             'songs' => $songs,
             'tabIndex' => $index,
             'name' => "Trends"]);

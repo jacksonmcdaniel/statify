@@ -151,20 +151,9 @@ class PersistentDrawerLeft extends React.Component {
   }
 
   render() {
-    const { classes, theme, name, value } = this.props;
-    const { open, handleDrawerClose, handleDrawerOpen} = this.state;
-    const { trends, handleTrendsPage, handleTrendsPageOff }  = this.state;
-    const { anchorEl } = this.state;
-    const { openModal } = this.state;
-
-
-
-    let button;
-    if (name=='Trends') {
-      button = <NavBar value={value} />;
-    }else{
-      button = <div />;
-    }
+    const { classes, theme, name, value, uid } = this.props;
+    const { open, handleDrawerClose, handleDrawerOpen, anchorEl, 
+      openModal, trends, handleTrendsPage, handleTrendsPageOff }  = this.state;
 
     return (
       <div className={classes.root}>
@@ -191,56 +180,55 @@ class PersistentDrawerLeft extends React.Component {
 
             <SearchAppBar/>
             <div className={classes.sectionDesktop}>
+            {uid ? 
               <IconButton aria-owns={anchorEl ? 'simple-menu' : undefined}
                      aria-haspopup="true"
                       onClick={this.handleClick} color="inherit"
               >
                 <AccountCircle />
               </IconButton>
+              : null }
+            {uid ?
               <Menu
-                  id="simple-menu"
-                  anchorEl={anchorEl}
-                  open={Boolean(anchorEl)}
-                  onClose={this.handleClose}
-                >
+                id="simple-menu"
+                anchorEl={anchorEl}
+                open={Boolean(anchorEl)}
+                onClose={this.handleClose}
+              >
                 <MenuItem button component="a" href="/account">My account</MenuItem>
                 <MenuItem onClick={this.handleOpenModal}>Logout</MenuItem>
-                
-                <Modal
-                aria-labelledby="simple-modal-title"
-                aria-describedby="simple-modal-description"
-                open={this.state.openModal}
-                onClose={this.handleCloseModal}
-                >
-                <Grid container spacing={0} alignItems="center" justify="space-evenly" style={{ minHeight: '100vh' }}>
-                  <div className={classes.paper}>
-                    <Typography variant="h6" id="modal-title">
-                      Are you sure you would like to logout?
-                    </Typography>
-                    <Grid container spacing={0} direction="row" alignItems="center" 
-                    justify="center" >
-                      <Button size="medium" color="primary" className={classes.margin}
-                      onClick={this.handleCloseModal}>
-                          Yes
-                      </Button>
-                      <Button size="medium" color="primary" className={classes.margin} 
-                      onClick={this.handleCloseModal}>
-                          No
-                      </Button>
-                    </Grid>
-                  
-                  </div>
-                  </Grid>
-                </Modal>
-                <MenuItem onClick={this.handleClose} component="a" href="/ApiConnection">Login</MenuItem>
               </Menu>
-            </div>
-            <div className={classes.sectionMobile}>
-              
+              : 
+              <MenuItem color="primary" onClick={this.handleClose} component="a" href="/ApiConnection">Login</MenuItem>}
             </div>
           </Toolbar>
-          {button}
-
+          {name=='Trends' ? <NavBar value={value} /> : null}
+          <Modal
+          aria-labelledby="simple-modal-title"
+          aria-describedby="simple-modal-description"
+          open={this.state.openModal}
+          onClose={this.handleCloseModal}
+          >
+          <Grid container spacing={0} alignItems="center" justify="space-evenly" style={{ minHeight: '100vh' }}>
+            <div className={classes.paper}>
+              <Typography variant="h6" id="modal-title">
+                Are you sure you would like to logout?
+              </Typography>
+              <Grid container spacing={0} direction="row" alignItems="center" 
+              justify="center" >
+                <Button size="medium" color="primary" className={classes.margin}
+                component="a" href="/home/logout">
+                    Yes
+                </Button>
+                <Button size="medium" color="primary" className={classes.margin} 
+                onClick={this.handleCloseModal}>
+                    No
+                </Button>
+              </Grid>
+            
+            </div>
+            </Grid>
+          </Modal>
         </AppBar>
         <Drawer
           className={classes.drawer}
@@ -272,10 +260,12 @@ class PersistentDrawerLeft extends React.Component {
                 <ListItemIcon><LibraryMusicIcon /></ListItemIcon>
                 <ListItemText primary={"Recommendations"} />
               </ListItem>
-                <ListItem button key={"account"} component="a" onClick={this.handleTrendsPageOff} href="/account">
+            {uid ? 
+              <ListItem button key={"account"} component="a" onClick={this.handleTrendsPageOff} href="/account">
                 <ListItemIcon><AccountCircle /></ListItemIcon>
                 <ListItemText primary={"Account"} />
               </ListItem>
+              : null}
           </List>
                     </BrowserRouter>
 
@@ -291,7 +281,8 @@ PersistentDrawerLeft.propTypes = {
   theme: PropTypes.object.isRequired,
   trends: PropTypes.bool.isRequired,
   name: PropTypes.string.isRequired,
-  value: PropTypes.number.isRequired
+  value: PropTypes.number.isRequired,
+  uid: PropTypes.number
 };
 
 const SimpleModalWrapped = withStyles(styles, { withTheme: true })(PersistentDrawerLeft);

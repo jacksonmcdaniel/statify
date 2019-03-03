@@ -17,7 +17,7 @@
 
 <body>
 
-    <div id="SignInRoot" value={{$tabIndex}} name={{$name}}></div>
+    <div id="SignInRoot" value={{$tabIndex}} name="{{$name}}" uid={{$uid}}></div>
 
     @yield('content')
     <script src="{{ mix('js/app.js') }}"></script>

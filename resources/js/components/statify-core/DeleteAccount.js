@@ -44,7 +44,7 @@ function DeleteAccount(props) {
       <ListItem>
       <Grid container spacing={0} direction="column" alignItems="center" 
       justify="center" >
-        <Button size="medium" color="primary" className={classes.margin}>
+        <Button size="medium" color="primary" className={classes.margin} href="/account/delete">
           Delete Account
         </Button>
         </Grid>

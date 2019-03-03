@@ -11,7 +11,10 @@
 |
 */
 Route::get('/account', 'AccountController@index');
+//Route::patch('/account/{aid}', 'AccountController@update');
+Route::get('/account/delete', 'AccountController@destroy');
 Route::get('/home', 'HomeController@index');
+Route::get('/home/logout', 'HomeController@logout');
 Route::get('/', 'HomeController@index');
 Route::get('/trends', 'TrendController@index');
 Route::get('/trends/{tid}', 'TrendController@show');
