@@ -68,8 +68,8 @@ class ApiConnectionController extends Controller {
                 [$accessToken, $refreshToken, $email]);
         }
 
-        $users = DB::select('select * from users where email = ?', [$email]);
-        session(['uid' => $users['uid']]);
+        $user = DB::select('select * from users where email = ?', [$email]);
+        session(['uid' => ($user[0])->uid]);
 
     }
 
