@@ -19,5 +19,6 @@ Route::get('/', 'HomeController@index');
 Route::get('/trends', 'TrendController@index');
 Route::get('/trends/{tid}', 'TrendController@show');
 Route::get('/recommendations', 'RecommendationController@index');
+Route::get('/friends', 'FriendsController@index');
 Route::get('/ApiConnection', 'ApiConnectionController@index');
 Route::get('/ApiConnection/callback', 'ApiConnectionController@callback');

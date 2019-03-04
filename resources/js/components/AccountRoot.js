@@ -13,6 +13,7 @@ import Grid from '@material-ui/core/Grid';
 import AccountPaper from './statify-core/AccountPaper';
 import DeleteAccount from './statify-core/DeleteAccount';
 
+
 export default class AccountRoot extends React.Component {
 
 	constructor(props) {

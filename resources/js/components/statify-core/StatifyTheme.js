@@ -23,6 +23,9 @@ const theme = createMuiTheme({
     typography: {
     useNextVariants: true,
   },
+  paperButton: {
+    textTransform: true,
+  },
   paper: {    
       padding: '40px',   
       },
