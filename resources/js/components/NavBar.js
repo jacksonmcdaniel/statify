@@ -54,9 +54,9 @@ class NavBar extends React.Component {
                <Tabs value={value} onChange={this.handleChange} variant="fullWidth" indicatorColor="secondary" textColor="primary" >
                   <Tab label="All Time" href="/trends/allTime">
                   </Tab>
-                  <Tab label="Monthly" href="/trends/Monthly">
+                  <Tab label="6 Months" href="/trends/Monthly">
                   </Tab>
-                  <Tab label="Weekly" href="/trends/Weekly">
+                  <Tab label="This Month" href="/trends/Weekly">
                   </Tab>
                </Tabs>
             </Paper>

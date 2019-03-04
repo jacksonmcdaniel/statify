@@ -25,6 +25,7 @@ export default class Friends extends React.Component {
 
 
     render() {
+        const { friends } = this.props;
         return (
             <MuiThemeProvider theme={theme}>
                 <Paper style={theme.paperContainer2}>
@@ -44,6 +45,7 @@ export default class Friends extends React.Component {
                         <FriendCard/>
                         <FriendCard/>
                         <FriendCard/>
+                        
                     </Grid>
                 </Paper>
             </MuiThemeProvider>

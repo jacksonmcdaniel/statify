@@ -31,7 +31,7 @@ const styles = theme => ({
 
 function FriendCard(props) {
 
-  const { classes } = props;
+  const { classes, friends } = props;
   return (
     <Grid item xs={3}>
       <Grid container spacing={8} justify="space-evenly" align="center">
