@@ -20,7 +20,8 @@ import Grid from '@material-ui/core/Grid';
 const styles = theme => ({
   root: {
     width: '100%',
-    maxWidth: 245,
+    maxWidth: 225,
+    minHeight: 300,
     backgroundColor: theme.palette.background.paper,
   },
   margin: {
@@ -32,29 +33,27 @@ function FriendCard(props) {
 
   const { classes } = props;
   return (
-    <Grid item>
-    <Grid container spacing={8} justify="space-evenly" align="center">
-    
-      <List className={classes.root}>
-      <Grid container spacing={0} direction="column" alignItems="center" 
-          justify="center" >
-          
-        <ListItem >
-        <Grid container spacing={0} direction="column" alignItems="center" 
-          justify="center" >
-          <ListItemText primary="Friend Name"/>
+    <Grid item xs={3}>
+      <Grid container spacing={8} justify="space-evenly" align="center">
+        <List className={classes.root}>
+          <Grid container spacing={0} direction="column" alignItems="center" 
+            justify="center" >
+            <ListItem >
+              <Grid container spacing={0} direction="column" alignItems="center" 
+                justify="center" >
+                <ListItemText primary="Friend Name"/>
+              </Grid>
+            </ListItem>
+            <Divider variant="inset"/>
+            <Button size="medium" color="primary" className={classes.margin} href="/home">
+            <Avatar>
+              <PersonIcon />
+            </Avatar>
+            </Button>
           </Grid>
-        </ListItem>
-        <Divider variant="inset"/>
-        <Button size="medium" color="primary" className={classes.margin} href="/home">
-          <Avatar>
-            <PersonIcon />
-          </Avatar>
-        </Button>
-        </Grid>
-      </List>
+        </List>
       </Grid>
-      </Grid>
+    </Grid>
 
   );
 }

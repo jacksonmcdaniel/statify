@@ -13,7 +13,8 @@ import Grid from '@material-ui/core/Grid';
 import statify_logo from '../../../public/Assets/images/statify_logo.png';
 import Image from '../../../public/Assets/images/music_listening.jpg';
 import FriendCard from './statify-core/FriendCard';
-
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
 
 export default class Friends extends React.Component {
 
@@ -27,9 +28,19 @@ export default class Friends extends React.Component {
         return (
             <MuiThemeProvider theme={theme}>
                 <Paper style={theme.paperContainer2}>
-                    <Grid container spacing={0} alignItems="center" justify="space-evenly"
-        			style={{ minHeight: '100vh' }}>
+                    <Grid container spacing={24} style={{ minHeight: '100vh'}}>
                      	<FriendCard/>
+                        <FriendCard/>
+                        <FriendCard/>
+                        <FriendCard/>
+                        <FriendCard/>
+                        <FriendCard/>
+                        <FriendCard/>
+                        <FriendCard/>
+                        <FriendCard/>
+                        <FriendCard/>
+                        <FriendCard/>
+                        <FriendCard/>
                         <FriendCard/>
                         <FriendCard/>
                         <FriendCard/>
