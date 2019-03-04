@@ -44,6 +44,11 @@ const theme = createMuiTheme({
       backgroundSize: 'cover',
       overflow: 'hidden'
       },
+    paperContainer4: {
+      backgroundImage: 'url('+ BackgroundHeadPhones+')',
+      backgroundSize: 'cover',
+      overflow:'hidden'
+      },
 });
 
 export default theme;
