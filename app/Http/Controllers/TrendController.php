@@ -30,6 +30,7 @@ class TrendController extends Controller
     public function show() {
         $uid = session('uid');
 
+        /*
         if ($name=="allTime") {
             $index = 0;
         }
@@ -38,14 +39,14 @@ class TrendController extends Controller
         }
         else {
             $index = 2;
-        }
+        }*/
 
-        $songs = Trend::getSongs($name, $uid);
+        $songs = Trend::getSongs('weekly', $uid);
         
         return view('trends', [
             'uid' => $uid,
             'songs' => $songs,
-            'tabIndex' => $index,
+            'tabIndex' => 2,
             'name' => "Trends"]);
     }
 
@@ -64,11 +65,16 @@ class TrendController extends Controller
                 'time_range' => 'short_term'
             ]);
 
-            foreach ($trend_short as $item) {
-                print_r($item);
-                echo '';
+            DB::insert('insert ignore into trends (name, uid) values (?, ?)', ['weekly', $uid]);
+            $tid = DB::select('select tid from trends order by tid desc limit 1')[0]->tid;
+
+            foreach($trend_short['items'] as $item) {
+               DB::insert('insert ignore into songs (sid, name, artist) values (?, ?, ?)', 
+                  [$item['id'], $item['name'], $item['album']['artists'][0]['name']]);
+
+               DB::insert('insert ignore into songs_in_trends (tid, sid) values (?, ?)', 
+                  [$tid, $item['id']]);
             }
-            die();
         }
 
 }
