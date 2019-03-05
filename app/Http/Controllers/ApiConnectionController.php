@@ -42,15 +42,13 @@ class ApiConnectionController extends Controller {
             'http://localhost:8000/ApiConnection/callback'
         );
 
-		$session->requestAccessToken($_GET['code']);
+	$session->requestAccessToken($_GET['code']);
 
-		$accessToken = $session->getAccessToken();
-		$refreshToken = $session->getRefreshToken();
+        $accessToken = $session->getAccessToken();
+        $refreshToken = $session->getRefreshToken();
+
 
         $this->spotify_api($accessToken, $refreshToken);
-
-		//Send the user along and fetch some data!
-        session(['uid' => $this->user]);
 
         return redirect('/home');
     }
@@ -64,15 +62,20 @@ class ApiConnectionController extends Controller {
         //get the email of the current user
         $user = $api->me();
         $email = $user['email'];
-        $users = DB::select('select * from users where email = ?', [$email]);
+        $user_id = DB::select('select uid from users where email = ?', [$email]);
 
         //If no users exist with this email, insert the information into the database
-        if (sizeof($users) == 0) {
+        if (sizeof($user_id) == 0) {
             DB::insert('insert into users (access_token, refresh_token, email) values (?, ?, ?)',
                 [$accessToken, $refreshToken, $email]);
+        }
+        //If user already exists, replace the access and refresh tokens in DB with the new ones
+        else {
+            session(['uid' => $user_id[0]->uid]);
+            DB::update('update users set access_token = ?, refresh_token = ? where uid = ?',
+                [$accessToken, $refreshToken, session('uid')]);
         }
 
         $this->user = (DB::select('select * from users where email = ?', [$email])[0])->uid;
     }
-
 }
