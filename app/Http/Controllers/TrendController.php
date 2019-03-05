@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
+use SpotifyWebAPI;
+
 use App\Song;
 use App\Trend;
 
@@ -12,7 +14,7 @@ class TrendController extends Controller
 {
 
     public function index() {
-        get_trend();
+        $this->get_trend();
 
         $uid = session('uid');
 
@@ -25,7 +27,7 @@ class TrendController extends Controller
             'name' => "Trends"]);
     }
 
-    public function show($name) {
+    public function show() {
         $uid = session('uid');
 
         if ($name=="allTime") {
@@ -47,23 +49,26 @@ class TrendController extends Controller
             'name' => "Trends"]);
     }
 
-	public function get_trend() {
-        $uid = session('uid');
+	public function get_trend($type='tracks') {
+            $uid = session('uid');
 
-        $accessToken = DB::select('select access_token from users where uid = ?', [$uid]);
+            $accessToken = DB::select('select access_token from users where uid = ?', [$uid]);
 
-        $api = new SpotifyWebAPI\SpotifyWebAPI();
-        $api->setReturnType(SpotifyWebAPI\SpotifyWebAPI::RETURN_ASSOC);
-        $api->setAccessToken($accessToken);
+            $api = new SpotifyWebAPI\SpotifyWebAPI();
+            $api->setReturnType(SpotifyWebAPI\SpotifyWebAPI::RETURN_ASSOC);
+            $api->setAccessToken($accessToken[0]->access_token);
 
-        $trend_short = $api->getMyTop('songs', $options = [
-            'limit' => 25,
-            'offset' => 0,
-            'time_range' => 'short_term'
-        ]);
+            $trend_short = $api->getMyTop($type, $options = [
+                'limit' => 25,
+                'offset' => 0,
+                'time_range' => 'short_term'
+            ]);
 
-        print_r($trend_short);
-        die();
-	}
+            foreach ($trend_short as $item) {
+                print_r($item);
+                echo '';
+            }
+            die();
+        }
 
 }
