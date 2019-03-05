@@ -12,8 +12,8 @@ class TrendController extends Controller
 {
 
     public function index() {
-        session(['uid' => 1]);
-        //session()->forget('uid');
+        get_trend();
+
         $uid = session('uid');
 
         $songs = Trend::getSongs('allTime', $uid);
@@ -28,16 +28,13 @@ class TrendController extends Controller
     public function show($name) {
         $uid = session('uid');
 
-        if ($name=="allTime")
-        {
+        if ($name=="allTime") {
             $index = 0;
         }
-        else if ($name=="Monthly")
-        {
+        else if ($name=="Monthly") {
             $index = 1;
         }
-        else
-        {
+        else {
             $index = 2;
         }
 
@@ -49,4 +46,24 @@ class TrendController extends Controller
             'tabIndex' => $index,
             'name' => "Trends"]);
     }
+
+	public function get_trend() {
+        $uid = session('uid');
+
+        $accessToken = DB::select('select access_token from users where uid = ?', [$uid]);
+
+        $api = new SpotifyWebAPI\SpotifyWebAPI();
+        $api->setReturnType(SpotifyWebAPI\SpotifyWebAPI::RETURN_ASSOC);
+        $api->setAccessToken($accessToken);
+
+        $trend_short = $api->getMyTop('songs', $options = [
+            'limit' => 25,
+            'offset' => 0,
+            'time_range' => 'short_term'
+        ]);
+
+        print_r($trend_short);
+        die();
+	}
+
 }
