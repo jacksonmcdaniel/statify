@@ -10,8 +10,15 @@ before_script:
   - composer install --no-interaction
   - php artisan key:generate
 
+addons:
+  sonarcloud:
+    organization: "jacksonmcdaniel-github" # the key of the org you chose at step #3
+    token:
+      secure: 57f675228da2b34e7249dbce7c89cfd9b78937a9 # encrypted value of your token
+
 script:
   - vendor/bin/phpunit
+  - sonar-scanner
 
 notifications:
   email: false
