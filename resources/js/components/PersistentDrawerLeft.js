@@ -18,6 +18,7 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
+import FriendsIcon from '@material-ui/icons/People';
 import SearchAppBar from './SearchAppBar.js';
 import Badge from '@material-ui/core/Badge';
 import NotificationsIcon from '@material-ui/icons/Notifications';
@@ -252,14 +253,24 @@ class PersistentDrawerLeft extends React.Component {
                 <ListItemIcon><HomeIcon /></ListItemIcon>
                 <ListItemText primary={"Home"} />
               </ListItem>
+            {uid ? 
               <ListItem button key={"trend"} component="a" onClick={this.handleTrendsPage} href="/trends">
                 <ListItemIcon><MusicNoteIcon /></ListItemIcon>
                 <ListItemText primary={"Trends"} />
               </ListItem>
+              : null}
+            {uid ? 
               <ListItem button key={"recommendations"} component="a" onClick={this.handleTrendsPage} href="/recommendations">
                 <ListItemIcon><LibraryMusicIcon /></ListItemIcon>
                 <ListItemText primary={"Recommendations"} />
               </ListItem>
+              : null}
+              {uid ? 
+              <ListItem button key={"friends"} component="a" onClick={this.handleTrendsPage} href="/friends">
+                <ListItemIcon><FriendsIcon /></ListItemIcon>
+                <ListItemText primary={"Friends"} />
+              </ListItem>
+              : null}
             {uid ? 
               <ListItem button key={"account"} component="a" onClick={this.handleTrendsPageOff} href="/account">
                 <ListItemIcon><AccountCircle /></ListItemIcon>

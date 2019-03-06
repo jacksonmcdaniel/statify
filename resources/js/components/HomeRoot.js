@@ -35,6 +35,7 @@ export default class HomeRoot extends React.Component {
                 <Typography variant="h6" color="default" align="center" p={2000} style={{textShadow: '0 0 3px #000000'}}>
                 This is where you can view all of your Spotify Trends.
                 </Typography>
+                
             </Grid>
             </Paper>
             </MuiThemeProvider>

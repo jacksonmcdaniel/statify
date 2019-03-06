@@ -23,6 +23,9 @@ const theme = createMuiTheme({
     typography: {
     useNextVariants: true,
   },
+  paperButton: {
+    textTransform: true,
+  },
   paper: {    
       padding: '40px',   
       },
@@ -33,13 +36,18 @@ const theme = createMuiTheme({
       },
   paperContainer2: {
       backgroundImage: 'url('+ BackgroundHeadPhones+')',
-      backgroundSize: 'cover',
-      overflow: 'hidden'
+      backgroundSize: 'contain',
+      padding: '100px'
       },
     paperContainer3: {
       backgroundImage: 'url('+ BackgroundPhone+')',
       backgroundSize: 'cover',
       overflow: 'hidden'
+      },
+    paperContainer4: {
+      backgroundImage: 'url('+ BackgroundHeadPhones+')',
+      backgroundSize: 'cover',
+      overflow:'hidden'
       },
 });
 
