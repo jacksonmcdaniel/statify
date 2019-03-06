@@ -18,7 +18,7 @@ const styles = theme => ({
     flexGrow: 1,
   },
   table: {
-    minWidth: 700,
+    minWidth: 200,
     borderStyle: 'solid',
   },
 });
