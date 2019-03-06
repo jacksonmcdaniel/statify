@@ -42,7 +42,12 @@ class ApiConnectionController extends Controller {
             'http://localhost:8000/ApiConnection/callback'
         );
 
-		$session->requestAccessToken($_GET['code']);
+        if (array_key_exists('code', $_GET) == false)
+        {
+            return redirect('/home');
+        }
+            
+        $session->requestAccessToken($_GET['code']);
 
 		$accessToken = $session->getAccessToken();
 		$refreshToken = $session->getRefreshToken();
