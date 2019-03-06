@@ -14,12 +14,9 @@ class CreateSongsInTrendsTable extends Migration
     public function up()
     {
         Schema::create('songs_in_trends', function (Blueprint $table) {
-            $table->increments('id');
             $table->unsignedInteger('tid');
-            $table->unsignedInteger('sid');
-
-            $table->timestamps();
-
+            $table->string('sid', 256);
+            $table->primary(['tid', 'sid']);
             $table->foreign('tid')->references('tid')->on('trends');
             $table->foreign('sid')->references('sid')->on('songs');
 

@@ -14,10 +14,10 @@ class CreateSongsTable extends Migration
     public function up()
     {
         Schema::create('songs', function (Blueprint $table) {
-            $table->increments('sid');
+            $table->srting('sid', 256);
             $table->string('name');
             $table->string('artist');
-            $table->timestamps();
+            $table->primary('sid');
         });
     }
 
