@@ -7,6 +7,6 @@
 
 @section('content')
 
-	<div id="HomeRoot"></div>
+	<div id="HomeRoot" username="{{$username}}"></div>
 
 @endsection

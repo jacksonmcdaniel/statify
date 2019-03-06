@@ -34,7 +34,6 @@ export default class Friends extends React.Component {
                             <FriendCard key={friend.uid} name={friend.name}/>
                           ))}
                         <FriendCard name="friend name"/>
-                        
                     </Grid>
                 </Paper>
             </MuiThemeProvider>
