@@ -31,7 +31,7 @@ const styles = theme => ({
 
 function FriendCard(props) {
 
-  const { classes, friends } = props;
+  const { classes, name } = props;
   return (
     <Grid item xs={3}>
       <Grid container spacing={8} justify="space-evenly" align="center">
@@ -41,7 +41,7 @@ function FriendCard(props) {
             <ListItem >
               <Grid container spacing={0} direction="column" alignItems="center" 
                 justify="center" >
-                <ListItemText primary="Friend Name"/>
+                <ListItemText primary={name}/>
               </Grid>
             </ListItem>
             <Divider variant="inset"/>
@@ -60,6 +60,7 @@ function FriendCard(props) {
 
 FriendCard.propTypes = {
   classes: PropTypes.object.isRequired,
+  name: PropTypes.string.isRequired,
 };
 
 export default withStyles(styles)(FriendCard);

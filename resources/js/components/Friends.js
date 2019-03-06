@@ -30,21 +30,10 @@ export default class Friends extends React.Component {
             <MuiThemeProvider theme={theme}>
                 <Paper style={theme.paperContainer2}>
                     <Grid container spacing={24} style={{ minHeight: '100vh'}}>
-                     	<FriendCard/>
-                        <FriendCard/>
-                        <FriendCard/>
-                        <FriendCard/>
-                        <FriendCard/>
-                        <FriendCard/>
-                        <FriendCard/>
-                        <FriendCard/>
-                        <FriendCard/>
-                        <FriendCard/>
-                        <FriendCard/>
-                        <FriendCard/>
-                        <FriendCard/>
-                        <FriendCard/>
-                        <FriendCard/>
+                        {friends.map(friend => (
+                            <FriendCard key={friend.uid} name={friend.name}/>
+                          ))}
+                        <FriendCard name="friend name"/>
                         
                     </Grid>
                 </Paper>
@@ -54,5 +43,8 @@ export default class Friends extends React.Component {
 }
 
 if (document.getElementById('Friends')) {
-    ReactDOM.render(<Friends />, document.getElementById('Friends'));
+    var element = document.getElementById('Friends');
+    var friends = element.getAttribute("friends");
+    console.log(friends);
+    ReactDOM.render(<Friends friends={JSON.parse(friends)}/>, document.getElementById('Friends'));
 }

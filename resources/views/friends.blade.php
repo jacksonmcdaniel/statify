@@ -7,6 +7,6 @@
 
 @section('content')
 
-	<div id="Friends"></div>
+	<div id="Friends" friends="{{$friends}}"></div>
 
 @endsection
