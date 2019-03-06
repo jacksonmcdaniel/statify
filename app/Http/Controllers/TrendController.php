@@ -16,7 +16,12 @@ class TrendController extends Controller
         //session()->forget('uid');
         $uid = session('uid');
 
-        $songs = Trend::getSongs('allTime', $uid);
+        //$songs = Trend::getSongs('allTime', $uid);
+
+        $songs = ('[' .
+                    '{"sid":"1","name":"song name 1","artist":"artist1"},' .
+                    '{"sid":"2","name":"song name 2","artist":"artist2"}' .
+                 ']');
 
         return view('trends', [
             'uid' => $uid,
