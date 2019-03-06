@@ -12,7 +12,7 @@ class TrendController extends Controller
 {
 
     public function index() {
-        //session(['uid' => 1]);
+        session(['uid' => 1]);
         //session()->forget('uid');
         $uid = session('uid');
 
