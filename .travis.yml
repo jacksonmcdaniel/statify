@@ -14,13 +14,7 @@ addons:
   sonarcloud:
     organization: "jacksonmcdaniel-github" # the key of the org you chose at step #3
     token:
-        secure: "ouFeWtRz/7vhMkZtQn0DsgjhZeT+3mFV+LY87iE+knNwPKDj4Fjmd2VL3hhrptBH+bMyPJNXwX3sVHcExFCf+vvIeYFGgiCjczTau
-        ap8mRfW+PK8QbvCdHhG2mifeBGO4gvfqm8M2SDDEAHxexSWhLA6XImizKqNt1DG8iEsSakw4jAXCfXM14j2+ev81d4+pj6s2kU3wHWCSV9XyL/fe
-        cIjRtWUo5H7KhaZKCs7vlMDYL1wKHEtsnPPqpazzDUGPOtKKdwx0g0SQK6gb3vrnM8Oqde6C4AlEVZqabOrdUcPqEPnQr8sFjoJ3y2SK+UBvD6Bh
-        31kzoPhZPP9v/A3IBg/w8X7Whpo6x0OXyfxuhehhztA48CLLjUYTQWOMJdZBYw39JKzE6LKe2fMmorS6LCHCuybMvLEsbKZkLwtoPktGMB4c4X6n
-        JvUH4EKidH4jSnEFoBSYOEHvsFXV6PRmuDIxj/4pWbrbhSVMp9jXkxrIP+f9oOJq6x7s2c6dxN5nW8n48HzBaJpVY0W6Qb3c2hyDIsr1sNfjrpUd
-        gd/GaJQ0ouoyFRFZDmZ3z4sD6jRr2pQVfPo3uu02sV5P9l0HQSv38Kxwd9o90Uo5nocxtG58T4gjaWsCO9uMR2RcpTnko0zW0/+IkZOsTQ7MTr6V
-        TJtekf4egwLMvrtU5iyAjs="
+        secure: "ouFeWtRz/7vhMkZtQn0DsgjhZeT+3mFV+LY87iE+knNwPKDj4Fjmd2VL3hhrptBH+bMyPJNXwX3sVHcExFCf+vvIeYFGgiCjczTauap8mRfW+PK8QbvCdHhG2mifeBGO4gvfqm8M2SDDEAHxexSWhLA6XImizKqNt1DG8iEsSakw4jAXCfXM14j2+ev81d4+pj6s2kU3wHWCSV9XyL/fecIjRtWUo5H7KhaZKCs7vlMDYL1wKHEtsnPPqpazzDUGPOtKKdwx0g0SQK6gb3vrnM8Oqde6C4AlEVZqabOrdUcPqEPnQr8sFjoJ3y2SK+UBvD6Bh31kzoPhZPP9v/A3IBg/w8X7Whpo6x0OXyfxuhehhztA48CLLjUYTQWOMJdZBYw39JKzE6LKe2fMmorS6LCHCuybMvLEsbKZkLwtoPktGMB4c4X6nJvUH4EKidH4jSnEFoBSYOEHvsFXV6PRmuDIxj/4pWbrbhSVMp9jXkxrIP+f9oOJq6x7s2c6dxN5nW8n48HzBaJpVY0W6Qb3c2hyDIsr1sNfjrpUdgd/GaJQ0ouoyFRFZDmZ3z4sD6jRr2pQVfPo3uu02sV5P9l0HQSv38Kxwd9o90Uo5nocxtG58T4gjaWsCO9uMR2RcpTnko0zW0/+IkZOsTQ7MTr6VTJtekf4egwLMvrtU5iyAjs="
 
 script:
   - vendor/bin/phpunit
