@@ -10,72 +10,86 @@ use App\User;
 
 class ApiConnectionController extends Controller {
 
-    private $user = 1;
+   private const public_token = '6f65c21b83864f0dafc40d16f240a2fd';
+   private const private_token = '0935252c7e634097b548663f53c2b082';
+   private const callback_url = 'http://localhost:8000/ApiConnection/callback';
 
-    public function index() {
-        $session = new SpotifyWebAPI\Session(
-            '6f65c21b83864f0dafc40d16f240a2fd',
-            '0935252c7e634097b548663f53c2b082',
-            'http://localhost:8000/ApiConnection/callback'
-        );
+   private $user_id;
+   private $user_info;
+   private $access_token;
+   private $refresh_token;
+   
+   public function index() {
+      $session = $this->get_api_session();
 
-        $options = [
-            'show_dialog' => true,
-            'scope' => [
-                'playlist-read-private',
-                'user-read-private',
-                'user-top-read',
-                'user-read-recently-played',
-                'user-read-email'
-            ],
-        ];
+      $options = [
+         'show_dialog' => true,
+         'scope' => [
+            'playlist-read-private',
+            'user-read-private',
+            'user-top-read',
+            'user-read-recently-played',
+            'user-read-email'
+         ],
+      ];
 
-        header('Location: ' . $session->getAuthorizeUrl($options));
-        die();
+      header('Location: ' . $session->getAuthorizeUrl($options));
+      die();
     }
-
     
-    public function callback() {
-        $session = new SpotifyWebAPI\Session(
-            '6f65c21b83864f0dafc40d16f240a2fd',
-            '0935252c7e634097b548663f53c2b082',
-            'http://localhost:8000/ApiConnection/callback'
-        );
+   public function callback() {
+      $session = $this->get_api_session();
+	   $session->requestAccessToken($_GET['code']);
+      
+      $this->access_token = $session->getAccessToken();
+      $this->refresh_token = $session->getRefreshToken();
+      
+      $this->register_user();
+      return redirect('/home');
+   }
 
-	$session->requestAccessToken($_GET['code']);
+   public function register_user() {
+      //Create api connection
+      $api = new SpotifyWebAPI\SpotifyWebAPI();
+      $api->setReturnType(SpotifyWebAPI\SpotifyWebAPI::RETURN_ASSOC);
+      $api->setAccessToken($this->access_token);
 
-        $accessToken = $session->getAccessToken();
-        $refreshToken = $session->getRefreshToken();
+      //get the email of the current user
+      $this->user_info = $api->me();
+      $user_id = $this->get_user_id_db();
 
+      //If no users exist with this email, insert the information into the database
+      if (!array_key_exists(0, $user_id)) {
+         $this->insert_new_user();
+      }
+      //If user already exists, replace the access and refresh tokens in DB with the new ones
+      else {
+         $this->update_existing_user();
+      }
+      
+      session(['user_id' => $this->get_user_id_db()[0]->user_id]);
+   }
+   
+   public function get_user_id_db() {
+      return DB::select('select user_id from users where email = ?', 
+         [$this->user_info['email']]);
+   }
 
-        $this->spotify_api($accessToken, $refreshToken);
+   public function insert_new_user() {
+      DB::insert('insert into users (access_token, refresh_token, email) values (?, ?, ?)',
+         [$this->access_token, $this->refresh_token, $this->user_info['email']]);
+   }
 
-        return redirect('/home');
-    }
+   public function update_existing_user() {
+      DB::update('update users set access_token = ?, refresh_token = ? where email = ?',
+         [$this->access_token, $this->refresh_token, $this->user_info['email']]);
+   }
 
-    public function spotify_api($accessToken, $refreshToken) {
-        //Create api connection
-        $api = new SpotifyWebAPI\SpotifyWebAPI();
-        $api->setReturnType(SpotifyWebAPI\SpotifyWebAPI::RETURN_ASSOC);
-        $api->setAccessToken($accessToken);
-
-        //get the email of the current user
-        $user = $api->me();
-        $email = $user['email'];
-        $user_id = DB::select('select uid from users where email = ?', [$email]);
-
-        //If no users exist with this email, insert the information into the database
-        if (sizeof($user_id) == 0) {
-            DB::insert('insert into users (access_token, refresh_token, email) values (?, ?, ?)',
-                [$accessToken, $refreshToken, $email]);
-        }
-        //If user already exists, replace the access and refresh tokens in DB with the new ones
-        else {
-            session(['uid' => $user_id[0]->uid]);
-            DB::update('update users set access_token = ?, refresh_token = ? where uid = ?',
-                [$accessToken, $refreshToken, session('uid')]);
-        }
-
-        $this->user = (DB::select('select * from users where email = ?', [$email])[0])->uid;
-    }
+   public function get_api_session() {
+      return new SpotifyWebAPI\Session(
+         self::public_token,
+         self::private_token,
+         self::callback_url
+      );
+   }
 }

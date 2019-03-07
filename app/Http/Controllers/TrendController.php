@@ -4,77 +4,73 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
-
 use SpotifyWebAPI;
-
 use App\Song;
 use App\Trend;
+use App\Api;
 
-class TrendController extends Controller
-{
+class TrendController extends Controller {
 
-    public function index() {
-        $this->get_trend();
+   public function index() {
+      $this->get_song_trends();
 
-        $uid = session('uid');
+      $songs = Trend::getSongs('allTime', session('user_id'));
 
-        $songs = Trend::getSongs('allTime', $uid);
-
-        return view('trends', [
-            'uid' => $uid,
-            'songs' => $songs,
-            'tabIndex' => 0,
-            'name' => "Trends"]);
+      return view('trends', [
+         'user_id' => session('user_id'),
+         'songs' => $songs,
+         'tabIndex' => 0,
+         'name' => "Trends"]);
     }
 
-    public function show() {
-        $uid = session('uid');
+   public function show() {
+      $user_id = session('user_id');
 
-        /*
-        if ($name=="allTime") {
-            $index = 0;
-        }
-        else if ($name=="Monthly") {
-            $index = 1;
-        }
-        else {
-            $index = 2;
-        }*/
+      /*
+      if ($name=="allTime") {
+          $index = 0;
+      }
+      else if ($name=="Monthly") {
+          $index = 1;
+      }
+      else {
+          $index = 2;
+      }*/
 
-        $songs = Trend::getSongs('weekly', $uid);
-        
-        return view('trends', [
-            'uid' => $uid,
-            'songs' => $songs,
-            'tabIndex' => 2,
-            'name' => "Trends"]);
-    }
+      $songs = Trend::getSongs('short_term', $user_id);
+     
+      return view('trends', [
+         'user_id' => session('user_id'),
+         'songs' => $songs,
+         'tabIndex' => 2,
+         'name' => "Trends"
+      ]);
+   }
 
-	public function get_trend($type='tracks') {
-            $uid = session('uid');
+	public function get_song_trends() {
+      $api = new Api(); 
 
-            $accessToken = DB::select('select access_token from users where uid = ?', [$uid]);
+      $trend_short_term = $api->get_trend('tracks', 25, 0, 'short_term');
+      $trend_medium_term = $api->get_trend('tracks', 25, 0, 'medium_term');
+      $trend_long_term = $api->get_trend('tracks', 25, 0, 'long_term');
 
-            $api = new SpotifyWebAPI\SpotifyWebAPI();
-            $api->setReturnType(SpotifyWebAPI\SpotifyWebAPI::RETURN_ASSOC);
-            $api->setAccessToken($accessToken[0]->access_token);
+      $this->insert_trend($trend_short_term, 'short_term');
+      $this->insert_trend($trend_medium_term, 'medium_term');
+      $this->insert_trend($trend_long_term, 'long_term');
+   }
 
-            $trend_short = $api->getMyTop($type, $options = [
-                'limit' => 25,
-                'offset' => 0,
-                'time_range' => 'short_term'
-            ]);
+   public function insert_trend($trend, $range) {
+      DB::insert('insert ignore into trends (type, user_id) values (?, ?)', 
+         [$range, session('user_id')]);
+      //TODO This is shitty and it should be made better. Credit for being bad goes to @jacksonmcdaniel
+      $trend_id = DB::select('select trend_id from trends order by trend_id desc limit 1')[0]->trend_id;
 
-            DB::insert('insert ignore into trends (name, uid) values (?, ?)', ['weekly', $uid]);
-            $tid = DB::select('select tid from trends order by tid desc limit 1')[0]->tid;
+      foreach($trend['items'] as $item) {
+         DB::insert('insert ignore into songs (song_id, song_name, artist) values (?, ?, ?)', 
+            [$item['id'], $item['name'], $item['album']['artists'][0]['name']]);
 
-            foreach($trend_short['items'] as $item) {
-               DB::insert('insert ignore into songs (sid, name, artist) values (?, ?, ?)', 
-                  [$item['id'], $item['name'], $item['album']['artists'][0]['name']]);
-
-               DB::insert('insert ignore into songs_in_trends (tid, sid) values (?, ?)', 
-                  [$tid, $item['id']]);
-            }
-        }
-
+         DB::insert('insert ignore into songs_in_trends (trend_id, song_id) values (?, ?)', 
+            [$trend_id, $item['id']]);
+      }
+   }
 }
