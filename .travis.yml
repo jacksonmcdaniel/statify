@@ -1,24 +1,24 @@
 language: php
 
 php:
-  - '7.3'
+- '7.3'
 
 before_script:
-  - cp .env.travis .env
-  - mysql -e 'create database statify_test;'
-  - composer self-update
-  - composer install --no-interaction
-  - php artisan key:generate
+- cp .env.travis .env
+- mysql -e 'create database statify_test;'
+- composer self-update
+- composer install --no-interaction
+- php artisan key:generate
 
 addons:
   sonarcloud:
-    organization: "jacksonmcdaniel-github" # the key of the org you chose at step #3
+    organization: jacksonmcdaniel-github
     token:
-        secure: "ouFeWtRz/7vhMkZtQn0DsgjhZeT+3mFV+LY87iE+knNwPKDj4Fjmd2VL3hhrptBH+bMyPJNXwX3sVHcExFCf+vvIeYFGgiCjczTauap8mRfW+PK8QbvCdHhG2mifeBGO4gvfqm8M2SDDEAHxexSWhLA6XImizKqNt1DG8iEsSakw4jAXCfXM14j2+ev81d4+pj6s2kU3wHWCSV9XyL/fecIjRtWUo5H7KhaZKCs7vlMDYL1wKHEtsnPPqpazzDUGPOtKKdwx0g0SQK6gb3vrnM8Oqde6C4AlEVZqabOrdUcPqEPnQr8sFjoJ3y2SK+UBvD6Bh31kzoPhZPP9v/A3IBg/w8X7Whpo6x0OXyfxuhehhztA48CLLjUYTQWOMJdZBYw39JKzE6LKe2fMmorS6LCHCuybMvLEsbKZkLwtoPktGMB4c4X6nJvUH4EKidH4jSnEFoBSYOEHvsFXV6PRmuDIxj/4pWbrbhSVMp9jXkxrIP+f9oOJq6x7s2c6dxN5nW8n48HzBaJpVY0W6Qb3c2hyDIsr1sNfjrpUdgd/GaJQ0ouoyFRFZDmZ3z4sD6jRr2pQVfPo3uu02sV5P9l0HQSv38Kxwd9o90Uo5nocxtG58T4gjaWsCO9uMR2RcpTnko0zW0/+IkZOsTQ7MTr6VTJtekf4egwLMvrtU5iyAjs="
+      secure: VVcG5UnCUHX1GI03y5wM6zp6Pd+Z/ybWoGIYXr4eX93VfQs3/mvk9FqYrv5wTGIbh9MWcBQGoe8WG+RWlFmTeZA/Yc+T2khDZm/2CK7occQtb/BK6K8WKzfKo8qI8SKQ1t2Xl9bSyIeU/JzDASbXmNK1q88ceCZiY7sJfouRzPRy+z0VkGXLQFDHUoUEWnPD+nenl5WHmUHZ9uTRe95InczJjbvvDjIQaIT+TgybSWxELcqID8uyLaSRxrbvNBmyAO4vltiuKsZAB63mTdaLaeuj20+Yy68ppgRrwDTn6PnX/4Y2Qx4TdoJ+5Bt41FfYX5lEmt9b/L0gKw3UKuVWJPrG3P0AfuHJcE6Va8T4rqBs/y6gzX7RL3TqQwL0zHdjMHxuq+8pIvHeGKObHxFZLTuDoW+DYzHeChSiTDMmUz1lDY8Uk+ZdohFw7BT38wNggEmlM9w+bGB9NWrnfiIhCsu0S6SoAPJPW1pXEH4RBZBXWRTzq7fF0tvzx72OqY2S5NxoQVWWyJYn++C3jGi0QZjDJ2lcoBAt4+Odkezb0H7DFo5WMWSiL2rPcdQtgOnv12Lt7sATZgaZbISeKMv++VvQIPzMjKWm4zgVdZfb50lRKyHl8K7oD+JXra6ySyQSk6c8jjL1an71ckSv/hZd/GrgxWtop4Vw+4Jo8ElPvwM=
 
 script:
-  - vendor/bin/phpunit
-  - sonar-scanner
+- vendor/bin/phpunit
+- sonar-scanner
 
 notifications:
   email: false
