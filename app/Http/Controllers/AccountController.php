@@ -10,11 +10,10 @@ use App\User;
 class AccountController extends Controller
 {
     public function index() {
-        $uid = session('uid');
-        $userInfo = User::getUserInfo($uid);
+        $userInfo = User::getUserInfo(session('user_id'));
 
         return view('account', [
-            'uid' => $uid,
+            'user_id' => session('user_id'),
             'username' => $userInfo->name,
             'email' => $userInfo->email,
             'tabIndex' => 0,

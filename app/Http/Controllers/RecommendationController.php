@@ -7,10 +7,8 @@ use Illuminate\Http\Request;
 class RecommendationController extends Controller
 {
     public function index() {
-        $uid = session('uid');
-
         return view('recommendations', [
-            'uid' => $uid,
+            'user_id' => session('user_id'),
             'tabIndex' => 0,
             'name' => "Recommendations"]);
     }

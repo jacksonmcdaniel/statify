@@ -7,19 +7,17 @@ use Illuminate\Http\Request;
 class HomeController extends Controller
 {
     public function index() {
-        $uid = session('uid');
-
         return view('home', [
-            'uid' => $uid,
+            'user_id' => session('user_id'),
             'tabIndex' => 0,
             'name' => "Home"]);
     }
 
     public function logout() {
-        session()->forget('uid');
+        session()->forget('user_id');
 
         return view('home', [
-            'uid' => null,
+            'user_id' => null,
             'tabIndex' => 0,
             'name' => "Home"]);
     }

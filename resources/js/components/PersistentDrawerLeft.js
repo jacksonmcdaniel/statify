@@ -151,7 +151,7 @@ class PersistentDrawerLeft extends React.Component {
   }
 
   render() {
-    const { classes, theme, name, value, uid } = this.props;
+    const { classes, theme, name, value, user_id } = this.props;
     const { open, handleDrawerClose, handleDrawerOpen, anchorEl, 
       openModal, trends, handleTrendsPage, handleTrendsPageOff }  = this.state;
 
@@ -180,7 +180,7 @@ class PersistentDrawerLeft extends React.Component {
 
             <SearchAppBar/>
             <div className={classes.sectionDesktop}>
-            {uid ? 
+            {user_id ? 
               <IconButton aria-owns={anchorEl ? 'simple-menu' : undefined}
                      aria-haspopup="true"
                       onClick={this.handleClick} color="inherit"
@@ -188,7 +188,7 @@ class PersistentDrawerLeft extends React.Component {
                 <AccountCircle />
               </IconButton>
               : null }
-            {uid ?
+            {user_id ?
               <Menu
                 id="simple-menu"
                 anchorEl={anchorEl}
@@ -260,7 +260,7 @@ class PersistentDrawerLeft extends React.Component {
                 <ListItemIcon><LibraryMusicIcon /></ListItemIcon>
                 <ListItemText primary={"Recommendations"} />
               </ListItem>
-            {uid ? 
+            {user_id ? 
               <ListItem button key={"account"} component="a" onClick={this.handleTrendsPageOff} href="/account">
                 <ListItemIcon><AccountCircle /></ListItemIcon>
                 <ListItemText primary={"Account"} />
@@ -282,7 +282,7 @@ PersistentDrawerLeft.propTypes = {
   trends: PropTypes.bool.isRequired,
   name: PropTypes.string.isRequired,
   value: PropTypes.number.isRequired,
-  uid: PropTypes.number
+  user_id: PropTypes.number
 };
 
 const SimpleModalWrapped = withStyles(styles, { withTheme: true })(PersistentDrawerLeft);
