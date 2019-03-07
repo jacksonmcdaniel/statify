@@ -16,7 +16,7 @@ class CreateTrendsTable extends Migration
         Schema::create('trends', function (Blueprint $table) {
             $table->increments('trend_id');
             $table->enum('type', ['all_time', 'six_month', 'one_month']);
-            $table->string('user_id');
+            $table->unsignedInteger('user_id');
             $table->timestamps();
 
             $table->foreign('user_id')->references('user_id')->on('users');
