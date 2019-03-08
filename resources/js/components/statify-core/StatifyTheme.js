@@ -36,13 +36,15 @@ const theme = createMuiTheme({
       },
   paperContainer2: {
       backgroundImage: 'url('+ BackgroundHeadPhones+')',
-      backgroundSize: 'contain',
+      backgroundSize: 'cover',
       padding: '100px'
       },
     paperContainer3: {
       backgroundImage: 'url('+ BackgroundPhone+')',
       backgroundSize: 'cover',
-      overflow: 'hidden'
+      overflow: 'hidden',
+      backgroundRepeat: 'no-repeat',
+      backgroundAttachment: 'fixed'
       },
     paperContainer4: {
       backgroundImage: 'url('+ BackgroundHeadPhones+')',
