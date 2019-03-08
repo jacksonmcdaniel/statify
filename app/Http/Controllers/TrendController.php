@@ -65,12 +65,15 @@ class TrendController extends Controller {
       //TODO This is shitty and it should be made better. Credit for being bad goes to @jacksonmcdaniel
       $trend_id = DB::select('select trend_id from trends order by trend_id desc limit 1')[0]->trend_id;
 
+      $i = 0;
       foreach($trend['items'] as $item) {
          DB::insert('insert ignore into songs (song_id, song_name, artist) values (?, ?, ?)', 
             [$item['id'], $item['name'], $item['album']['artists'][0]['name']]);
 
-         DB::insert('insert ignore into songs_in_trends (trend_id, song_id) values (?, ?)', 
-            [$trend_id, $item['id']]);
+         DB::insert('insert ignore into songs_in_trends (trend_id, song_id, song_ordinal) values (?, ?, ?)', 
+            [$trend_id, $item['id'], $i]);
+
+         $i++;
       }
    }
 }
