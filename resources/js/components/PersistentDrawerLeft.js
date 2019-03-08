@@ -179,7 +179,7 @@ class PersistentDrawerLeft extends React.Component {
             </Typography>
             <div className={classes.grow} />
 
-            <SearchAppBar/>
+            
             <div className={classes.sectionDesktop}>
             {user_id ? 
               <IconButton aria-owns={anchorEl ? 'simple-menu' : undefined}
