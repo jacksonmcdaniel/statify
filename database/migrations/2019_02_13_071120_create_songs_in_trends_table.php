@@ -16,6 +16,7 @@ class CreateSongsInTrendsTable extends Migration
         Schema::create('songs_in_trends', function (Blueprint $table) {
             $table->unsignedInteger('trend_id');
             $table->string('song_id');
+            $table->unsignedInteger('song_ordinal');
             $table->timestamps();
             
             $table->primary(['trend_id', 'song_id']);
