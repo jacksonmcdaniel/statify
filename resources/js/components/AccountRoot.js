@@ -13,6 +13,7 @@ import Grid from '@material-ui/core/Grid';
 import AccountPaper from './statify-core/AccountPaper';
 import DeleteAccount from './statify-core/DeleteAccount';
 
+
 export default class AccountRoot extends React.Component {
 
 	constructor(props) {
@@ -24,7 +25,7 @@ export default class AccountRoot extends React.Component {
         const { email, name } = this.props;
         return (
             <MuiThemeProvider theme={theme}>
-            <Paper style={theme.paperContainer2}>
+            <Paper style={theme.paperContainer4}>
             <Grid container spacing={0} alignItems="center" 
 			justify="space-evenly" style={{ minHeight: '100vh' }}>
             <AccountPaper email={email} name={name}/>
