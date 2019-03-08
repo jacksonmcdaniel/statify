@@ -14,7 +14,7 @@ class TrendController extends Controller {
    public function index() {
       $this->get_song_trends();
 
-      $songs = Trend::getSongs('allTime', session('user_id'));
+      $songs = Trend::getSongs("long_term", session('user_id'));
 
       return view('trends', [
          'user_id' => session('user_id'),
@@ -23,26 +23,26 @@ class TrendController extends Controller {
          'name' => "Trends"]);
     }
 
-   public function show() {
+   public function show($name) {
       $user_id = session('user_id');
 
-      /*
-      if ($name=="allTime") {
+      
+      if ($name=="long_term") {
           $index = 0;
       }
-      else if ($name=="Monthly") {
+      else if ($name=="medium_term") {
           $index = 1;
       }
       else {
           $index = 2;
-      }*/
+      }
 
-      $songs = Trend::getSongs('short_term', $user_id);
+      $songs = Trend::getSongs($name, $user_id);
      
       return view('trends', [
          'user_id' => session('user_id'),
          'songs' => $songs,
-         'tabIndex' => 2,
+         'tabIndex' => $index,
          'name' => "Trends"
       ]);
    }
