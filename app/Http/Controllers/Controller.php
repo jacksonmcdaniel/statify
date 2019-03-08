@@ -11,8 +11,8 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
-    public function flash($uid)
+    public function flash($user_id)
     {
-        session()->flash('uid', $uid);
+        session()->flash('user_id', $user_id);
     }
 }

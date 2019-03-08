@@ -9,13 +9,12 @@ use App\Recommendations;
 class RecommendationController extends Controller
 {
     public function index() {
-        $uid = session('uid');
-        $name = 'allTime';
+        $name = 'long_term';
 
         $songs = Recommendations::getSongs($name, $uid);
 
         return view('recommendations', [
-            'uid' => $uid,
+            'user_id' => session('user_id'),
             'tabIndex' => 0,
             'name' => "Recommendations",
         	'songs' => $songs]);
