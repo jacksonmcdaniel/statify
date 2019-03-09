@@ -18,6 +18,7 @@ import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import LinearDeterminate from './LinearDeterminate';
 import LinearProgress from '@material-ui/core/LinearProgress';
+import Typography from '@material-ui/core/Typography';
 
 
 const styles = theme => ({
@@ -45,6 +46,9 @@ function ChartCard(props) {
         <List className={classes.root}>
           <Grid container spacing={0} direction="column" alignItems="center" 
             justify="center" >
+            <Typography>
+              Hi
+            </Typography>
             
             <LinearProgress variant="determinate" value={50} />
             <Divider variant="inset"/>

@@ -32,7 +32,7 @@ const theme = createMuiTheme({
   paperContainer1: {
       backgroundImage: 'url('+ Background+')',
       backgroundSize: 'cover',
-      overflow: 'hidden'
+      overflow: 'hidden',
       },
   paperContainer2: {
       backgroundImage: 'url('+ BackgroundHeadPhones+')',

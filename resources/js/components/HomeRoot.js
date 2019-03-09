@@ -12,6 +12,7 @@ import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import statify_logo from '../../../public/Assets/images/statify_logo.png';
 import Image from '../../../public/Assets/images/music_listening.jpg';
+import LinearDeterminate from './statify-core/LinearDeterminate';
 
 
 export default class HomeRoot extends React.Component {
