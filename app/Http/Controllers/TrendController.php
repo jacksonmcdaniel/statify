@@ -59,11 +59,14 @@ class TrendController extends Controller {
    }
 
     public function insert_trend($trend, $range, $api) {
-        DB::insert('insert ignore into trends (type, user_id) values (?, ?)', 
+        DB::delete('DELETE FROM trends WHERE user_id=? AND type=?', [session('user_id'), $range]);
+        DB::insert('insert into trends (type, user_id) values (?, ?)', 
          [$range, session('user_id')]);
         //TODO This is shitty and it should be made better. Credit for being bad goes to @jacksonmcdaniel 
         // @joshuaboe here, I'm sorry
-        $trend_id = DB::select('select trend_id from trends order by trend_id desc limit 1')[0]->trend_id;
+
+        // fixed -brian
+        $trend_id = DB::select('select trend_id from trends WHERE user_id=? AND type=?', [session('user_id'), $range])[0]->trend_id;
 
         foreach($trend['items'] as $item) {
             $audio_features = $api->get_audio_features($item['id']);

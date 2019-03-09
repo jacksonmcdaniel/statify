@@ -19,7 +19,7 @@ class CreateSongsInTrendsTable extends Migration
             $table->timestamps();
             
             $table->primary(['trend_id', 'song_id']);
-            $table->foreign('trend_id')->references('trend_id')->on('trends');
+            $table->foreign('trend_id')->references('trend_id')->on('trends')->onDelete('cascade');
             $table->foreign('song_id')->references('song_id')->on('songs');
 
         });
