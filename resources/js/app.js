@@ -26,5 +26,6 @@ require('./components/statify-core/StatifyTable');
 require('./components/statify-core/AccountPaper');
 require('./components/statify-core/DeleteAccount');
 require('./components/statify-core/FriendCard');
+require('./components/statify-core/ChartCard');
 require('./components/Friends');
 require('./components/RecommendationRoot');

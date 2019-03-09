@@ -44,7 +44,7 @@ const theme = createMuiTheme({
       backgroundSize: 'cover',
       overflow: 'hidden',
       backgroundRepeat: 'no-repeat',
-      backgroundAttachment: 'fixed'
+      backgroundAttachment: 'fixed',
       },
     paperContainer4: {
       backgroundImage: 'url('+ BackgroundHeadPhones+')',
