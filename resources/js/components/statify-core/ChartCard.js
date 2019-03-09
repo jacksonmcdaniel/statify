@@ -45,13 +45,62 @@ function ChartCard(props) {
     <Grid item xs={3}>
       <Grid container spacing={0} justify="space-evenly" align="center">
         <List className={classes.root}>
-          <Grid container spacing={0} direction="column" alignItems="center" 
+          <Grid container spacing={8} direction="column" alignItems="center" 
             justify="center" >
-            <Typography>
-              Hi
-            </Typography>
-            <LinearProgress variant="determinate" value={50} />
-            <CircularProgress variant="determinate" value={50} />
+            <Typography variant='body1'>
+                Song Stats
+              </Typography>
+            <Grid container spacing={0} direction="row" alignItems="flex-start" 
+            justify="space-evenly" >
+              <Grid item>
+              <CircularProgress variant="static" value={25} />
+              </Grid>
+              <Typography align='left'>
+                Danceability
+              </Typography>
+              <Divider variant="inset"/>
+            </Grid>
+            <Grid container spacing={0} direction="row" alignItems="flex-start" 
+            justify="space-evenly" >
+             <Grid item>
+              <CircularProgress variant="static" value={75} />
+              </Grid>
+              <Typography>
+                Popularity
+              </Typography>
+              <Divider variant="inset"/>
+            </Grid>
+            <Grid container spacing={0} direction="row" alignItems="flex-start" 
+            justify="space-evenly" >
+              <Grid item>
+              <CircularProgress variant="static" value={42} />
+              </Grid>
+              <Typography>
+                Energy
+              </Typography>
+              <Divider variant="inset"/>
+            </Grid>
+            <Grid container spacing={0} direction="row" alignItems="flex-start" 
+            justify="space-evenly" >
+              <Grid item>
+              <CircularProgress variant="static" value={9} />
+              </Grid>
+              <Typography>
+                Liveness
+              </Typography>
+              <Divider variant="inset"/>
+            </Grid>
+            <Grid container spacing={0} direction="row" alignItems="flex-start" 
+            justify="space-evenly" >
+              <Grid item>
+              <CircularProgress variant="static" value={82} />
+              </Grid>
+              <Typography>
+                Acousticness
+              </Typography>
+              <Divider variant="inset"/>
+            </Grid>
+            
             
             <Divider variant="inset"/>
             

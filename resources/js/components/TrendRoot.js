@@ -10,6 +10,7 @@ import { MuiThemeProvider } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import ChartCard from './statify-core/ChartCard.js';
+import ChartCard1 from './statify-core/ChartCard1.js';
 
 
 let id = 0;
