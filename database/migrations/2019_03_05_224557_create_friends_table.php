@@ -20,8 +20,8 @@ class CreateFriendsTable extends Migration
 
             $table->timestamps();
 
-            $table->foreign('uid')->references('uid')->on('users');
-            $table->foreign('f_uid')->references('uid')->on('users');
+            $table->foreign('uid')->references('user_id')->on('users');
+            $table->foreign('f_uid')->references('user_id')->on('users');
 
         });
     }
