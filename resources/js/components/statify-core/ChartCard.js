@@ -19,6 +19,7 @@ import Grid from '@material-ui/core/Grid';
 import LinearDeterminate from './LinearDeterminate';
 import LinearProgress from '@material-ui/core/LinearProgress';
 import Typography from '@material-ui/core/Typography';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 
 const styles = theme => ({
@@ -49,8 +50,9 @@ function ChartCard(props) {
             <Typography>
               Hi
             </Typography>
-            
             <LinearProgress variant="determinate" value={50} />
+            <CircularProgress variant="determinate" value={50} />
+            
             <Divider variant="inset"/>
             
           </Grid>
