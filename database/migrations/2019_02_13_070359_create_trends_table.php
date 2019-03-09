@@ -19,7 +19,7 @@ class CreateTrendsTable extends Migration
             $table->unsignedInteger('user_id');
             $table->timestamps();
 
-            $table->foreign('user_id')->references('user_id')->on('users');
+            $table->foreign('user_id')->references('user_id')->on('users')->onDelete('cascade');
         });
     }
 
