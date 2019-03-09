@@ -50,9 +50,12 @@ function ChartCard(props) {
             <Typography>
               Hi
             </Typography>
-            <LinearProgress variant="determinate" value={50} />
             <CircularProgress variant="determinate" value={50} />
-            
+            <div className={classes.root}>
+              <LinearProgress variant="determinate" value={50} />
+              <br />
+              <LinearProgress color="secondary" variant="determinate" value={50} />
+            </div>
             <Divider variant="inset"/>
             
           </Grid>
