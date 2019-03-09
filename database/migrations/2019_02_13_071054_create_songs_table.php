@@ -17,6 +17,7 @@ class CreateSongsTable extends Migration
             $table->string('song_id');
             $table->string('song_name');
             $table->string('artist');
+            $table->string('image');
             $table->tinyInteger('key')->nullable();
             $table->tinyInteger('mode')->nullable();
             $table->double('acousticness', 6, 5)->nullable();

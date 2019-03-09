@@ -36,4 +36,7 @@ class Api {
       return $this->api->getMyTop($type, $options);
    }
 
+   public function get_audio_features($song_id) {
+        return $this->api->getAudioFeatures($song_id);   
+    }
 }
