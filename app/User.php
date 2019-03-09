@@ -29,12 +29,12 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public static function getUserInfo($uid)
+    public static function getUserInfo($user_id)
     {
         return DB::table('users')
-            ->select('uid', 'name', 'email')
+            ->select('user_id', 'name', 'email')
             ->get()
-            ->where('uid', '=', $uid)
+            ->where('user_id', '=', $user_id)
             ->first();
     }
 }

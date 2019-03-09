@@ -41,9 +41,9 @@ class StatifyTable extends React.Component {
         </TableHead>
         <TableBody>
           {songs.map(song => (
-            <TableRow key={song.sid}>
+            <TableRow key={song.song_id}>
               <TableCell component="th" scope="row">
-                {song.name}
+                {song.song_name}
               </TableCell>
               <TableCell align="left">{song.artist}</TableCell>
             </TableRow>
