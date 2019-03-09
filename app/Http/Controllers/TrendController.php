@@ -14,7 +14,7 @@ class TrendController extends Controller {
    public function index() {
       $this->get_song_trends();
 
-      $songs = Trend::getSongs('allTime', session('user_id'));
+      $songs = Trend::getSongs('long_term', session('user_id'));
 
       return view('trends', [
          'user_id' => session('user_id'),
