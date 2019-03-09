@@ -21,9 +21,12 @@ class AccountController extends Controller
     }
 
     public function destroy() {
-
-        //delete account
+        $this->delete_account(session('user_id'));
 
         return redirect('/home/logout');
+    }
+
+    public function delete_account($user_id) {
+        DB::delete('DELETE FROM users WHERE user_id=?', [$user_id]);
     }
 }
