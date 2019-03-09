@@ -24,6 +24,6 @@ class AccountController extends Controller
 
         //delete account
 
-        return redirect('/home');
+        return redirect('/home/logout');
     }
 }

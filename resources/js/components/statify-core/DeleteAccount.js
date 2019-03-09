@@ -16,6 +16,8 @@ import PersonIcon from '@material-ui/icons/PersonOutline';
 import WorldIcon from '@material-ui/icons/Language';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
+import Modal from '@material-ui/core/Modal';
+import Typography from '@material-ui/core/Typography';
 
 const styles = theme => ({
   root: {
@@ -26,33 +28,79 @@ const styles = theme => ({
   margin: {
     margin: "center",
   },
+  paper: {
+    position: 'absolute',
+    width: theme.spacing.unit * 50,
+    backgroundColor: theme.palette.background.paper,
+    boxShadow: theme.shadows[5],
+    padding: theme.spacing.unit * 4,
+    outline: 'none',
+  },
 });
 
-function DeleteAccount(props) {
+class DeleteAccount extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { openModal: false};
 
-  const { classes } = props;
-  return (
-    <List className={classes.root}>
-    
-      <ListItem>
-        <Avatar>
-          <PersonIcon />
-        </Avatar>
-        <ListItemText primary="Delete Account?" secondary="Once you delete your account, we will no longer have access to your Spotify lsitening habits." />
-      </ListItem>
-      <Divider variant="inset" component="li" />
-      <ListItem>
-      <Grid container spacing={0} direction="column" alignItems="center" 
-      justify="center" >
-        <Button size="medium" color="primary" className={classes.margin} href="/account/delete">
-          Delete Account
-        </Button>
+    this.handleOpenModal = () => {
+    this.setState({ openModal: true });
+    };
+
+    this.handleCloseModal = () => {
+      this.setState({ openModal: false });
+    };
+  }
+
+  render() {
+    const { classes, openModal, handleCloseModal, handleOpenModal } = this.props;
+    return (
+      <List className={classes.root}>
+      
+        <ListItem>
+          <Avatar>
+            <PersonIcon />
+          </Avatar>
+          <ListItemText primary="Delete Account?" secondary="Once you delete your account, we will no longer have access to your Spotify lsitening habits." />
+        </ListItem>
+        <Divider variant="inset" component="li" />
+        <ListItem>
+        <Grid container spacing={0} direction="column" alignItems="center" 
+        justify="center" >
+          <Button size="medium" color="primary" className={classes.margin} onClick={this.handleOpenModal}>
+            Delete Account
+          </Button>
+          </Grid>
+        </ListItem>
+       
+      <Modal
+      aria-labelledby="simple-modal-title"
+      aria-describedby="simple-modal-description"
+      open={this.state.openModal}
+      onClose={this.handleCloseModal}
+      >
+      <Grid container spacing={0} alignItems="center" justify="space-evenly" style={{ minHeight: '100vh' }}>
+        <div className={classes.paper}>
+          <Typography variant="h6" id="modal-title">
+            Are you sure you would like to delete your account?
+          </Typography>
+          <Grid container spacing={0} direction="row" alignItems="center" 
+          justify="center" >
+            <Button size="medium" color="primary" className={classes.margin}
+            component="a" href="/account/delete">
+                Yes
+            </Button>
+            <Button size="medium" color="primary" className={classes.margin} 
+            onClick={this.handleCloseModal}>
+                No
+            </Button>
+          </Grid>
+        </div>
         </Grid>
-      </ListItem>
-     
-
-    </List>
-  );
+      </Modal>
+      </List>
+    );
+  }
 }
 
 DeleteAccount.propTypes = {
