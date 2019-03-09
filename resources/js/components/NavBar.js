@@ -52,11 +52,11 @@ class NavBar extends React.Component {
          <BrowserRouter> 
             <Paper square>
                <Tabs value={value} onChange={this.handleChange} variant="fullWidth" indicatorColor="secondary" textColor="primary" >
-                  <Tab label="All Time" href="/trends/allTime">
+                  <Tab label="All Time" href="/trends/long_term">
                   </Tab>
-                  <Tab label="6 Months" href="/trends/Monthly">
+                  <Tab label="6 Months" href="/trends/medium_term">
                   </Tab>
-                  <Tab label="This Month" href="/trends/Weekly">
+                  <Tab label="This Month" href="/trends/short_term">
                   </Tab>
                </Tabs>
             </Paper>
