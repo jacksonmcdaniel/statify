@@ -9,6 +9,7 @@ import StatifyTable from './statify-core/StatifyTable';
 import { MuiThemeProvider } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
+import ChartCard from './statify-core/ChartCard.js';
 
 
 let id = 0;
@@ -28,9 +29,14 @@ export default class TrendRoot extends React.Component {
         return (
             <MuiThemeProvider theme={theme}>
               <Paper style={theme.paperContainer3}>
-               <Grid container direction="column" alignItems="center" 
-                  style={{ minHeight: '100vh' }}>
-                  <StatifyTable songs={songs}/>
+                <Grid container direction="row"
+                  style={{ minHeight: '100vh' }} justify="space-evenly">
+                  <ChartCard/>
+                  <Grid item>
+                    <Grid container spacing={0} justify="space-evenly" align="center">
+                      <StatifyTable songs={songs}/>
+                    </Grid>
+                  </Grid>
                 </Grid>
               </Paper>
             </MuiThemeProvider>
