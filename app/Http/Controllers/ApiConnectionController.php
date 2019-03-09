@@ -45,7 +45,7 @@ class ApiConnectionController extends Controller {
       $this->refresh_token = $session->getRefreshToken();
       
       $this->register_user();
-      return redirect('/home');
+      return redirect('/loading');
    }
 
    public function register_user() {

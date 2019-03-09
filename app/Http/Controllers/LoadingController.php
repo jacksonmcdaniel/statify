@@ -5,48 +5,25 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use SpotifyWebAPI;
-use App\Song;
 use App\Trend;
 use App\Api;
-
-class TrendController extends Controller {
-
+class LoadingController extends Controller
+{
    public function index() {
-      //$this->get_song_trends();
-
-      $songs = Trend::getSongs('long_term', session('user_id'));
-
-      return view('trends', [
+      return view('loading', [
          'user_id' => session('user_id'),
-         'songs' => $songs,
          'tabIndex' => 0,
-         'name' => "Trends"]);
+         'name' => "Loading Data"]);
     }
 
-   public function show($name) {
-      $user_id = session('user_id');
 
-      if ($name=="long_term") {
-          $index = 0;
-      }
-      else if ($name=="medium_term") {
-          $index = 1;
-      }
-      else {
-          $index = 2;
-      }
+    public function show($name) {
+        $this->get_song_trends();
 
-      $songs = Trend::getSongs($name, $user_id);
-     
-      return view('trends', [
-         'user_id' => session('user_id'),
-         'songs' => $songs,
-         'tabIndex' => $index,
-         'name' => "Trends"
-      ]);
-   }
+        return redirect('/trends');
+    }
 
-    public function get_song_trends() {
+        public function get_song_trends() {
         $api = new Api(); 
 
         $trend_short_term = $api->get_trend('tracks', 25, 0, 'short_term');
@@ -59,14 +36,11 @@ class TrendController extends Controller {
    }
 
     public function insert_trend($trend, $range, $api) {
-        DB::delete('DELETE FROM trends WHERE user_id=? AND type=?', [session('user_id'), $range]);
-        DB::insert('insert into trends (type, user_id) values (?, ?)', 
+        DB::insert('insert ignore into trends (type, user_id) values (?, ?)', 
          [$range, session('user_id')]);
         //TODO This is shitty and it should be made better. Credit for being bad goes to @jacksonmcdaniel 
         // @joshuaboe here, I'm sorry
-
-        // fixed -brian
-        $trend_id = DB::select('select trend_id from trends WHERE user_id=? AND type=?', [session('user_id'), $range])[0]->trend_id;
+        $trend_id = DB::select('select trend_id from trends order by trend_id desc limit 1')[0]->trend_id;
 
         foreach($trend['items'] as $item) {
             $audio_features = $api->get_audio_features($item['id']);

@@ -9,9 +9,9 @@
 <html>
 
 <head>
-    <title>Statify</title>
 
     @yield('title')
+    <title>Statify</title>
 
 </head>
 
