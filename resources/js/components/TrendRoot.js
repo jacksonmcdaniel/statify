@@ -33,7 +33,7 @@ export default class TrendRoot extends React.Component {
                   style={{ minHeight: '100vh' }} justify="space-evenly">
                   <ChartCard/>
                   <Grid item>
-                    <Grid container spacing={4} justify="space-evenly" align="center">
+                    <Grid container spacing={0} justify="space-evenly" align="center">
                       <StatifyTable songs={songs}/>
                     </Grid>
                   </Grid>

@@ -16,6 +16,9 @@ import PersonIcon from '@material-ui/icons/PersonOutline';
 import WorldIcon from '@material-ui/icons/Language';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
+import LinearDeterminate from './LinearDeterminate';
+import LinearProgress from '@material-ui/core/LinearProgress';
+
 
 const styles = theme => ({
   root: {
@@ -38,22 +41,14 @@ function ChartCard(props) {
   const { classes, name } = props;
   return (
     <Grid item xs={3}>
-      <Grid container spacing={4} justify="space-evenly" align="center">
+      <Grid container spacing={0} justify="space-evenly" align="center">
         <List className={classes.root}>
           <Grid container spacing={0} direction="column" alignItems="center" 
             justify="center" >
-            <ListItem >
-              <Grid container spacing={0} direction="column" alignItems="center" 
-                justify="center" >
-                <ListItemText primary={name}/>
-              </Grid>
-            </ListItem>
+            
+            <LinearProgress variant="determinate" value={50} />
             <Divider variant="inset"/>
-            <Button size="medium" color="primary" className={classes.margin} href="/home">
-            <Avatar>
-              <PersonIcon />
-            </Avatar>
-            </Button>
+            
           </Grid>
         </List>
       </Grid>

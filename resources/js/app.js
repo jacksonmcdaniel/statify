@@ -29,3 +29,4 @@ require('./components/statify-core/FriendCard');
 require('./components/statify-core/ChartCard');
 require('./components/Friends');
 require('./components/RecommendationRoot');
+require('./components/statify-core/LinearDeterminate')
