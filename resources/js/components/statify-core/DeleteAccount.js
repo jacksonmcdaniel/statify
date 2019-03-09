@@ -61,7 +61,7 @@ class DeleteAccount extends React.Component {
           <Avatar>
             <PersonIcon />
           </Avatar>
-          <ListItemText primary="Delete Account?" secondary="Once you delete your account, we will no longer have access to your Spotify lsitening habits." />
+          <ListItemText primary="Delete Account?" secondary="Once you delete your account, we will no longer have access to your Spotify listening habits." />
         </ListItem>
         <Divider variant="inset" component="li" />
         <ListItem>
