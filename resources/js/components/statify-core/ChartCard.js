@@ -38,7 +38,9 @@ const styles = theme => ({
   grid: {
     marginTop: theme.spacing.unit * 25,
     borderStyle: 'solid',
-    borderColor: "#757575"
+    borderColor: "#757575",
+    minWidth: 350,
+    position: 'fixed'
   },
 });
 

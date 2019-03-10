@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\DB;
 class FriendsController extends Controller
 {
     public function index() {
-        $uid = session('uid');
+        $uid = session('user_id');
 
 
         $friends = DB::table('friends')

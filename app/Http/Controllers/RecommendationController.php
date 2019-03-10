@@ -10,7 +10,7 @@ class RecommendationController extends Controller
 {
     public function index() {
         $name = 'long_term';
-
+        $uid = session('user_id');
         $songs = Recommendations::getSongs($name, $uid);
 
         return view('recommendations', [

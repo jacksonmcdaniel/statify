@@ -31,7 +31,7 @@ export default class TrendRoot extends React.Component {
               <Paper style={theme.paperContainer3}>
                 <Grid container direction="row"
                   style={{ minHeight: '100vh' }} justify="space-evenly">
-                  <ChartCard songs={songs}/>
+                  <ChartCard songs={songs} />
                   <Grid item>
                     <Grid container spacing={0} justify="space-evenly" align="center">
                       <StatifyTable songs={songs}/>
