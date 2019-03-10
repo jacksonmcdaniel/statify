@@ -24,4 +24,6 @@ Route::get('/ApiConnection', 'ApiConnectionController@index');
 Route::get('/ApiConnection/callback', 'ApiConnectionController@callback');
 Route::get('/loading', 'LoadingController@index');
 Route::get('/loading/{type}', 'LoadingController@show');
+Route::get('/artists', 'ArtistController@index');
+Route::get('/artists/{tid}', 'ArtistController@show');
 
