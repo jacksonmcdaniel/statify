@@ -39,6 +39,12 @@ class ApiConnectionController extends Controller {
     
    public function callback() {
       $session = $this->get_api_session();
+
+      if (!array_key_exists('code', $_GET)) {
+         return redirect('/home');
+      }
+
+
 	   $session->requestAccessToken($_GET['code']);
       
       $this->access_token = $session->getAccessToken();
