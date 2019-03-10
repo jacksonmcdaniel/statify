@@ -42,6 +42,7 @@ class LoadingController extends Controller
 
         $trend_id = DB::select('select trend_id from trends WHERE user_id=? AND type=?', [session('user_id'), $range])[0]->trend_id;
 
+        $i = 0;
         foreach($trend['items'] as $item) {
             $audio_features = $api->get_audio_features($item['id']);
             DB::insert(
@@ -55,8 +56,9 @@ class LoadingController extends Controller
                     $audio_features['audio_features'][0]['liveness'],       $audio_features['audio_features'][0]['speechiness'], 
                     $audio_features['audio_features'][0]['valence'],        $audio_features['audio_features'][0]['tempo']]
                 );       
-            DB::insert('insert ignore into songs_in_trends (trend_id, song_id) values (?, ?)', 
-                [$trend_id, $item['id']]);
+            DB::insert('insert ignore into songs_in_trends (trend_id, song_id, song_ordinal) values (?, ?, ?)', 
+                [$trend_id, $item['id'], $i]);
+            $i++;
         }
     }
 }
