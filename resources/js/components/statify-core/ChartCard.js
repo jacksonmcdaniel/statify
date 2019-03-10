@@ -20,6 +20,7 @@ import LinearDeterminate from './LinearDeterminate';
 import LinearProgress from '@material-ui/core/LinearProgress';
 import Typography from '@material-ui/core/Typography';
 import CircularProgress from '@material-ui/core/CircularProgress';
+import Paper from '@material-ui/core/Paper';
 
 
 const styles = theme => ({
@@ -28,13 +29,16 @@ const styles = theme => ({
     maxWidth: 500,
     minHeight: 300,
     backgroundColor: theme.palette.background.paper,
-    width: '100%',
-    marginTop: theme.spacing.unit * 15,
     overflowX: 'visible',
     flexGrow: 1,
   },
   margin: {
     margin: "center",
+  },
+  grid: {
+    marginTop: theme.spacing.unit * 25,
+    borderStyle: 'solid',
+    borderColor: "#757575"
   },
 });
 
@@ -43,24 +47,45 @@ function ChartCard(props) {
   const { classes, name } = props;
   return (
     <Grid item xs={3}>
+    <Paper className={classes.grid}>
       <Grid container spacing={0} justify="space-evenly" align="center">
-        <List className={classes.root}>
-          <Grid container spacing={0} direction="column" alignItems="center" 
-            justify="center" >
-            <Typography>
-              Hi
-            </Typography>
-            <CircularProgress variant="determinate" value={50} />
-            <div className={classes.root}>
-              <LinearProgress variant="determinate" value={50} />
-              <br />
-              <LinearProgress color="secondary" variant="determinate" value={50} />
-            </div>
-            <Divider variant="inset"/>
             
+            <div className={classes.root}>
+            <Typography variant="body1">
+              Song Stats
+            </Typography>
+            <ul/>
+            <Typography>
+              Danceability
+            </Typography>
+            <LinearProgress variant="determinate" value={22} />
+            <br />
+            <Typography>
+              Accousticness
+            </Typography>
+            <LinearProgress variant="determinate" value={50} />
+            <br />
+            <Typography>
+              Popularity
+            </Typography>
+            <LinearProgress variant="determinate" value={86} />
+            <br />
+            <Typography>
+              Energy
+            </Typography>
+            <LinearProgress variant="determinate" value={9} />
+            <br />
+            <Typography>
+              Liveness
+            </Typography>
+            <LinearProgress variant="determinate" value={43} />
+            <br />
+            </div>
+            
+                        
           </Grid>
-        </List>
-      </Grid>
+
+      </Paper>
     </Grid>
 
   );
