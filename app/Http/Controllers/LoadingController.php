@@ -37,11 +37,9 @@ class LoadingController extends Controller
 
     public function insert_trend($trend, $range, $api) {
         DB::delete('DELETE FROM trends WHERE user_id=? AND type=?', [session('user_id'), $range]);
-        DB::insert('insert ignore into trends (type, user_id) values (?, ?)', 
+        DB::insert('insert into trends (type, user_id) values (?, ?)', 
          [$range, session('user_id')]);
-        //TODO This is shitty and it should be made better. Credit for being bad goes to @jacksonmcdaniel 
-        // @joshuaboe here, I'm sorry
-        // fixed -brian
+
         $trend_id = DB::select('select trend_id from trends WHERE user_id=? AND type=?', [session('user_id'), $range])[0]->trend_id;
 
         foreach($trend['items'] as $item) {
