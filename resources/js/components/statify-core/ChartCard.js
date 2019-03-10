@@ -58,7 +58,7 @@ function ChartCard(props) {
   var liveness = 0;
   var speechiness = 0;
   var valence = 0;
-
+  var count = 0;
   songs.map(song => {acousticness += song.acousticness;
                      danceability += song.danceability;
                      energy += song.energy;
@@ -66,7 +66,13 @@ function ChartCard(props) {
                      liveness += song.liveness;
                      speechiness += song.speechiness;
                      valence += song.valence;
+                     count += 1;
                    });
+
+  if (count == 0) {
+    // to make stats be zero
+    count = 1;
+  }
 
   const attributes = [
     createAttribute('acousticness', acousticness),
@@ -101,7 +107,7 @@ function ChartCard(props) {
               <Typography>
                 {attr.name}
               </Typography>
-              <LinearProgress variant="determinate" value={Math.round(attr.value/25*100)} />
+              <LinearProgress variant="determinate" value={Math.round(attr.value/count*100)} />
               <br />
               </div>
             ))}
