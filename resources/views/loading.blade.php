@@ -8,5 +8,5 @@
 
 @section('content')
 
-	<div id="HomeRoot"></div>
+	<div id="LoadingHome"></div>
 @endsection
