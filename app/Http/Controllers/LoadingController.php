@@ -28,11 +28,14 @@ class LoadingController extends Controller
          FROM trends 
          WHERE user_id = ? AND type LIKE ?
          LIMIT 1', 
-         [session('user_id'), '%term'])[0]->updated_at;
+         [session('user_id'), '%term']);
 
-      //If the trend is less than one week old, do nothing
-      if((time() - strtotime($trends_timestamp)) < (7 * 24 * 60 * 60)) {
-         return;
+      if (array_key_exists(0, $trends_timestamp)) {
+         $trends_timestamp = $trends_timestamp[0]->updated_at;
+         //If the trend is less than one week old, do nothing
+         if((time() - strtotime($trends_timestamp)) < (7 * 24 * 60 * 60)) {
+            return;
+         }
       }
 
       $api = new Api();
