@@ -13,7 +13,173 @@ import Grid from '@material-ui/core/Grid';
 import statify_logo from '../../../public/Assets/images/statify_logo.png';
 import Image from '../../../public/Assets/images/music_listening.jpg';
 import LinearDeterminate from './statify-core/LinearDeterminate';
+import {keyframes} from 'styled-components'
+import green from '@material-ui/core/colors/green';
 
+class Circle extends React.Component {
+    constructor(props) {
+        super(props);
+    };
+
+    render (){
+        const {size} = this.props;
+        var circleStyle = {
+          position: 'absolute',
+          left: (-size/2) +'px',
+          top: '100px',
+          padding:10,
+          margin:20,
+          display:"inline-block",
+          backgroundColor: green[500],
+          borderRadius: "50%",
+          width:size,
+          height:size,
+        };
+        return (
+          <div style={circleStyle}>
+                <Rectangle size={size} index={-2} key={1} bgColor={'#FFFFFF'}/>
+                <Rectangle size={size} index={-1} key={2} bgColor={'#FFFFFF'}/>
+                <Rectangle size={size} index={0} key={3} bgColor={'#FFFFFF'}/>
+                <Rectangle size={size} index={1} key={4} bgColor={'#FFFFFF'}/>
+
+          </div>
+        );
+  }
+}
+
+class Rectangle extends React.Component {
+    constructor(props) {
+        super(props);
+    };
+
+    render (){
+
+    const {size, index} = this.props;
+    var movingBars = null;
+    var animationDuration = '1s';
+    if (index == -2) {
+        movingBars = keyframes`
+          0% {
+            height: 0px; }
+          10% {
+            height: 100px; }
+          20% {
+            height: 100px; }
+          30% {
+            height: 100px; }
+          40% {
+            height: 100px; }
+          50% {
+            height: 100px; }
+          60% {
+            height: 0px; }
+          70% {
+            height: 0px; }
+          80% {
+            height: 0px; }
+          90% {
+            height: 0px; }
+          100% {
+            height: 0px; }
+        `;
+    }
+
+    if (index == -1) {
+        movingBars = keyframes`
+          0% {
+            height: 0px; }
+          20% {
+            height: 150px; }
+          30% {
+            height: 150px; }
+          40% {
+            height: 150px; }
+          50% {
+            height: 150px; }
+          60% {
+            height: 150px; }
+          70% {
+            height: 0px; }
+          80% {
+            height: 0px; }
+          90% {
+            height: 0px; }
+          100% {
+            height: 0px; }
+        `;
+    }
+    if (index == 0) {
+        movingBars = keyframes`
+          0% {
+            height: 0px; }
+          10% {
+            height: 0px; }
+          20% {
+            height: 0px; }
+          30% {
+            height: 200px; }
+          40% {
+            height: 200px; }
+          50% {
+            height: 200px; }
+          60% {
+            height: 200px; }
+          70% {
+            height: 200px; }
+          80% {
+            height: 0px; }
+          90% {
+            height: 0px; }
+          100% {
+            height: 0px; }
+        `;
+    }
+    if (index == 1) {
+        movingBars = keyframes`
+          0% {
+            height: 0px; }
+          10% {
+            height: 0px; }
+          20% {
+            height: 0px; }
+          30% {
+            height: 0px; }
+          40% {
+            height: 100px; }
+          50% {
+            height: 100px; }
+          60% {
+            height: 100px; }
+          70% {
+            height: 100px; }
+          80% {
+            height: 100px; }
+          90% {
+            height: 0px; }
+          100% {
+            height: 0px; }
+        `;
+    }
+    var rectangleStyle = {
+      position: 'absolute',
+      left: (size/2+(3/2*index)*size/10 + size/10/4) +'px',
+      bottom: (size/4) + 'px',
+      padding: '3px',
+      margin:0,
+      display:"inline-block",
+      backgroundColor: this.props.bgColor,
+      width:(size/10),
+      height:(size/4),
+      'animationName' : movingBars,
+      'animationDuration': animationDuration,
+      'animationIterationCount': 'infinite',
+    };
+    return (
+      <div style={rectangleStyle}>
+      </div>
+    );
+    }
+}
 
 export default class LoadingHome extends React.Component {
 
@@ -27,16 +193,19 @@ export default class LoadingHome extends React.Component {
         return (
             <MuiThemeProvider theme={theme}>
             <Paper style={theme.paperContainer1}>
-            <Grid container spacing={0} direction="column" alignItems="center" 
-			justify="center" style={{ minHeight: '100vh' }}>
-             	<Typography variant="h3" color="default" align="center" p={2000} style={{textShadow: '0 0 3px #000000'}}>
-              	Welcome to Statify!
-            	</Typography>
-                <img src={statify_logo}  width={300} height={275} mode='fit'/>
-                <Typography variant="h4" color="default" align="center" p={2000} style={{textShadow: '0 0 3px #000000'}}>
-               Please wait while we gather your Spotify listening trends.
+            <Grid container spacing={0} direction="column" alignItems="center" style={{ minHeight: '100vh' }}>
+
+                <Typography variant="h3" color="default" p={2000} style={{textShadow: '0 0 3px #000000'}}>
+                <div style={{ position: 'fixed'}}>
+                                <Circle size={400} key={5} bgColor={'#66AC5B'}/>
+                </div>
+
                 </Typography>
-                
+                                <Typography variant="h4" color="default" p={200} style={{position: 'relative',  top: '520px',
+textShadow: '0 0 3px #000000'}}>
+               Loading Spotify trends
+                </Typography>
+
             </Grid>
             </Paper>
             </MuiThemeProvider>

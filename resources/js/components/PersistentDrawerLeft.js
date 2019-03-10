@@ -177,11 +177,6 @@ class PersistentDrawerLeft extends React.Component {
             >
               <MenuIcon />
             </IconButton>
-            
-            {name=='Loading Data' ? <CircularProgress variant="indeterminate" color="FFFFFF"/> : null}
-            &nbsp;
-            &nbsp;
-            &nbsp;
             <Typography variant="h6" color="inherit" noWrap>
               {name}
             </Typography>
