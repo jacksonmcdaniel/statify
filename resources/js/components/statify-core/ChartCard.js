@@ -42,9 +42,38 @@ const styles = theme => ({
   },
 });
 
+let id = 0;
+function createAttribute(name, value) {
+  id += 1;
+  return { id, name, value };
+}
+
 function ChartCard(props) {
 
-  const { classes, name } = props;
+  const { classes, name, songs } = props;
+  var danceability = 0;
+  var acousticness = 0;
+  var energy = 0;
+  var liveness = 0;
+  var danceability = 0;
+
+  songs.map(song => {danceability += song.danceability;
+                     acousticness += song.acousticness;
+                     energy += song.energy;
+                     liveness += song.liveness;});
+
+  const attributes = [
+    createAttribute('danceability', danceability),
+    createAttribute('acousticness', acousticness),
+    createAttribute('energy', energy),
+    createAttribute('liveness', liveness),
+  ];
+  
+  console.log(danceability);
+  console.log(acousticness);
+  console.log(energy);
+  console.log(liveness);
+
   return (
     <Grid item xs={3}>
     <Paper className={classes.grid}>
@@ -55,31 +84,15 @@ function ChartCard(props) {
               Song Stats
             </Typography>
             <ul/>
-            <Typography>
-              Danceability
-            </Typography>
-            <LinearProgress variant="determinate" value={22} />
-            <br />
-            <Typography>
-              Accousticness
-            </Typography>
-            <LinearProgress variant="determinate" value={50} />
-            <br />
-            <Typography>
-              Popularity
-            </Typography>
-            <LinearProgress variant="determinate" value={86} />
-            <br />
-            <Typography>
-              Energy
-            </Typography>
-            <LinearProgress variant="determinate" value={9} />
-            <br />
-            <Typography>
-              Liveness
-            </Typography>
-            <LinearProgress variant="determinate" value={43} />
-            <br />
+            {attributes.map(attr => (
+              <div>
+              <Typography>
+                {attr.name}
+              </Typography>
+              <LinearProgress variant="determinate" value={Math.round(attr.value/25*100)} />
+              <br />
+              </div>
+            ))}
             </div>
             
                         
@@ -93,6 +106,7 @@ function ChartCard(props) {
 
 ChartCard.propTypes = {
   classes: PropTypes.object.isRequired,
+    songs: PropTypes.array.isRequired,
 };
 
 export default withStyles(styles)(ChartCard);
