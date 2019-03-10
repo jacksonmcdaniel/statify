@@ -34,6 +34,8 @@ import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import Modal from '@material-ui/core/Modal';
 import Grid from '@material-ui/core/Grid';
+import CircularProgress from '@material-ui/core/CircularProgress';
+import LinearProgress from '@material-ui/core/LinearProgress';
 
 const drawerWidth = 240;
 
@@ -174,9 +176,16 @@ class PersistentDrawerLeft extends React.Component {
             >
               <MenuIcon />
             </IconButton>
+            
+            {name=='Loading Data' ? <CircularProgress variant="indeterminate" color="FFFFFF"/> : null}
+            &nbsp;
+            &nbsp;
+            &nbsp;
             <Typography variant="h6" color="inherit" noWrap>
               {name}
             </Typography>
+            
+            
             <div className={classes.grow} />
 
             

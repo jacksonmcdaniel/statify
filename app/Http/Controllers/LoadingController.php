@@ -20,7 +20,7 @@ class LoadingController extends Controller
     public function show($name) {
         $this->get_song_trends();
 
-        return redirect('/trends');
+        return redirect('/home');
     }
 
         public function get_song_trends() {

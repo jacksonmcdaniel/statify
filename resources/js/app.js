@@ -30,3 +30,4 @@ require('./components/statify-core/ChartCard');
 require('./components/Friends');
 require('./components/RecommendationRoot');
 require('./components/statify-core/LinearDeterminate')
+require('./components/LoadingHome');
