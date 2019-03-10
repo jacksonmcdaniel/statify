@@ -36,6 +36,7 @@ import Modal from '@material-ui/core/Modal';
 import Grid from '@material-ui/core/Grid';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import LinearProgress from '@material-ui/core/LinearProgress';
+import PersonIcon from '@material-ui/icons/Person';
 
 const drawerWidth = 240;
 
@@ -212,7 +213,8 @@ class PersistentDrawerLeft extends React.Component {
               <MenuItem color="primary" onClick={this.handleClose} component="a" href="/ApiConnection">Login</MenuItem>}
             </div>
           </Toolbar>
-          {name=='Trends' ? <NavBar value={value} /> : null}
+          {name=='Trends' ? <NavBar value={value} page="trend"/> : null}
+          {name=='Top Artists' ? <NavBar value={value} page="artist"/> : null}
           <Modal
           aria-labelledby="simple-modal-title"
           aria-describedby="simple-modal-description"
@@ -266,6 +268,12 @@ class PersistentDrawerLeft extends React.Component {
               <ListItem button key={"trend"} component="a" onClick={this.handleTrendsPage} href="/trends">
                 <ListItemIcon><MusicNoteIcon /></ListItemIcon>
                 <ListItemText primary={"Trends"} />
+              </ListItem>
+              : null}
+              {user_id ? 
+              <ListItem button key={"artists"} component="a" onClick={this.handleTrendsPage} href="/artists">
+                <ListItemIcon><PersonIcon /></ListItemIcon>
+                <ListItemText primary={"Top Artists"} />
               </ListItem>
               : null}
             {user_id ? 

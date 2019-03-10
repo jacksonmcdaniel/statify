@@ -37,20 +37,22 @@ class NavBar extends React.Component {
     
     this.state = {
       value: 0,
+      page: "trend",
     };
 
-    this.handleChange = (event, value) => {
-      this.setState({ value });
+    this.handleChange = (event, value, page) => {
+      this.setState({ value, page });
     };
   }
   render() {
-    const { classes, value } = this.props;
+    const { classes, value, page } = this.props;
     const { handleClick } = this.state;
 
     return (
         <MuiThemeProvider theme={theme}>
          <BrowserRouter> 
             <Paper square>
+            {page=="trend" ?
                <Tabs value={value} onChange={this.handleChange} variant="fullWidth" indicatorColor="secondary" textColor="primary" >
                   <Tab label="All Time" href="/trends/long_term">
                   </Tab>
@@ -59,6 +61,16 @@ class NavBar extends React.Component {
                   <Tab label="This Month" href="/trends/short_term">
                   </Tab>
                </Tabs>
+               :
+               <Tabs value={value} onChange={this.handleChange} variant="fullWidth" indicatorColor="secondary" textColor="primary" >
+                  <Tab label="All Time" href="/artists/long_term">
+                  </Tab>
+                  <Tab label="6 Months" href="/artists/medium_term">
+                  </Tab>
+                  <Tab label="This Month" href="/artists/short_term">
+                  </Tab>
+               </Tabs>
+             }
             </Paper>
          </BrowserRouter>
         </MuiThemeProvider>
@@ -69,6 +81,7 @@ class NavBar extends React.Component {
 NavBar.propTypes = {
   classes: PropTypes.object.isRequired,
   value: PropTypes.number.isRequired,
+  page: PropTypes.string.isRequired,
 };
 
 export default withStyles(styles)(NavBar);
