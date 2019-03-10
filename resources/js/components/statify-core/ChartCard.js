@@ -51,28 +51,40 @@ function createAttribute(name, value) {
 function ChartCard(props) {
 
   const { classes, name, songs } = props;
-  var danceability = 0;
   var acousticness = 0;
-  var energy = 0;
-  var liveness = 0;
   var danceability = 0;
+  var energy = 0;
+  var instrumentalness = 0;
+  var liveness = 0;
+  var speechiness = 0;
+  var valence = 0;
 
-  songs.map(song => {danceability += song.danceability;
-                     acousticness += song.acousticness;
+  songs.map(song => {acousticness += song.acousticness;
+                     danceability += song.danceability;
                      energy += song.energy;
-                     liveness += song.liveness;});
+                     instrumentalness += song.instrumentalness;
+                     liveness += song.liveness;
+                     speechiness += song.speechiness;
+                     valence += song.valence;
+                   });
 
   const attributes = [
-    createAttribute('danceability', danceability),
     createAttribute('acousticness', acousticness),
+    createAttribute('danceability', danceability),
     createAttribute('energy', energy),
+    createAttribute('instrumentalness', instrumentalness),
     createAttribute('liveness', liveness),
+    createAttribute('speechiness', speechiness),
+    createAttribute('valence', valence),
   ];
 
-  console.log(danceability);
   console.log(acousticness);
+  console.log(danceability);
   console.log(energy);
+  console.log(instrumentalness);
   console.log(liveness);
+  console.log(speechiness);
+  console.log(valence);
 
   return (
     <Grid item xs={3}>
