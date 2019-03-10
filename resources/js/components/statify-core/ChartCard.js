@@ -68,7 +68,7 @@ function ChartCard(props) {
     createAttribute('energy', energy),
     createAttribute('liveness', liveness),
   ];
-  
+
   console.log(danceability);
   console.log(acousticness);
   console.log(energy);
@@ -85,7 +85,7 @@ function ChartCard(props) {
             </Typography>
             <ul/>
             {attributes.map(attr => (
-              <div>
+              <div key={attr.id}>
               <Typography>
                 {attr.name}
               </Typography>
