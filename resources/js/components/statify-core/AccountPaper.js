@@ -58,13 +58,8 @@ function AccountPaper(props) {
         </Avatar>
         <ListItemText primary="Country" secondary="US" />
       </ListItem>
-      <Divider variant="inset" component="li" />
-      <ListItem>
-        <Avatar>
-          <PlaceIcon />
-        </Avatar>
-        <ListItemText primary="Postal Code" secondary="93407" />
-      </ListItem>
+      
+      
 
     </List>
   );

@@ -9,6 +9,9 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import { unstable_Box as Box } from '@material-ui/core/Box';
+import statify_logo from '../../../../public/Assets/images/statify_logo.png';
+import IconButton from '@material-ui/core/IconButton';
+import Avatar from '@material-ui/core/Avatar';
 
 const styles = theme => ({
   root: {
@@ -18,9 +21,13 @@ const styles = theme => ({
     flexGrow: 1,
   },
   table: {
-    minWidth: 700,
+    minWidth: 750,
+    maxWidth: 750,
     borderStyle: 'solid',
   },
+  column:{
+    maxWidth: 5,
+  }
 });
 
 class StatifyTable extends React.Component {
@@ -35,7 +42,8 @@ class StatifyTable extends React.Component {
       <Table className={classes.table}>
         <TableHead>
           <TableRow>
-            <TableCell>Rank</TableCell>
+            <TableCell align="center" className={classes.column}>Rank</TableCell>
+            <TableCell padding="dense"></TableCell>
             <TableCell>Song Name</TableCell>
             <TableCell align="left">Artist</TableCell>
           </TableRow>
@@ -43,9 +51,14 @@ class StatifyTable extends React.Component {
         <TableBody>
           {songs.map(song => (
             <TableRow key={song.song_id}>
-            <TableCell component="th" scope="row">
+            <TableCell component="th" scope="row" align="center" className={classes.column}>
                 {song.song_ordinal+1}
               </TableCell>
+              <TableCell component="th" scope="row" padding="dense">
+                <Avatar>
+                  <img src={song.image}  width={40} height={40} mode='fit'/>
+                </Avatar>
+                </TableCell>
               <TableCell component="th" scope="row">
                 {song.song_name}
               </TableCell>
