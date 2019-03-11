@@ -8,17 +8,14 @@ use App\Recommendations;
 
 class RecommendationController extends Controller
 {
-    public function index() {
-        $name = 'long_term';
-        $uid = session('user_id');
-        $songs = Recommendations::getSongs($name, $uid);
+   public function index() {
+      $songs = Recommendations::getSongs(session('user_id'));
 
-        return view('recommendations', [
-            'user_id' => session('user_id'),
-            'tabIndex' => 0,
-            'name' => "Recommendations",
-        	'songs' => $songs]);
-    }
-
-    
+      return view('recommendations', [
+         'user_id' => session('user_id'),
+         'tabIndex' => 0,
+         'name' => "Recommendations",
+         'songs' => $songs]
+      );
+   }
 }

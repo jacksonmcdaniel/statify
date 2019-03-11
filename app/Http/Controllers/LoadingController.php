@@ -17,12 +17,14 @@ class LoadingController extends Controller
     }
 
    public function show($name) {
-      $this->get_song_trends();
+      $api = new Api();
+      $this->get_song_trends($api);
+      $this->get_song_recommendations($api);
 
       return redirect('/home');
    }
 
-   public function get_song_trends() {
+   public function get_song_trends($api) {
       $trends_timestamp = DB::select('
          SELECT updated_at
          FROM trends 
@@ -37,8 +39,6 @@ class LoadingController extends Controller
             return;
          }
       }
-
-      $api = new Api();
 
       $trend_short_term = $api->get_trend('tracks', 25, 0, 'short_term');
       $trend_medium_term = $api->get_trend('tracks', 25, 0, 'medium_term');
@@ -70,21 +70,21 @@ class LoadingController extends Controller
       $i = 0;
       foreach($trend['items'] as $item) {
          $audio_features = $api->get_audio_features($item['id']);
-         DB::insert(
-            'INSERT IGNORE INTO  songs 
+         DB::insert('
+            INSERT IGNORE INTO  songs 
             (song_id, song_name, artist, image, acousticness, danceability, 
             energy, instrumentalness, liveness, speechiness, valence, tempo) 
             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', 
             [$item['id'], $item['name'], $item['album']['artists'][0]['name'], 
-               $item['album']['images'][0]['url'],
-               $audio_features['audio_features'][0]['acousticness'],   
-               $audio_features['audio_features'][0]['danceability'],
-               $audio_features['audio_features'][0]['energy'],         
-               $audio_features['audio_features'][0]['instrumentalness'], 
-               $audio_features['audio_features'][0]['liveness'],       
-               $audio_features['audio_features'][0]['speechiness'], 
-               $audio_features['audio_features'][0]['valence'],        
-               $audio_features['audio_features'][0]['tempo']]
+            $item['album']['images'][0]['url'],
+            $audio_features['audio_features'][0]['acousticness'],   
+            $audio_features['audio_features'][0]['danceability'],
+            $audio_features['audio_features'][0]['energy'],         
+            $audio_features['audio_features'][0]['instrumentalness'], 
+            $audio_features['audio_features'][0]['liveness'],       
+            $audio_features['audio_features'][0]['speechiness'], 
+            $audio_features['audio_features'][0]['valence'],        
+            $audio_features['audio_features'][0]['tempo']]
          );       
          DB::insert('
             INSERT IGNORE INTO songs_in_trends 
@@ -92,6 +92,67 @@ class LoadingController extends Controller
             VALUES (?, ?, ?)', 
             [$trend_id, $item['id'], $i]);
          $i++;
+      }
+   }
+
+	public function get_song_recommendations($api) {
+      $tracks_seed = DB::select('
+         select song_id 
+         from trends 
+         join songs_in_trends on trends.trend_id = songs_in_trends.trend_id
+         where user_id = ? and type = ? order by song_ordinal
+         limit 5',
+         [session('user_id'), 'short_term']
+      );
+      $tracks_seed = array_column($tracks_seed, 'song_id');
+      $recommendation = $api->get_recommendation(25, $tracks_seed); 
+      $this->insert_recommendation($recommendation, $api);
+   }
+   
+   public function insert_recommendation($recommendation, $api) {
+      DB::delete('
+         DELETE FROM recommendations 
+         WHERE user_id=?', 
+         [session('user_id')]
+      );
+      DB::insert('
+         INSERT INTO recommendations 
+         (user_id) 
+         VALUES (?)', 
+         [session('user_id')]
+      );
+      $recommendation_id = DB::select('
+         SELECT recommendation_id 
+         FROM recommendations 
+         WHERE user_id=?', 
+         [session('user_id')]
+      )[0]->recommendation_id;
+      $i = 0;
+      foreach($recommendation['tracks'] as $item) {
+         $audio_features = $api->get_audio_features($item['id']);
+         DB::insert('
+            INSERT IGNORE INTO songs 
+            (song_id, song_name, artist, image, acousticness, danceability, 
+            energy, instrumentalness, liveness, speechiness, valence, tempo) 
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', 
+            [$item['id'], $item['name'], $item['album']['artists'][0]['name'],
+            $item['album']['images'][0]['url'],
+            $audio_features['audio_features'][0]['acousticness'],
+            $audio_features['audio_features'][0]['danceability'],
+            $audio_features['audio_features'][0]['energy'],
+            $audio_features['audio_features'][0]['instrumentalness'],
+            $audio_features['audio_features'][0]['liveness'],
+            $audio_features['audio_features'][0]['speechiness'],
+            $audio_features['audio_features'][0]['valence'],
+            $audio_features['audio_features'][0]['tempo']]
+         );       
+         DB::insert('
+            INSERT IGNORE INTO songs_in_recommendations 
+            (recommendation_id, song_id, song_ordinal) 
+            VALUES (?, ?, ?)', 
+            [$recommendation_id, $item['id'], $i]
+         );
+         $i++; 
       }
    }
 }

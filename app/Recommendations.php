@@ -8,22 +8,23 @@ use Illuminate\Support\Facades\DB;
 use App\SongsInTrends;
 use App\Song;
 
-class Recommendations extends Model
-{
-    //
-    protected $fillable = [
-        'uid', 'name'
-    ];
+class Recommendations extends Model {
+   protected $fillable = [
+      'uid', 'name'
+   ];
 
-    public static function getSongs($name, $uid)
-    {
-        $songs = DB::table('trends')
-                ->join('songs_in_trends', 'trends.tid', '=', 'songs_in_trends.tid')
-                ->join('songs', 'songs.sid' ,'=', 'songs_in_trends.sid')
-                ->where('trends.name', '=', $name)
-                ->select('songs.sid', 'songs.name', 'songs.artist', 'trends.uid')
-                ->get()
-                ->where('uid', '=', $uid)->values();
-        return $songs;
-    }
+   public static function getSongs($user_id) {
+	   $recommendation_id = DB::table('recommendations')
+      	->where('user_id', '=', $user_id)
+         ->first()
+         ->recommendation_id;
+
+      $songs = DB::table('songs_in_recommendations')
+      	->where('songs_in_recommendations.recommendation_id', '=', $recommendation_id)
+         ->join('songs', 'songs.song_id', '=', 'songs_in_recommendations.song_id')
+         ->orderBy('songs_in_recommendations.song_ordinal')
+         ->select('songs.*', 'songs_in_recommendations.song_ordinal')
+         ->get()->values();
+      return $songs;
+   }
 }
