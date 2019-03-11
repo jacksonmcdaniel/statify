@@ -35,6 +35,7 @@ class StatifyTable extends React.Component {
       <Table className={classes.table}>
         <TableHead>
           <TableRow>
+            <TableCell>Rank</TableCell>
             <TableCell>Song Name</TableCell>
             <TableCell align="left">Artist</TableCell>
           </TableRow>
@@ -42,10 +43,13 @@ class StatifyTable extends React.Component {
         <TableBody>
           {songs.map(song => (
             <TableRow key={song.song_id}>
+            <TableCell component="th" scope="row">
+                {song.song_ordinal+1}
+              </TableCell>
               <TableCell component="th" scope="row">
                 {song.song_name}
               </TableCell>
-              <TableCell align="left">{song.artist}</TableCell>
+              <TableCell >{song.artist}</TableCell>
             </TableRow>
           ))}
         </TableBody>
