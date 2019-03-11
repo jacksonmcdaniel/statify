@@ -60,8 +60,6 @@ class StatifyTable extends React.Component {
                 </Avatar>
                 </TableCell>
               <TableCell component="th" scope="row">
-              
-                
                 {song.song_name}
               </TableCell>
               <TableCell >{song.artist}</TableCell>

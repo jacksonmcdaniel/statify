@@ -9,6 +9,7 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import { unstable_Box as Box } from '@material-ui/core/Box';
+import Avatar from '@material-ui/core/Avatar';
 
 const styles = theme => ({
   root: {
@@ -35,12 +36,18 @@ class StatifyArtistTable extends React.Component {
       <Table className={classes.table}>
         <TableHead>
           <TableRow>
-            <TableCell align="center">Artist</TableCell>
+            <TableCell align="center"></TableCell>
+            <TableCell align="left">Artist</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {songs.map(song => (
             <TableRow key={song.song_id}>
+            <TableCell component="th" scope="row" align="center">
+                <Avatar>
+                  <img src={song.image}  width={40} height={40} mode='fit'/>
+                </Avatar>
+                </TableCell>
               <TableCell component="th" scope="row">
                 {song.artist}
               </TableCell>
