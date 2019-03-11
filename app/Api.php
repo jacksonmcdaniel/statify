@@ -38,5 +38,13 @@ class Api {
 
    public function get_audio_features($song_id) {
         return $this->api->getAudioFeatures($song_id);   
-    }
+   }
+
+   public function get_recommendation($limit = 25, $seed_tracks = ['0u695M7KyzXaPIjpEbxOkB']) {
+       $options = [
+           'limit' => $limit,
+           'seed_tracks' => $seed_tracks
+       ];
+       return $this->api->getRecommendations($options);
+   }
 }
