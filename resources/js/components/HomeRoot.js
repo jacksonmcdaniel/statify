@@ -29,7 +29,7 @@ export default class HomeRoot extends React.Component {
             <Paper style={theme.paperContainer1}>
             <Grid container spacing={0} direction="column" alignItems="center" 
 			justify="center" style={{ minHeight: '100vh' }}>
-             	<Typography variant="h3" color="default" align="center" p={2000} style={{textShadow: '0 0 3px #000000'}}>
+             	<Typography variant="h3" color="default" align="center" p={2000} style={{textShadow: '2px -2px 20px #000000'}}>
               	Welcome to your Statify home!
             	</Typography>
                 <img src={statify_logo}  width={300} height={275} mode='fit'/>
