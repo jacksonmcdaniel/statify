@@ -12,8 +12,6 @@ use App\Api;
 class TrendController extends Controller {
 
    public function index() {
-      //$this->get_song_trends();
-
       $songs = Trend::getSongs('long_term', session('user_id'));
 
       return view('trends', [
