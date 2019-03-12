@@ -62,15 +62,15 @@ class Rectangle extends React.Component {
           0% {
             height: 0px; }
           10% {
-            height: 100px; }
+            height: ${size/4}px; }
           20% {
-            height: 100px; }
+            height: ${size/4}px; }
           30% {
-            height: 100px; }
+            height: ${size/4}px; }
           40% {
-            height: 100px; }
+            height: ${size/4}px; }
           50% {
-            height: 100px; }
+            height: ${size/4}px; }
           60% {
             height: 0px; }
           70% {
@@ -89,15 +89,15 @@ class Rectangle extends React.Component {
           0% {
             height: 0px; }
           20% {
-            height: 150px; }
+            height: ${size*3/8}px; }
           30% {
-            height: 150px; }
+            height: ${size*3/8}px; }
           40% {
-            height: 150px; }
+            height: ${size*3/8}px; }
           50% {
-            height: 150px; }
+            height: ${size*3/8}px; }
           60% {
-            height: 150px; }
+            height: ${size*3/8}px; }
           70% {
             height: 0px; }
           80% {
@@ -117,15 +117,15 @@ class Rectangle extends React.Component {
           20% {
             height: 0px; }
           30% {
-            height: 200px; }
+            height: ${size/2}px; }
           40% {
-            height: 200px; }
+            height: ${size/2}px; }
           50% {
-            height: 200px; }
+            height: ${size/2}px; }
           60% {
-            height: 200px; }
+            height: ${size/2}px; }
           70% {
-            height: 200px; }
+            height: ${size/2}px; }
           80% {
             height: 0px; }
           90% {
@@ -145,15 +145,15 @@ class Rectangle extends React.Component {
           30% {
             height: 0px; }
           40% {
-            height: 100px; }
+            height: ${size/4}px; }
           50% {
-            height: 100px; }
+            height: ${size/4}px; }
           60% {
-            height: 100px; }
+            height: ${size/4}px; }
           70% {
-            height: 100px; }
+            height: ${size/4}px; }
           80% {
-            height: 100px; }
+            height: ${size/4}px; }
           90% {
             height: 0px; }
           100% {
