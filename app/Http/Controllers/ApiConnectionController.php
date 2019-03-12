@@ -82,8 +82,9 @@ class ApiConnectionController extends Controller {
    }
 
    public function insert_new_user() {
-      DB::insert('insert into users (access_token, refresh_token, email) values (?, ?, ?)',
-         [$this->access_token, $this->refresh_token, $this->user_info['email']]);
+      DB::insert('insert into users (access_token, refresh_token, email, uri) values (?, ?, ?)',
+         [$this->access_token, $this->refresh_token, $this->user_info['email'], 
+         $this->user_info['uri']]);
    }
 
    public function update_existing_user() {
