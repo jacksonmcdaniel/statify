@@ -13,6 +13,7 @@ import Grid from '@material-ui/core/Grid';
 import statify_logo from '../../../public/Assets/images/statify_logo.png';
 import Image from '../../../public/Assets/images/music_listening.jpg';
 import LinearDeterminate from './statify-core/LinearDeterminate';
+import Carousel from './statify-core/Carousel';
 
 
 export default class HomeRoot extends React.Component {
@@ -29,7 +30,8 @@ export default class HomeRoot extends React.Component {
             <Paper style={theme.paperContainer1}>
             <Grid container spacing={0} direction="column" alignItems="center" 
 			justify="center" style={{ minHeight: '100vh' }}>
-             	<Typography variant="h3" color="default" align="center" p={2000} style={{textShadow: '2px -2px 20px #000000'}}>
+                <Carousel/>
+             	<Typography variant="h3" color="default" align="center" p={2000} style={{textShadow: '2px -2px 20px #000000n'}}>
               	Welcome to your Statify home!
             	</Typography>
                 <img src={statify_logo}  width={300} height={275} mode='fit'/>

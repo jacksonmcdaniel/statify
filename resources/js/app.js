@@ -33,3 +33,4 @@ require('./components/statify-core/LinearDeterminate')
 require('./components/LoadingHome');
 require('./components/ArtistRoot');
 require('./components/statify-core/StatifyArtistTable');
+require('./components/statify-core/Carousel');
