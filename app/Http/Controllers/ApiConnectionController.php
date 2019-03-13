@@ -29,7 +29,8 @@ class ApiConnectionController extends Controller {
             'user-read-private',
             'user-top-read',
             'user-read-recently-played',
-            'user-read-email'
+            'user-read-email',
+            'playlist-modify-private'
          ],
       ];
 
@@ -82,9 +83,9 @@ class ApiConnectionController extends Controller {
    }
 
    public function insert_new_user() {
-      DB::insert('insert into users (access_token, refresh_token, email, uri) values (?, ?, ?, ?)',
+      DB::insert('insert into users (access_token, refresh_token, email, uri, image) values (?, ?, ?, ?, ?)',
          [$this->access_token, $this->refresh_token, $this->user_info['email'], 
-         $this->user_info['uri']]);
+         $this->user_info['uri'], $this->user_info['images'][0]['url']]);
    }
 
    public function update_existing_user() {

@@ -3,7 +3,10 @@
 namespace App;
 
 use Illuminate\Support\Facades\DB;
+use DateTime;
 use SpotifyWebAPI;
+
+date_default_timezone_set('America/Los_Angeles');
 
 class Api {
 
@@ -40,11 +43,29 @@ class Api {
         return $this->api->getAudioFeatures($song_id);   
     }
 
-	public function get_recommendation($limit = 25, $seed_tracks = ['0u695M7KyzXaPIjpEbxOkB']) {
-      $options = [
-         'limit' => $limit,
-         'seed_tracks' => $seed_tracks
-      ];
-      return $this->api->getRecommendations($options);
-   }
+    public function get_recommendation($limit = 25, $seed_tracks = ['0u695M7KyzXaPIjpEbxOkB']) {
+        $options = [
+            'limit' => $limit,
+            'seed_tracks' => $seed_tracks
+        ];
+        return $this->api->getRecommendations($options);
+    }
+
+    public function create_playlist($user_id) {
+        $month = date('F');
+        $day = date('d');
+        $year = date('Y');
+        $options = [
+            'name' => "Statify - $month $day, $year",
+            'description' => 'Kick back and discover new hits with Statify.',
+            'public' => false
+        ];
+        $spotifyID = DB::select('select uri from users where user_id = ?',
+            [session('user_id')])[0]->uri;
+        $playlistID = $this->api->createUserPlaylist($spotifyID, $options)['id'];
+        $songs = array_column(Recommendations::getSongs($user_id)->all(), 'song_id');
+        $this->api->replaceUserPlaylistTracks($user_id, $playlistID, $songs);
+        //TODO would like to add the Statify logo to the playlist
+        //$this->api->updatePlaylistImage($playlistID, $statifyLogo);
+    }
 }
