@@ -41,6 +41,5 @@ if (document.getElementById('AccountRoot')) {
     var element = document.getElementById('AccountRoot');
     var email = element.getAttribute("email");
     var name = element.getAttribute("name");
-    var accountImage = element.getAttribute("accountImage");
-    ReactDOM.render(<AccountRoot email={email} name={name} accountImage={accountImage}/>, document.getElementById('AccountRoot'));
+    ReactDOM.render(<AccountRoot email={email} name={name} accountImage={signInRootViewModel['user_image']}/>, document.getElementById('AccountRoot'));
 }
