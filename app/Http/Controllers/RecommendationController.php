@@ -24,5 +24,14 @@ class RecommendationController extends Controller
     public function playlistButton() {
         $api = new Api();
         $api->create_playlist(session('user_id'));
+
+        $songs = Recommendations::getSongs(session('user_id'));
+
+        return view('recommendations', [
+            'user_id' => session('user_id'),
+            'tabIndex' => 0,
+            'name' => "Recommendations",
+            'songs' => $songs]
+        );
     }
 }
