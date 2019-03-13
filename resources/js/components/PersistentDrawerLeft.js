@@ -192,9 +192,11 @@ class PersistentDrawerLeft extends React.Component {
                      aria-haspopup="true"
                       onClick={this.handleClick} color="inherit"
               >
+              {user_image != "" ?
                 <Avatar>
                   <img src={user_image}  width={40} height={40} mode='fit'/>
                 </Avatar>
+                : <AccountCircle /> }
               </IconButton>
               : null }
             {user_id ?

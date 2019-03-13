@@ -59,7 +59,9 @@ class DeleteAccount extends React.Component {
       
         <ListItem>
           <Avatar>
-            <img src='https://profile-images.scdn.co/images/userprofile/default/2f294d73d7342bdb3e2a120c2093bb8443b98779'  width={40} height={40} mode='fit'/>
+          {accountImage != "" ?
+            <img src={accountImage}  width={40} height={40} mode='fit'/>
+          : <AccountCircle /> }
           </Avatar>
           <ListItemText primary="Delete Account?" secondary="Once you delete your account, we will no longer have access to your Spotify listening habits." />
         </ListItem>
