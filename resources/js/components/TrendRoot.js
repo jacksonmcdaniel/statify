@@ -48,6 +48,5 @@ if (document.getElementById('TrendRoot')) {
     var element = document.getElementById('TrendRoot');
     var name = element.getAttribute("name");
     var songs = element.getAttribute("songs");
-    //console.log(songs);
     ReactDOM.render(<TrendRoot songs={JSON.parse(songs)}/>, document.getElementById('TrendRoot'));
 }

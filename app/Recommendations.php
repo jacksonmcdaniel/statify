@@ -27,5 +27,24 @@ class Recommendations extends Model {
          ->select('songs.*', 'songs_in_recommendations.song_ordinal')
          ->get()->values();
       return $songs;
-    }
+   }
+
+   public static function getTopSong($user_id) {
+      $recommendation_id = DB::select('
+         SELECT recommendation_id 
+         FROM recommendations 
+         WHERE user_id=?',
+         [$user_id]
+      )[0]->recommendation_id;
+
+
+      $songs = DB::select('
+         SELECT songs.* 
+         FROM songs
+         JOIN songs_in_recommendations ON songs.song_id = songs_in_recommendations.song_id
+         WHERE songs.song_id = songs_in_recommendations.song_id AND songs_in_recommendations.recommendation_id=? AND songs_in_recommendations.song_ordinal=0',
+         [$recommendation_id]
+      );
+      return $songs;
+   }
 }
