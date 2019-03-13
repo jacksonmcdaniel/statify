@@ -156,7 +156,7 @@ class PersistentDrawerLeft extends React.Component {
   }
 
   render() {
-    const { classes, theme, name, value, user_id } = this.props;
+    const { classes, theme, name, value, user_id, user_image } = this.props;
     const { open, handleDrawerClose, handleDrawerOpen, anchorEl, 
       openModal, trends, handleTrendsPage, handleTrendsPageOff }  = this.state;
 
@@ -192,9 +192,11 @@ class PersistentDrawerLeft extends React.Component {
                      aria-haspopup="true"
                       onClick={this.handleClick} color="inherit"
               >
+              {user_image != "" ?
                 <Avatar>
-                  <img src='https://profile-images.scdn.co/images/userprofile/default/2f294d73d7342bdb3e2a120c2093bb8443b98779'  width={40} height={40} mode='fit'/>
+                  <img src={user_image}  width={40} height={40} mode='fit'/>
                 </Avatar>
+                : <AccountCircle /> }
               </IconButton>
               : null }
             {user_id ?
@@ -308,7 +310,8 @@ PersistentDrawerLeft.propTypes = {
   trends: PropTypes.bool.isRequired,
   name: PropTypes.string.isRequired,
   value: PropTypes.number.isRequired,
-  user_id: PropTypes.number
+  user_id: PropTypes.number,
+  user_image: PropTypes.string
 };
 
 const SimpleModalWrapped = withStyles(styles, { withTheme: true })(PersistentDrawerLeft);

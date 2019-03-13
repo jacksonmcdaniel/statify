@@ -23,7 +23,7 @@
             'user_id' : parseInt("{{$user_id}}", 10)};
     </script>
 
-    <div id="SignInRoot"></div>
+    <div id="SignInRoot" user_image="{{$user_image}}"></div>
 
     @yield('content')
     <script src="{{ mix('js/app.js') }}"></script>
