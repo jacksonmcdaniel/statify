@@ -33,7 +33,7 @@ export default class RecommendationRoot extends React.Component {
                 <StatifyTable songs={songs} style={{marginTop: "-200px"}}/>
                 <Grid container direction="column" alignItems="center" style={{padding: "50px"}}>
                   <Button color="primary" variant="contained">
-                    Add to Spotify Playlist
+                    Create Spotify Playlist
                   </Button>
                 </Grid>
                 
