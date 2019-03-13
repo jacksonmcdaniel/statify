@@ -19,7 +19,7 @@ class SongsInRecommendations extends Migration
             $table->tinyInteger('song_ordinal');
             $table->timestamps();
 
-            $table->primary(['recommendation_id, song_id']);
+            $table->primary(['recommendation_id', 'song_id']);
             $table->foreign('song_id')->references('song_id')->on('songs');
             $table->foreign('recommendation_id')->references('recommendation_id')->on('recommendations');
         });
