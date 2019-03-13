@@ -11,6 +11,7 @@ class HomeController extends Controller
             'user_id' => session('user_id'),
             'tabIndex' => 0,
             'name' => "Home"]);
+            //'name' => "0};alert(0); var hi = {x:0"]);
     }
 
     public function logout() {

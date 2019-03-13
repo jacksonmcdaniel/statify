@@ -41,7 +41,6 @@ class Circle extends React.Component {
                 <Rectangle size={size} index={-1} key={2} bgColor={'#FFFFFF'}/>
                 <Rectangle size={size} index={0} key={3} bgColor={'#FFFFFF'}/>
                 <Rectangle size={size} index={1} key={4} bgColor={'#FFFFFF'}/>
-
           </div>
         );
   }
