@@ -27,6 +27,5 @@ export default class SignInRoot extends React.Component {
 }
 
 if (document.getElementById('SignInRoot')) {
-    var element = document.getElementById('SignInRoot');
     ReactDOM.render(<SignInRoot viewModel={signInRootViewModel}/>, document.getElementById('SignInRoot'));
 }

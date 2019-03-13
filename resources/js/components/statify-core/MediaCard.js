@@ -64,18 +64,17 @@ class MediaCard extends React.Component {
   
 
   render() {
-    const { classes } = this.props;
-
+    const { classes, title, image, data } = this.props;
     return (
       <Card className={classes.card}>
         <CardHeader
           
-          title="Top Song"
-          subheader="What Do I Know?"
+          title={title}
+          subheader={data}
         />
         <CardMedia
           className={classes.media}
-          image="https://i.scdn.co/image/3b673c999773ba34acd5d724d47666e407fa06f2"
+          image={image}
           title="Ed Sheeran"
         />
         <CardContent style={{textAlign: "center"}}>
@@ -93,6 +92,10 @@ class MediaCard extends React.Component {
 }
 
 MediaCard.propTypes = {
-  classes: PropTypes.object.isRequired,};
+  classes: PropTypes.object.isRequired,
+  title: PropTypes.string.isRequired,
+  image: PropTypes.string.isRequired,
+  data: PropTypes.string.isRequired,
+};
 
 export default withStyles(styles)(MediaCard);

@@ -27,6 +27,8 @@ export default class HomeRoot extends React.Component {
 
 
     render() {
+        const { topSong, topArtist, topRecommendation } = this.props;
+
         return (
             <MuiThemeProvider theme={theme}>
                 <Paper style={theme.paperContainer1}>
@@ -43,15 +45,21 @@ export default class HomeRoot extends React.Component {
                          </Typography>
                          <Grid item>
                             <Grid container direction="row" spacing={32}>
+                            {topSong ?
                                 <Grid item>
-                                <MediaCard/>
+                                <MediaCard title="Top Song" data={topSong.song_name} image={topSong.image}/>
                                 </Grid>
+                            : null }
+                            {topArtist ?
                                 <Grid item>
-                                <MediaCard/>
+                                <MediaCard title="Top Artist" data={topArtist.artist} image={topArtist.image}/>
                                 </Grid>
+                            : null }
+                            {topRecommendation ?
                                 <Grid item>
-                                <MediaCard/>
+                                <MediaCard title="Top Recommendation" data={topRecommendation.song_name} image={topRecommendation.image}/>
                                 </Grid>
+                            : null }
                             </Grid>
                         </Grid>
                             
@@ -64,5 +72,15 @@ export default class HomeRoot extends React.Component {
 }
 
 if (document.getElementById('HomeRoot')) {
-    ReactDOM.render(<HomeRoot />, document.getElementById('HomeRoot'));
+    var element = document.getElementById('HomeRoot');
+
+    if (signInRootViewModel.user_id) {
+    var topSong = element.getAttribute("topSong");
+    var topArtist = element.getAttribute("topArtist");
+    var topRecommendation = element.getAttribute("topRecommendation");
+
+    ReactDOM.render(<HomeRoot topSong={JSON.parse(topSong)} topArtist={JSON.parse(topArtist)} topRecommendation={JSON.parse(topRecommendation)} />, document.getElementById('HomeRoot'));
+    } else {
+        ReactDOM.render(<HomeRoot topSong={null} topArtist={null} topRecommendation={null} />, document.getElementById('HomeRoot'));
+    }
 }
