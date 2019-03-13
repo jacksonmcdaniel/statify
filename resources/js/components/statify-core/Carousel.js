@@ -14,27 +14,32 @@ const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 
 const tutorialSteps = [
   {
-    label: 'San Francisco – Oakland Bay Bridge, United States',
+    label: "This Month's Top Artist",
     imgPath:
       'https://images.unsplash.com/photo-1537944434965-cf4679d1a598?auto=format&fit=crop&w=400&h=250&q=60',
   },
   {
-    label: 'Bird',
+    label: "This Month's Top Song",
     imgPath:
       'https://images.unsplash.com/photo-1538032746644-0212e812a9e7?auto=format&fit=crop&w=400&h=250&q=60',
   },
   {
-    label: 'Bali, Indonesia',
+    label: "Past 6 Months Top Artist",
     imgPath:
       'https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=400&h=250&q=80',
   },
   {
-    label: 'NeONBRAND Digital Marketing, Las Vegas, United States',
+    label: "Past 6 Months Top Song",
     imgPath:
       'https://images.unsplash.com/photo-1518732714860-b62714ce0c59?auto=format&fit=crop&w=400&h=250&q=60',
   },
   {
-    label: 'Goč, Serbia',
+    label: "All Time Top Artist",
+    imgPath:
+      'https://images.unsplash.com/photo-1512341689857-198e7e2f3ca8?auto=format&fit=crop&w=400&h=250&q=60',
+  },
+  {
+    label: "All Time Top Song",
     imgPath:
       'https://images.unsplash.com/photo-1512341689857-198e7e2f3ca8?auto=format&fit=crop&w=400&h=250&q=60',
   },
@@ -42,8 +47,9 @@ const tutorialSteps = [
 
 const styles = theme => ({
   root: {
-    maxWidth: 400,
+    maxWidth: 500,
     flexGrow: 1,
+    marginTop: theme.spacing.unit * 15,
   },
   header: {
     display: 'flex',
@@ -53,9 +59,9 @@ const styles = theme => ({
     backgroundColor: theme.palette.background.default,
   },
   img: {
-    height: 255,
+    height: 355,
     display: 'block',
-    maxWidth: 400,
+    maxWidth: 500,
     overflow: 'hidden',
     width: '100%',
   },
@@ -96,7 +102,7 @@ class Carousel extends React.Component {
 
     return (
       <div className={classes.root}>
-        <Paper square elevation={0} className={classes.header}>
+        <Paper square elevation={0} className={classes.header} style={{backgroundColor:'#66AC5B'}}>
           <Typography>{tutorialSteps[activeStep].label}</Typography>
         </Paper>
         <AutoPlaySwipeableViews
@@ -120,14 +126,14 @@ class Carousel extends React.Component {
           className={classes.mobileStepper}
           nextButton={
             <Button size="small" onClick={this.handleNext} disabled={activeStep === maxSteps - 1}>
-              Next
+              
               {theme.direction === 'rtl' ? <KeyboardArrowLeft /> : <KeyboardArrowRight />}
             </Button>
           }
           backButton={
             <Button size="small" onClick={this.handleBack} disabled={activeStep === 0}>
               {theme.direction === 'rtl' ? <KeyboardArrowRight /> : <KeyboardArrowLeft />}
-              Back
+              
             </Button>
           }
         />

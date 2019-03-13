@@ -14,6 +14,8 @@ import statify_logo from '../../../public/Assets/images/statify_logo.png';
 import Image from '../../../public/Assets/images/music_listening.jpg';
 import LinearDeterminate from './statify-core/LinearDeterminate';
 import Carousel from './statify-core/Carousel';
+import TopSongCard from './statify-core/TopSongCard';
+import MediaCard from './statify-core/MediaCard';
 
 
 export default class HomeRoot extends React.Component {
@@ -27,19 +29,35 @@ export default class HomeRoot extends React.Component {
     render() {
         return (
             <MuiThemeProvider theme={theme}>
-            <Paper style={theme.paperContainer1}>
-            <Grid container spacing={0} direction="column" alignItems="center" 
-			justify="center" style={{ minHeight: '100vh' }}>
-                <Carousel/>
-             	<Typography variant="h3" color="default" align="center" p={2000} style={{textShadow: '2px -2px 20px #000000n'}}>
-              	Welcome to your Statify home!
-            	</Typography>
-                <img src={statify_logo}  width={300} height={275} mode='fit'/>
-                <Typography variant="h6" color="default" align="center" p={2000} style={{textShadow: '0 0 3px #000000'}}>
-                This is where you can view all of your Spotify Trends.
-                </Typography>
-            </Grid>
-            </Paper>
+                <Paper style={theme.paperContainer1}>
+                    <Grid container spacing={32} direction="column" alignItems="center" 
+                        justify="center" style={{ minHeight: '110vh' }}>  
+                        <Grid item>
+                        <Typography variant="h1" style={{textShadow: '2px -2px 20px #000000', fontWeight: "450"}} >
+                        <img src={statify_logo}  width={100} height={90}/>
+                            Statify
+                        </Typography>        
+                        </Grid>    
+                         <Typography variant="h6" style={{textShadow: '2px -2px 20px #000000', fontWeight: "500"}} >
+                            Where you can view all of your Spotify Trends
+                         </Typography>
+                         <Grid item>
+                            <Grid container direction="row" spacing={32}>
+                                <Grid item>
+                                <MediaCard/>
+                                </Grid>
+                                <Grid item>
+                                <MediaCard/>
+                                </Grid>
+                                <Grid item>
+                                <MediaCard/>
+                                </Grid>
+                            </Grid>
+                        </Grid>
+                            
+                       
+                    </Grid>  
+                </Paper>
             </MuiThemeProvider>
         );
     }
