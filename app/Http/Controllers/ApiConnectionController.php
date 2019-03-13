@@ -83,9 +83,16 @@ class ApiConnectionController extends Controller {
    }
 
    public function insert_new_user() {
+
+      if ($this->user_info['images'] == null) {
+      DB::insert('insert into users (access_token, refresh_token, name, email, uri) values (?, ?, ?, ?, ?)',
+          [$this->access_token, $this->refresh_token, $this->user_info['display_name'], 
+          $this->user_info['email'], $this->user_info['uri']]);
+      } else {
       DB::insert('insert into users (access_token, refresh_token, name, email, uri, image) values (?, ?, ?, ?, ?, ?)',
           [$this->access_token, $this->refresh_token, $this->user_info['display_name'], 
           $this->user_info['email'], $this->user_info['uri'], $this->user_info['images'][0]['url']]);
+      }
    }
 
    public function update_existing_user() {
