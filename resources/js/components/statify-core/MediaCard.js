@@ -64,7 +64,7 @@ class MediaCard extends React.Component {
   
 
   render() {
-    const { classes, title, image, data } = this.props;
+    const { classes, title, image, data, href } = this.props;
     return (
       <Card className={classes.card}>
         <CardHeader
@@ -79,7 +79,7 @@ class MediaCard extends React.Component {
         />
         <CardContent style={{textAlign: "center"}}>
         <div>
-          <Button variant="outlined" color="primary" href="/trends">
+          <Button variant="outlined" color="primary" href={href}>
            {"View " + title + "s"} 
           </Button>
           </div>
@@ -96,6 +96,7 @@ MediaCard.propTypes = {
   title: PropTypes.string.isRequired,
   image: PropTypes.string.isRequired,
   data: PropTypes.string.isRequired,
+  href: PropTypes.string.isRequired,
 };
 
 export default withStyles(styles)(MediaCard);
