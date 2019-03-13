@@ -21,7 +21,8 @@ class SongsInRecommendations extends Migration
 
             $table->primary(['recommendation_id', 'song_id']);
             $table->foreign('song_id')->references('song_id')->on('songs');
-            $table->foreign('recommendation_id')->references('recommendation_id')->on('recommendations');
+            $table->foreign('recommendation_id')->references('recommendation_id')
+               ->on('recommendations')->onDelete('cascade');
         });
     }
 
