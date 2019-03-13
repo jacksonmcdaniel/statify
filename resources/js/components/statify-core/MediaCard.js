@@ -69,7 +69,7 @@ class MediaCard extends React.Component {
       <Card className={classes.card}>
         <CardHeader
           
-          title={"Top " + title}
+          title={title}
           subheader={data}
         />
         <CardMedia
