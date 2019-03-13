@@ -30,7 +30,7 @@ class Circle extends React.Component {
           padding:10,
           margin:20,
           display:"inline-block",
-          backgroundColor: green[500],
+          backgroundColor: "#00CF6C",
           borderRadius: "50%",
           width:size,
           height:size,
@@ -196,7 +196,7 @@ export default class LoadingHome extends React.Component {
 
                 <Typography variant="h3" color="default" p={2000} style={{textShadow: '0 0 3px #000000'}}>
                 <div style={{ position: 'fixed'}}>
-                                <Circle size={400} key={5} bgColor={'#66AC5B'}/>
+                                <Circle size={400} key={5} bgColor={'#00CF6C'}/>
                 </div>
 
                 </Typography>
