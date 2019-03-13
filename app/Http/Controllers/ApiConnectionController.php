@@ -29,7 +29,8 @@ class ApiConnectionController extends Controller {
             'user-read-private',
             'user-top-read',
             'user-read-recently-played',
-            'user-read-email'
+            'user-read-email',
+            'playlist-modify-private'
          ],
       ];
 
