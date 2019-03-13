@@ -47,17 +47,17 @@ export default class HomeRoot extends React.Component {
                             <Grid container direction="row" spacing={32}>
                             {topSong ?
                                 <Grid item>
-                                <MediaCard title="Top Song" data={topSong.song_name} image={topSong.image}/>
+                                <MediaCard title="Top Song" data={topSong.song_name} image={topSong.image} href="/trends"/>
                                 </Grid>
                             : null }
                             {topArtist ?
                                 <Grid item>
-                                <MediaCard title="Top Artist" data={topArtist.artist} image={topArtist.image}/>
+                                <MediaCard title="Top Artist" data={topArtist.artist} image={topArtist.image} href="/artists"/>
                                 </Grid>
                             : null }
                             {topRecommendation ?
                                 <Grid item>
-                                <MediaCard title="Top Recommendation" data={topRecommendation.song_name} image={topRecommendation.image}/>
+                                <MediaCard title="Top Recommendation" data={topRecommendation.song_name} image={topRecommendation.image} href="/recommendations"/>
                                 </Grid>
                             : null }
                             </Grid>
