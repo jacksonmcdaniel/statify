@@ -14,7 +14,7 @@ class Recommendations extends Migration
     public function up() {
         Schema::create('recommendations', function (Blueprint $table) {
             $table->increments('recommendation_id');
-            $table->unsignedInteger('user-id');
+            $table->unsignedInteger('user_id');
             $table->timestamps();
 
             $table->foreign('user_id')->references('user_id')->on('users')->onDelete('cascade');
