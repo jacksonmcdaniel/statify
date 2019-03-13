@@ -37,6 +37,7 @@ import Grid from '@material-ui/core/Grid';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import LinearProgress from '@material-ui/core/LinearProgress';
 import PersonIcon from '@material-ui/icons/Person';
+import Avatar from '@material-ui/core/Avatar';
 
 const drawerWidth = 240;
 
@@ -191,7 +192,9 @@ class PersistentDrawerLeft extends React.Component {
                      aria-haspopup="true"
                       onClick={this.handleClick} color="inherit"
               >
-                <AccountCircle />
+                <Avatar>
+                  <img src='https://profile-images.scdn.co/images/userprofile/default/2f294d73d7342bdb3e2a120c2093bb8443b98779'  width={40} height={40} mode='fit'/>
+                </Avatar>
               </IconButton>
               : null }
             {user_id ?

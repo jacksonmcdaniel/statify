@@ -69,7 +69,7 @@ class MediaCard extends React.Component {
       <Card className={classes.card}>
         <CardHeader
           
-          title={title}
+          title={"Top " + title}
           subheader={data}
         />
         <CardMedia
@@ -80,7 +80,7 @@ class MediaCard extends React.Component {
         <CardContent style={{textAlign: "center"}}>
         <div>
           <Button variant="outlined" color="primary" href="/trends">
-           View Trends 
+           {"View " + title + "s"} 
           </Button>
           </div>
         </CardContent>
