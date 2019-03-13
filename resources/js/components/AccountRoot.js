@@ -22,14 +22,14 @@ export default class AccountRoot extends React.Component {
 	}
 
     render() {
-        const { email, name, accountImage } = this.props;
+        const { email, name, user_image } = this.props;
         return (
             <MuiThemeProvider theme={theme}>
             <Paper style={theme.paperContainer4}>
             <Grid container spacing={0} alignItems="center" 
 			justify="space-evenly" style={{ minHeight: '100vh' }}>
-            <AccountPaper email={email} name={name}/>
-            <DeleteAccount accountImage={accountImage}/>
+            <AccountPaper email={email} name={name} user_image={user_image}/>
+            <DeleteAccount user_image={user_image}/>
             </Grid>
             </Paper>
             </MuiThemeProvider>
@@ -41,5 +41,6 @@ if (document.getElementById('AccountRoot')) {
     var element = document.getElementById('AccountRoot');
     var email = element.getAttribute("email");
     var name = element.getAttribute("name");
-    ReactDOM.render(<AccountRoot email={email} name={name} accountImage={signInRootViewModel['user_image']}/>, document.getElementById('AccountRoot'));
+    var user_image = element.getAttribute("user_image");
+    ReactDOM.render(<AccountRoot email={email} name={name} user_image={user_image}/>, document.getElementById('AccountRoot'));
 }
