@@ -97,11 +97,11 @@ class LoadingController extends Controller
 
     public function get_song_recommendations($api) {
         //Check that user has recent top songs to use as a seed
-        if (sizeof($tracks_seed = get_seed('short_term')) > 0) {
+        if (sizeof($tracks_seed = $this->get_seed('short_term')) > 0) {
             $recommendation = $api->get_recommendation(25, $tracks_seed);
         }
         //Check that user has all time top songs to use as a seed
-        else if (sizeof($tracks_seed = get_seed('long_term')) > 0) {
+        else if (sizeof($tracks_seed = $this->get_seed('long_term')) > 0) {
             $recommendation = $api->get_recommendation(25, $tracks_seed);
         }
         //User has no songs, defaulting to SICKO MODE
