@@ -13,7 +13,7 @@ class SongsInRecommendations extends Migration
      */
     public function up()
     {
-        Schema::table('songs_in_recommendations', function (Blueprint $table) {
+        Schema::create('songs_in_recommendations', function (Blueprint $table) {
             $table->unsignedInteger('recommendation_id');
             $table->string('song_id');
             $table->tinyInteger('song_ordinal');
