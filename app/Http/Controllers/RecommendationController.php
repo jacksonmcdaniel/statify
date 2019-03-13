@@ -14,6 +14,7 @@ class RecommendationController extends Controller
 
         return view('recommendations', [
             'user_id' => session('user_id'),
+            'user_image' => session('user_image'),
             'tabIndex' => 0,
             'name' => "Recommendations",
             'songs' => $songs]

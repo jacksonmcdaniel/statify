@@ -20,6 +20,7 @@
         var signInRootViewModel = {
             'value' : parseInt("{{$tabIndex}}", 10),
             'name' : "{{$name}}",
+            'user_image' : "{{$user_image}}",
             'user_id' : parseInt("{{$user_id}}", 10)};
     </script>
 

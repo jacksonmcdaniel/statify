@@ -17,7 +17,8 @@ class ArtistController extends Controller
 
 
         return view('artists', [
-            'user_id' => session('user_id'),
+         'user_id' => $user_id,
+            'user_image' => session('user_image'),
             'tabIndex' => 0,
             'name' => "Top Artists",
         	'songs' => $songs]);
@@ -39,7 +40,8 @@ class ArtistController extends Controller
       $songs = Trend::getSongs($name, $user_id);
      
       return view('artists', [
-         'user_id' => session('user_id'),
+         'user_id' => $user_id,
+         'user_image' => session('user_image'),
          'songs' => $songs,
          'tabIndex' => $index,
          'name' => "Top Artists"

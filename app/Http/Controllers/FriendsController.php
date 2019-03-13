@@ -20,6 +20,7 @@ class FriendsController extends Controller
         //dd($friends->toArray());
         return view('friends', [
             'user_id' => $uid,
+            'user_image' => session('user_image'),
             'friends' => $friends,
             'tabIndex' => 0,
             'name' => "Friends"]);

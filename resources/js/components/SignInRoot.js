@@ -20,7 +20,7 @@ export default class SignInRoot extends React.Component {
 
         return (
             <MuiThemeProvider theme={theme}>
-            <PersistentDrawerLeft trends={this.state.trends} value={viewModel['value']} name={viewModel['name']} user_id={viewModel['user_id']}/>
+            <PersistentDrawerLeft trends={this.state.trends} value={viewModel['value']} name={viewModel['name']} user_id={viewModel['user_id']} user_image={viewModel['user_image']}/>
             </MuiThemeProvider>
         );
     }
