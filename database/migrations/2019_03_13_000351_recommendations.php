@@ -12,7 +12,7 @@ class Recommendations extends Migration
      * @return void
      */
     public function up() {
-        Schema::create('trends', function (Blueprint $table) {
+        Schema::create('recommendations', function (Blueprint $table) {
             $table->increments('recommendation_id');
             $table->unsignedInteger('user-id');
             $table->timestamps();
