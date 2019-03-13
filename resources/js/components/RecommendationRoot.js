@@ -9,6 +9,7 @@ import StatifyTable from './statify-core/StatifyTable';
 import { MuiThemeProvider } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
+import Button from '@material-ui/core/Button';
 
 
 let id = 0;
@@ -28,10 +29,14 @@ export default class RecommendationRoot extends React.Component {
         return (
             <MuiThemeProvider theme={theme}>
               <Paper style={theme.paperContainer3}>
-               <Grid container direction="column" alignItems="center" 
-                  style={{ minHeight: '100vh' }}>
-                  <StatifyTable songs={songs}/>
+              
+                <StatifyTable songs={songs} style={{marginTop: "-200px"}}/>
+                <Grid container direction="column" alignItems="center" style={{padding: "50px"}}>
+                  <Button color="primary" variant="contained">
+                    Add to Spotify Playlist
+                  </Button>
                 </Grid>
+                
               </Paper>
             </MuiThemeProvider>
         );
