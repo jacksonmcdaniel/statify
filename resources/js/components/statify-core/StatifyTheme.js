@@ -9,8 +9,8 @@ import BackgroundPhone from '../../../../public/Assets/images/phone_trends.jpg';
 
 const theme = createMuiTheme({
   palette: {
-    secondary: {light:green[500], main:green[500], dark:green[500]},
-    primary: {light:grey[300], main:green[500], dark:grey[900]},
+    secondary: {light:green[500], main:"#00CF6C", dark:"#00CF6C"},
+    primary: {light:grey[300], main:"#00CF6C", dark:grey[900]},
     error: {main: green[50]},
     type: 'dark',
   },

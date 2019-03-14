@@ -42,6 +42,6 @@ if (document.getElementById('ArtistRoot')) {
     var element = document.getElementById('ArtistRoot');
     var name = element.getAttribute("name");
     var songs = element.getAttribute("songs");
-    //console.log(songs);
+
     ReactDOM.render(<ArtistRoot songs={JSON.parse(songs)}/>, document.getElementById('ArtistRoot'));
 }

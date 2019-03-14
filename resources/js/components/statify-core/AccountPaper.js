@@ -25,14 +25,16 @@ const styles = theme => ({
 });
 
 function AccountPaper(props) {
-  const { classes, name, email } = props;
+  const { classes, name, email, user_image } = props;
   
   return (
     <List className={classes.root}>
       <ListItem>
-        <Avatar>
-          <AccountCircle />
-        </Avatar>
+          <Avatar>
+          {user_image != "" ?
+            <img src={user_image}  width={40} height={40} mode='fit'/>
+          : <AccountCircle /> }
+          </Avatar>
         <ListItemText primary="Profile"/>
       </ListItem>
       <li>
@@ -69,6 +71,7 @@ AccountPaper.propTypes = {
   classes: PropTypes.object.isRequired,
   email: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
+  user_image: PropTypes.string,
 };
 
 export default withStyles(styles)(AccountPaper);

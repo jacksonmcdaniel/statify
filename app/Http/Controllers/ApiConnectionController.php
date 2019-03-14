@@ -30,7 +30,8 @@ class ApiConnectionController extends Controller {
             'user-top-read',
             'user-read-recently-played',
             'user-read-email',
-             'user-follow-read'
+            'user-follow-read',
+            'playlist-modify-private'
          ],
       ];
 
@@ -74,7 +75,9 @@ class ApiConnectionController extends Controller {
          $this->update_existing_user();
       }
       
-      session(['user_id' => $this->get_user_id_db()[0]->user_id]);
+      session(['user_id' => $this->get_user_id_db()[0]->user_id,
+               'user_image' => $this->get_user_image_db()[0]->image
+               ]);
    }
    
    public function get_user_id_db() {
@@ -82,10 +85,22 @@ class ApiConnectionController extends Controller {
          [$this->user_info['email']]);
    }
 
+   public function get_user_image_db() {
+      return DB::select('select image from users where email = ?', 
+         [$this->user_info['email']]);
+   }
+
    public function insert_new_user() {
-      DB::insert('insert into users (access_token, refresh_token, email, uri) values (?, ?, ?, ?)',
-         [$this->access_token, $this->refresh_token, $this->user_info['email'], 
-         $this->user_info['uri']]);
+
+      if ($this->user_info['images'] == null) {
+      DB::insert('insert into users (access_token, refresh_token, name, email, uri) values (?, ?, ?, ?, ?)',
+          [$this->access_token, $this->refresh_token, $this->user_info['display_name'], 
+          $this->user_info['email'], $this->user_info['uri']]);
+      } else {
+      DB::insert('insert into users (access_token, refresh_token, name, email, uri, image) values (?, ?, ?, ?, ?, ?)',
+          [$this->access_token, $this->refresh_token, $this->user_info['display_name'], 
+          $this->user_info['email'], $this->user_info['uri'], $this->user_info['images'][0]['url']]);
+      }
    }
 
    public function update_existing_user() {

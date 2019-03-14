@@ -14,8 +14,10 @@ class AccountController extends Controller
 
         return view('account', [
             'user_id' => session('user_id'),
+            'user_image' => session('user_image'),
             'username' => $userInfo->name,
             'email' => $userInfo->email,
+            'accountImage' => $userInfo->image,
             'tabIndex' => 0,
             'name' => "Account"]);
     }

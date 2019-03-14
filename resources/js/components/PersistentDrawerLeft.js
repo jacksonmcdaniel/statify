@@ -37,6 +37,7 @@ import Grid from '@material-ui/core/Grid';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import LinearProgress from '@material-ui/core/LinearProgress';
 import PersonIcon from '@material-ui/icons/Person';
+import Avatar from '@material-ui/core/Avatar';
 
 const drawerWidth = 240;
 
@@ -155,7 +156,7 @@ class PersistentDrawerLeft extends React.Component {
   }
 
   render() {
-    const { classes, theme, name, value, user_id } = this.props;
+    const { classes, theme, name, value, user_id, user_image } = this.props;
     const { open, handleDrawerClose, handleDrawerOpen, anchorEl, 
       openModal, trends, handleTrendsPage, handleTrendsPageOff }  = this.state;
 
@@ -191,7 +192,11 @@ class PersistentDrawerLeft extends React.Component {
                      aria-haspopup="true"
                       onClick={this.handleClick} color="inherit"
               >
-                <AccountCircle />
+              {user_image != "" ?
+                <Avatar>
+                  <img src={user_image}  width={40} height={40} mode='fit'/>
+                </Avatar>
+                : <AccountCircle /> }
               </IconButton>
               : null }
             {user_id ?
@@ -305,7 +310,8 @@ PersistentDrawerLeft.propTypes = {
   trends: PropTypes.bool.isRequired,
   name: PropTypes.string.isRequired,
   value: PropTypes.number.isRequired,
-  user_id: PropTypes.number
+  user_id: PropTypes.number,
+  user_image: PropTypes.string
 };
 
 const SimpleModalWrapped = withStyles(styles, { withTheme: true })(PersistentDrawerLeft);

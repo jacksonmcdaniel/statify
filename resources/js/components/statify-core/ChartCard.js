@@ -31,6 +31,7 @@ const styles = theme => ({
     backgroundColor: theme.palette.background.paper,
     overflowX: 'visible',
     flexGrow: 1,
+    paddingTop: '20px',
   },
   margin: {
     margin: "center",
@@ -42,6 +43,10 @@ const styles = theme => ({
     minWidth: 350,
     position: 'fixed'
   },
+  line: {
+    paddingRight: '20px',
+    paddingLeft: '20px'
+  }
 });
 
 let id = 0;
@@ -105,7 +110,7 @@ function ChartCard(props) {
             </Typography>
             <ul/>
             {attributes.map(attr => (
-              <div key={attr.id}>
+              <div key={attr.id} className={classes.line}>
               <Typography>
                 {attr.name}
               </Typography>
