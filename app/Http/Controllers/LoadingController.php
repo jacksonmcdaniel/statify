@@ -81,7 +81,7 @@ class LoadingController extends Controller
             INSERT IGNORE INTO artists 
             (artist_id, artist_name, artist_image, artist_uri) 
             VALUES (?, ?, ?, ?)', 
-            [$artist['id'], $artist['name'], end($artist['images'])['url'], $artist['uri']]
+            [$artist['id'], $artist['name'], $artist['images'][0]['url'], $artist['uri']]
          );       
          DB::insert('
             INSERT IGNORE INTO artists_in_trends 
