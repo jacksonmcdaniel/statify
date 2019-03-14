@@ -63,7 +63,7 @@ class StatifyTable extends React.Component {
                 </Avatar>
                 </TableCell>
               <TableCell component="th" scope="row">
-                {song.song_name.length > 30 ? song.song_name.substring(0,30) + "..." : song.song_name}
+                {song.song_name.length > 40 ? song.song_name.substring(0,40) + "..." : song.song_name}
               </TableCell>
               <TableCell >{song.artist}</TableCell>
             </TableRow>
