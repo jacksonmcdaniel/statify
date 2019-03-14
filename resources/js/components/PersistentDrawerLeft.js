@@ -63,10 +63,7 @@ const styles = theme => ({
     flexGrow: 1,
   },
   sectionDesktop: {
-    display: 'none',
-    [theme.breakpoints.up('md')]: {
       display: 'flex',
-    },
   },
   menuButton: {
     marginLeft: 12,
@@ -202,6 +199,7 @@ class PersistentDrawerLeft extends React.Component {
             {user_id ?
               <Menu
                 id="simple-menu"
+                anchorEl={anchorEl}
                 open={Boolean(anchorEl)}
                 onClose={this.handleClose}
               >
