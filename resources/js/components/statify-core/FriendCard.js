@@ -16,6 +16,7 @@ import PersonIcon from '@material-ui/icons/PersonOutline';
 import WorldIcon from '@material-ui/icons/Language';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
+import Typography from '@material-ui/core/Typography';
 
 const styles = theme => ({
   root: {
@@ -27,11 +28,16 @@ const styles = theme => ({
   margin: {
     margin: "center",
   },
+  bigAvatar: {
+    margin: 10,
+    width: 150,
+    height: 150,
+  },
 });
 
 function FriendCard(props) {
 
-  const { classes, name, friend_id } = props;
+  const { classes, name, friend_id, image } = props;
 
   return (
     <Grid item xs={3}>
@@ -42,14 +48,17 @@ function FriendCard(props) {
             <ListItem >
               <Grid container spacing={0} direction="column" alignItems="center" 
                 justify="center" >
-                <ListItemText primary={name}/>
+                <ListItemText disableTypography={true} 
+                primary={<Typography variant="h5" style={{ color: '#FFFFFF' }}>{name}</Typography>}/>
               </Grid>
             </ListItem>
             <Divider variant="inset"/>
             <Button size="medium" color="primary" className={classes.margin} href={"/friends/"+friend_id}>
-            <Avatar>
-              <PersonIcon />
-            </Avatar>
+            <Avatar className={classes.bigAvatar}>
+          {image != "" ?
+            <img src={image}  width={150} height={170} mode='fit'/>
+          : <AccountCircle /> }
+          </Avatar>
             </Button>
           </Grid>
         </List>
@@ -62,7 +71,8 @@ function FriendCard(props) {
 FriendCard.propTypes = {
   classes: PropTypes.object.isRequired,
   name: PropTypes.string.isRequired,
-  friend_id: PropTypes.number.isRequired
+  friend_id: PropTypes.number.isRequired,
+  image: PropTypes.string.isRequired
 };
 
 export default withStyles(styles)(FriendCard);
