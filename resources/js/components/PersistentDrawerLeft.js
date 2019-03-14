@@ -202,7 +202,6 @@ class PersistentDrawerLeft extends React.Component {
             {user_id ?
               <Menu
                 id="simple-menu"
-                anchorEl={anchorEl}
                 open={Boolean(anchorEl)}
                 onClose={this.handleClose}
               >

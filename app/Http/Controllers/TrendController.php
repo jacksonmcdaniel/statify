@@ -41,15 +41,15 @@ class TrendController extends Controller {
            $songs = Trend::getSongs($name, $friend_id);
 
            $friendUserInfo = User::getUserInfo($friend_id);
-           return view('trends', [
-           'user_id' => session('user_id'),
-           'user_image' => session('user_image'),
-           'songs' => $songs,
-           'tabIndex' => $index,
-           'name' => ($friendUserInfo->name . "'s Top Songs")
-           ]);
+
+           if ($friendUserInfo == null) {
+              $name = "Friend's Top Songs";
+           } else {
+              $name = ($friendUserInfo->name . "'s Top Songs");
+           }
        } else {
            $songs = Trend::getSongs($name, $user_id);
+           $name = "Top Songs";
        }
 
        return view('trends', [
@@ -57,7 +57,7 @@ class TrendController extends Controller {
            'user_image' => session('user_image'),
            'songs' => $songs,
            'tabIndex' => $index,
-           'name' => "Top Songs"
+           'name' => $name
        ]);
    }
 }
