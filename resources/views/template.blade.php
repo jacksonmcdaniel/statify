@@ -16,8 +16,14 @@
 </head>
 
 <body>
+    <script>
+        var signInRootViewModel = {
+            'value' : parseInt("{{$tabIndex}}", 10),
+            'name' : "{{$name}}",
+            'user_id' : parseInt("{{$user_id}}", 10)};
+    </script>
 
-    <div id="SignInRoot" value={{$tabIndex}} name="{{$name}}" user_id={{$user_id}}></div>
+    <div id="SignInRoot" user_image="{{$user_image}}"></div>
 
     @yield('content')
     <script src="{{ mix('js/app.js') }}"></script>

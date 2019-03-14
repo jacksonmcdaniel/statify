@@ -53,13 +53,15 @@ class DeleteAccount extends React.Component {
   }
 
   render() {
-    const { classes, openModal, handleCloseModal, handleOpenModal } = this.props;
+    const { classes, user_image, openModal, handleCloseModal, handleOpenModal } = this.props;
     return (
       <List className={classes.root}>
       
         <ListItem>
           <Avatar>
-            <PersonIcon />
+          {user_image != "" ?
+            <img src={user_image}  width={40} height={40} mode='fit'/>
+          : <AccountCircle /> }
           </Avatar>
           <ListItemText primary="Delete Account?" secondary="Once you delete your account, we will no longer have access to your Spotify listening habits." />
         </ListItem>
@@ -105,6 +107,7 @@ class DeleteAccount extends React.Component {
 
 DeleteAccount.propTypes = {
   classes: PropTypes.object.isRequired,
+  user_image: PropTypes.string.isRequired,
 };
 
 export default withStyles(styles)(DeleteAccount);

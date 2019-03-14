@@ -12,6 +12,7 @@ class LoadingController extends Controller
    public function index() {
       return view('loading', [
          'user_id' => session('user_id'),
+         'user_image' => session('user_image'),
          'tabIndex' => 0,
          'name' => "Loading Data"]);
     }
@@ -34,8 +35,8 @@ class LoadingController extends Controller
 
       if (array_key_exists(0, $trends_timestamp)) {
          $trends_timestamp = $trends_timestamp[0]->updated_at;
-         //If the trend is less than one week old, do nothing
-         if((time() - strtotime($trends_timestamp)) < (7 * 24 * 60 * 60)) {
+         //If the trend is less than three days old, do nothing
+         if((time() - strtotime($trends_timestamp)) < (3 * 24 * 60 * 60)) {
             return;
          }
       }
@@ -95,19 +96,33 @@ class LoadingController extends Controller
       }
    }
 
-	public function get_song_recommendations($api) {
-      $tracks_seed = DB::select('
+    public function get_song_recommendations($api) {
+        //Check that user has recent top songs to use as a seed
+        if (sizeof($tracks_seed = $this->get_seed('short_term')) > 0) {
+            $recommendation = $api->get_recommendation(25, $tracks_seed);
+        }
+        //Check that user has all time top songs to use as a seed
+        else if (sizeof($tracks_seed = $this->get_seed('long_term')) > 0) {
+            $recommendation = $api->get_recommendation(25, $tracks_seed);
+        }
+        //User has no songs, defaulting to SICKO MODE
+        else {
+            $recommendation = $api->get_recommendation(25);
+        }
+        $this->insert_recommendation($recommendation, $api);
+    }
+
+    public function get_seed($term) {
+        $tracks_seed = DB::select('
          select song_id 
          from trends 
          join songs_in_trends on trends.trend_id = songs_in_trends.trend_id
          where user_id = ? and type = ? order by song_ordinal
          limit 5',
-         [session('user_id'), 'short_term']
+         [session('user_id'), $term]
       );
-      $tracks_seed = array_column($tracks_seed, 'song_id');
-      $recommendation = $api->get_recommendation(25, $tracks_seed); 
-      $this->insert_recommendation($recommendation, $api);
-   }
+      return array_column($tracks_seed, 'song_id');
+    }
    
    public function insert_recommendation($recommendation, $api) {
       DB::delete('

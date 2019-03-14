@@ -27,4 +27,5 @@ Route::get('/loading', 'LoadingController@index');
 Route::get('/loading/{type}', 'LoadingController@show');
 Route::get('/artists', 'ArtistController@index');
 Route::get('/artists/{tid}', 'ArtistController@show');
+Route::get('/recommendations/playlist', 'RecommendationController@playlistButton');
 

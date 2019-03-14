@@ -7,6 +7,6 @@
 
 @section('content')
 
-	<div id="HomeRoot"></div>
+	<div id="HomeRoot" topSong="{{$topSong}}" topArtist="{{$topArtist}}" topRecommendation="{{$topRecommendation}}"></div>
 
 @endsection

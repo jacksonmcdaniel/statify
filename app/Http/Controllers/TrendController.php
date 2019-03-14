@@ -17,6 +17,7 @@ class TrendController extends Controller {
 
       return view('trends', [
          'user_id' => session('user_id'),
+         'user_image' => session('user_image'),
          'songs' => $songs,
          'tabIndex' => 0,
          'name' => "Trends"]);
