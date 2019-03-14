@@ -31,7 +31,8 @@ const styles = theme => ({
 
 function FriendCard(props) {
 
-  const { classes, name } = props;
+  const { classes, name, friend_id } = props;
+
   return (
     <Grid item xs={3}>
       <Grid container spacing={8} justify="space-evenly" align="center">
@@ -45,7 +46,7 @@ function FriendCard(props) {
               </Grid>
             </ListItem>
             <Divider variant="inset"/>
-            <Button size="medium" color="primary" className={classes.margin} href="/home">
+            <Button size="medium" color="primary" className={classes.margin} href={"/friends/"+friend_id}>
             <Avatar>
               <PersonIcon />
             </Avatar>
@@ -61,6 +62,7 @@ function FriendCard(props) {
 FriendCard.propTypes = {
   classes: PropTypes.object.isRequired,
   name: PropTypes.string.isRequired,
+  friend_id: PropTypes.number.isRequired
 };
 
 export default withStyles(styles)(FriendCard);

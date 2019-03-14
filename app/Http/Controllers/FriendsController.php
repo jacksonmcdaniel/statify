@@ -76,6 +76,12 @@ class FriendsController extends Controller
 
     }
 
+    public function show($friendID) {
+        session(['friend_id' => $friendID]);
+        return redirect("/trends/long_term");
+    }
+
+
     public function get_friends() {
 
         //Create api connection
