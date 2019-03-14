@@ -36,14 +36,14 @@ class StatifyArtistTable extends React.Component {
       <Table className={classes.table}>
         <TableHead>
           <TableRow>
-            <TableCell align="center"></TableCell>
+            <TableCell align="center" padding="checkbox" className={classes.column}></TableCell>
             <TableCell align="left">Artist</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {artists.map(artist => (
             <TableRow key={artist.artist_id}>
-            <TableCell component="th" scope="row" align="center">
+            <TableCell component="th" scope="row" align="center" padding="checkbox" className={classes.column}>
                 <Avatar>
                   <img src={artist.artist_image}  width={40} height={40} mode='fit'/>
                 </Avatar>

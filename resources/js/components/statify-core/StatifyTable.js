@@ -42,8 +42,8 @@ class StatifyTable extends React.Component {
       <Table className={classes.table}>
         <TableHead>
           <TableRow>
-            <TableCell align="center" className={classes.column}>Rank</TableCell>
-            <TableCell padding="dense"></TableCell>
+            <TableCell align="center" padding="checkbox" className={classes.column}>Rank</TableCell>
+            <TableCell align="center" padding="checkbox" className={classes.column}></TableCell>
             <TableCell>Song Name</TableCell>
             <TableCell align="left">Artist</TableCell>
           </TableRow>
@@ -51,10 +51,10 @@ class StatifyTable extends React.Component {
         <TableBody>
           {songs.map(song => (
             <TableRow key={song.song_id}>
-            <TableCell component="th" scope="row" align="center" className={classes.column}>
+            <TableCell component="th" scope="row" align="center" padding="checkbox" className={classes.column}>
                 {song.song_ordinal+1}
               </TableCell>
-              <TableCell component="th" scope="row" padding="dense">
+              <TableCell component="th" scope="row" align="center" padding="checkbox" className={classes.column}>
                 <Avatar>
                   <img src={song.image}  width={40} height={40} mode='fit'/>
                 </Avatar>
