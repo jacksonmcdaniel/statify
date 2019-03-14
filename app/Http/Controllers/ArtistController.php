@@ -18,9 +18,9 @@ class ArtistController extends Controller
 
         return view('artists', [
          'user_id' => $user_id,
-            'user_image' => session('user_image'),
-            'tabIndex' => 0,
-            'name' => "Top Artists",
+          'user_image' => session('user_image'),
+          'tabIndex' => 0,
+          'name' => "Top Artists",
         	'songs' => $songs]);
     }
 

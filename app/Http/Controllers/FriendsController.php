@@ -68,8 +68,8 @@ class FriendsController extends Controller
 
         return view('friends', [
             'user_id' => $uid,
-            'friends' => \GuzzleHttp\json_encode($friends),
             'user_image' => session('user_image'),
+            'friends' => \GuzzleHttp\json_encode($friends),
             'tabIndex' => 0,
             'name' => "Friends"]);
 
