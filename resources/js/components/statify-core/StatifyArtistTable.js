@@ -29,6 +29,7 @@ class StatifyArtistTable extends React.Component {
   render () {
   const { classes, artists } = this.props;
 
+  var i = 1;
   return (
    <Grid container justify="center" spacing={16}>
     <Grid item>
@@ -36,6 +37,7 @@ class StatifyArtistTable extends React.Component {
       <Table className={classes.table}>
         <TableHead>
           <TableRow>
+            <TableCell align="center" padding="checkbox" className={classes.column}>Rank</TableCell>
             <TableCell align="center" padding="checkbox" className={classes.column}></TableCell>
             <TableCell align="left">Artist</TableCell>
           </TableRow>
@@ -43,6 +45,9 @@ class StatifyArtistTable extends React.Component {
         <TableBody>
           {artists.map(artist => (
             <TableRow key={artist.artist_id}>
+            <TableCell component="th" scope="row" align="center" padding="checkbox" className={classes.column}>
+              {i++}
+            </TableCell>
             <TableCell component="th" scope="row" align="center" padding="checkbox" className={classes.column}>
                 <Avatar>
                   <img src={artist.artist_image}  width={40} height={40} mode='fit'/>
