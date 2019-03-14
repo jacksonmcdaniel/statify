@@ -65,8 +65,8 @@ class Api {
         $playlistID = $this->api->createUserPlaylist($spotifyID, $options)['id'];
         $songs = array_column(Recommendations::getSongs($user_id)->all(), 'song_id');
         $this->api->replaceUserPlaylistTracks($user_id, $playlistID, $songs);
-        //TODO would like to add the Statify logo to the playlist
-        //$this->api->updatePlaylistImage($playlistID, $statifyLogo);
+        $statifyLogo = base64_encode(file_get_contents('../public/images/statify_logo.jpg'));
+        $this->api->updateUserPlaylistImage($user_id, $playlistID, $statifyLogo);
     }
 
    public function get_artist($artist_id) {
