@@ -45,11 +45,11 @@ class StatifyArtistTable extends React.Component {
             <TableRow key={artist.artist_id}>
             <TableCell component="th" scope="row" align="center">
                 <Avatar>
-                  <img src={artist.image}  width={40} height={40} mode='fit'/>
+                  <img src={artist.artist_image}  width={40} height={40} mode='fit'/>
                 </Avatar>
                 </TableCell>
               <TableCell component="th" scope="row">
-                {artist.name}
+                {artist.artist_name}
               </TableCell>
             </TableRow>
           ))}

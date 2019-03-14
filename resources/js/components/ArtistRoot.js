@@ -25,6 +25,7 @@ export default class ArtistRoot extends React.Component {
 
     render() {
         const { artists } = this.props;
+
         return (
             <MuiThemeProvider theme={theme}>
               <Paper style={theme.paperContainer3}>
