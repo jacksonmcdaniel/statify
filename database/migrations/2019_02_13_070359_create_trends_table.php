@@ -15,10 +15,12 @@ class CreateTrendsTable extends Migration
     {
         Schema::create('trends', function (Blueprint $table) {
             $table->increments('trend_id');
-            $table->enum('type', ['long_term', 
-                                  'medium_term', 
-                                  'short_term', 
-                                  'long_term_artists']);
+            $table->enum('type', ['long_term_songs', 
+                                  'medium_term_songs', 
+                                  'short_term_songs', 
+                                  'long_term_artists',
+                                  'medium_term_artists',
+                                  'short_term_artists']);
             $table->unsignedInteger('user_id');
             $table->timestamps();
 
