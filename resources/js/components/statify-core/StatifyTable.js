@@ -26,7 +26,7 @@ const styles = theme => ({
     borderStyle: 'solid',
   },
   column:{
-    maxWidth: 5,
+    maxWidth: 35,
   },
   column2:{
     maxWidth: 100,
