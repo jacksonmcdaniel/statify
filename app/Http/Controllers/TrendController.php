@@ -13,6 +13,7 @@ class TrendController extends Controller {
 
    public function index() {
       $songs = Trend::getSongs('long_term', session('user_id'));
+      
       session()->forget('friend_id');
 
       return view('trends', [
@@ -43,6 +44,7 @@ class TrendController extends Controller {
 
        return view('trends', [
            'user_id' => session('user_id'),
+           'user_image' => session('user_image'),
            'songs' => $songs,
            'tabIndex' => $index,
            'name' => "Trends"
