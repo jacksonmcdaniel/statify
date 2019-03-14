@@ -27,6 +27,9 @@ const styles = theme => ({
   },
   column:{
     maxWidth: 5,
+  },
+  column2:{
+    maxWidth: 100,
   }
 });
 
@@ -44,7 +47,7 @@ class StatifyTable extends React.Component {
           <TableRow>
             <TableCell align="center" padding="checkbox" className={classes.column}>Rank</TableCell>
             <TableCell align="center" padding="checkbox" className={classes.column}></TableCell>
-            <TableCell>Song Name</TableCell>
+            <TableCell className={classes.column2} >Song Name</TableCell>
             <TableCell align="left">Artist</TableCell>
           </TableRow>
         </TableHead>
@@ -56,7 +59,7 @@ class StatifyTable extends React.Component {
               </TableCell>
               <TableCell component="th" scope="row" align="center" padding="checkbox" className={classes.column}>
                 <Avatar>
-                  <img src={song.image}  width={40} height={40} mode='fit'/>
+                  <img src={song.image}  width={40} height={40} mode='fit' className={classes.column2}/>
                 </Avatar>
                 </TableCell>
               <TableCell component="th" scope="row">
