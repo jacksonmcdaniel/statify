@@ -31,7 +31,7 @@ export default class Friends extends React.Component {
                 <Paper style={theme.paperContainer2}>
                     <Grid container spacing={24} style={{ minHeight: '100vh'}}>
                         {friends.map(friend => (
-                            <FriendCard key={friend.uid} name={friend.name}/>
+                            <FriendCard key={friend.user_id} name={friend.name} friend_id={friend.user_id}/>
                           ))}
                         <FriendCard name="friend name"/>
                         
@@ -45,6 +45,6 @@ export default class Friends extends React.Component {
 if (document.getElementById('Friends')) {
     var element = document.getElementById('Friends');
     var friends = element.getAttribute("friends");
-    console.log(friends);
+    //console.log(friends);
     ReactDOM.render(<Friends friends={JSON.parse(friends)}/>, document.getElementById('Friends'));
 }

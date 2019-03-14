@@ -16,16 +16,18 @@ export default class SignInRoot extends React.Component {
     }
 
     render() {
-        const { viewModel } = this.props;
+        const { viewModel, user_image } = this.props;
 
         return (
             <MuiThemeProvider theme={theme}>
-            <PersistentDrawerLeft trends={this.state.trends} value={viewModel['value']} name={viewModel['name']} user_id={viewModel['user_id']}/>
+            <PersistentDrawerLeft trends={this.state.trends} value={viewModel['value']} name={viewModel['name']} user_id={viewModel['user_id']} user_image={user_image}/>
             </MuiThemeProvider>
         );
     }
 }
 
 if (document.getElementById('SignInRoot')) {
-    ReactDOM.render(<SignInRoot viewModel={signInRootViewModel}/>, document.getElementById('SignInRoot'));
+    var element = document.getElementById('SignInRoot');
+    var user_image = element.getAttribute("user_image");
+    ReactDOM.render(<SignInRoot viewModel={signInRootViewModel} user_image={user_image} />, document.getElementById('SignInRoot'));
 }

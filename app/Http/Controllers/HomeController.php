@@ -18,6 +18,7 @@ class HomeController extends Controller
 
             return view('home', [
                 'user_id' => session('user_id'),
+                'user_image' => session('user_image'),
                 'tabIndex' => 0,
                 'topSong' => json_encode($topSong[0]),
                 'topArtist' => json_encode($topSong[0]),
@@ -27,6 +28,7 @@ class HomeController extends Controller
 
         return view('home', [
             'user_id' => null,
+            'user_image' => null,
             'tabIndex' => 0,
             'topSong' => null,
             'topArtist' => null,
@@ -36,9 +38,11 @@ class HomeController extends Controller
 
     public function logout() {
         session()->forget('user_id');
+        session()->forget('user_image');
 
         return view('home', [
             'user_id' => null,
+            'user_image' => null,
             'tabIndex' => 0,
             'topSong' => null,
             'topArtist' => null,

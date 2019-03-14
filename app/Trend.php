@@ -10,13 +10,27 @@ use App\Song;
 
 class Trend extends Model {
    
-   public static function getSongs($type, $user_id) {
+   public static function getTrendId($type, $user_id) {
       $trend_id = DB::select('
          SELECT trend_id 
          FROM trends 
          WHERE user_id=? AND type=?',
          [$user_id, $type]
-      )[0]->trend_id;
+      );
+
+      if ($trend_id == null) {
+         return null;
+      }
+
+      return $trend_id[0]->trend_id;
+   }
+
+   public static function getSongs($type, $user_id) {
+      $trend_id = Trend::getTrendId($type, $user_id);
+
+      if ($trend_id == null) {
+         return $trend_id;
+      }
 
       $songs = DB::table('songs_in_trends')
          ->where('songs_in_trends.trend_id', '=', $trend_id)
@@ -26,14 +40,12 @@ class Trend extends Model {
    }
 
     public static function getTopSong($type, $user_id) {
-      $trend_id = DB::select('
-         SELECT trend_id 
-         FROM trends 
-         WHERE user_id=? AND type=?',
-         [$user_id, $type]
-      )[0]->trend_id;
+      $trend_id = Trend::getTrendId($type, $user_id);
 
-
+      if ($trend_id == null) {
+         return $trend_id;
+      }
+      
       $songs = DB::select('
          SELECT songs.* 
          FROM songs

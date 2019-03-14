@@ -16,10 +16,11 @@ class ArtistController extends Controller
 
 
         return view('artists', [
-            'user_id' => session('user_id'),
-            'tabIndex' => 0,
-            'name' => "Top Artists",
-        	   'artists' => $artists]);
+         'user_id' => $user_id,
+          'user_image' => session('user_image'),
+          'tabIndex' => 0,
+          'name' => "Top Artists",
+        	'artists' => $artistss]);
     }
 
     public function show($name) {
@@ -38,7 +39,8 @@ class ArtistController extends Controller
       $artists = Artist::getArtists($name, $user_id);
      
       return view('artists', [
-         'user_id' => session('user_id'),
+         'user_id' => $user_id,
+         'user_image' => session('user_image'),
          'artists' => $artists,
          'tabIndex' => $index,
          'name' => "Top Artists"

@@ -12,6 +12,7 @@ class LoadingController extends Controller
    public function index() {
       return view('loading', [
          'user_id' => session('user_id'),
+         'user_image' => session('user_image'),
          'tabIndex' => 0,
          'name' => "Loading Data"]);
     }

@@ -32,7 +32,7 @@ class User extends Authenticatable
     public static function getUserInfo($user_id)
     {
         return DB::table('users')
-            ->select('user_id', 'name', 'email')
+            ->select('user_id', 'name', 'email', 'image')
             ->get()
             ->where('user_id', '=', $user_id)
             ->first();

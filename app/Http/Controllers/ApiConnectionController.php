@@ -30,6 +30,7 @@ class ApiConnectionController extends Controller {
             'user-top-read',
             'user-read-recently-played',
             'user-read-email',
+            'user-follow-read',
             'playlist-modify-private'
          ],
       ];
@@ -74,11 +75,18 @@ class ApiConnectionController extends Controller {
          $this->update_existing_user();
       }
       
-      session(['user_id' => $this->get_user_id_db()[0]->user_id]);
+      session(['user_id' => $this->get_user_id_db()[0]->user_id,
+               'user_image' => $this->get_user_image_db()[0]->image
+               ]);
    }
    
    public function get_user_id_db() {
       return DB::select('select user_id from users where email = ?', 
+         [$this->user_info['email']]);
+   }
+
+   public function get_user_image_db() {
+      return DB::select('select image from users where email = ?', 
          [$this->user_info['email']]);
    }
 
