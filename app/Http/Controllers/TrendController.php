@@ -12,7 +12,7 @@ use App\Api;
 class TrendController extends Controller {
 
    public function index() {
-      $songs = Trend::getSongs('long_term', session('user_id'));
+      $songs = Trend::getSongs('long_term_songs', session('user_id'));
 
       return view('trends', [
          'user_id' => session('user_id'),
@@ -24,10 +24,10 @@ class TrendController extends Controller {
    public function show($name) {
       $user_id = session('user_id');
 
-      if ($name=="long_term") {
+      if ($name=="long_term_songs") {
           $index = 0;
       }
-      else if ($name=="medium_term") {
+      else if ($name=="medium_term_songs") {
           $index = 1;
       }
       else {

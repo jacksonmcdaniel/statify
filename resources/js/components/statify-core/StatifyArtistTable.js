@@ -27,7 +27,7 @@ const styles = theme => ({
 class StatifyArtistTable extends React.Component {
 
   render () {
-  const { classes, songs } = this.props;
+  const { classes, artists } = this.props;
 
   return (
    <Grid container justify="center" spacing={16}>
@@ -41,15 +41,15 @@ class StatifyArtistTable extends React.Component {
           </TableRow>
         </TableHead>
         <TableBody>
-          {songs.map(song => (
-            <TableRow key={song.song_id}>
+          {artists.map(artist => (
+            <TableRow key={artist.artist_id}>
             <TableCell component="th" scope="row" align="center">
                 <Avatar>
-                  <img src={song.image}  width={40} height={40} mode='fit'/>
+                  <img src={artist.image}  width={40} height={40} mode='fit'/>
                 </Avatar>
                 </TableCell>
               <TableCell component="th" scope="row">
-                {song.artist}
+                {artist.name}
               </TableCell>
             </TableRow>
           ))}
@@ -64,7 +64,7 @@ class StatifyArtistTable extends React.Component {
 
 StatifyArtistTable.propTypes = {
   classes: PropTypes.object.isRequired,
-  songs: PropTypes.array.isRequired,
+  artists: PropTypes.array.isRequired,
 };
 
 export default withStyles(styles)(StatifyArtistTable);

@@ -20,33 +20,88 @@ class LoadingController extends Controller
       $api = new Api();
       $this->get_song_trends($api);
       $this->get_song_recommendations($api);
+      $this->get_artist_trend($api);
 
       return redirect('/home');
    }
 
-   public function get_song_trends($api) {
+   public function should_update_trend($trend_type) {
       $trends_timestamp = DB::select('
          SELECT updated_at
          FROM trends 
          WHERE user_id = ? AND type LIKE ?
          LIMIT 1', 
-         [session('user_id'), '%term']);
+         [session('user_id'), $trend_type]);
 
       if (array_key_exists(0, $trends_timestamp)) {
          $trends_timestamp = $trends_timestamp[0]->updated_at;
          //If the trend is less than three days old, do nothing
          if((time() - strtotime($trends_timestamp)) < (3 * 24 * 60 * 60)) {
-            return;
+            return false;
          }
       }
+      return true;
+   }
 
-      $trend_short_term = $api->get_trend('tracks', 25, 0, 'short_term');
-      $trend_medium_term = $api->get_trend('tracks', 25, 0, 'medium_term');
-      $trend_long_term = $api->get_trend('tracks', 25, 0, 'long_term');
+   public function get_artist_trend($api) {
+      if ($this->should_update_trend('%artists')) {
+         $trend_long_term = $api->get_trend('artists', 25, 0, 'long_term');
+         $trend_medium_term = $api->get_trend('artists', 25, 0, 'medium_term');
+         $trend_short_term = $api->get_trend('artists', 25, 0, 'short_term');
 
-      $this->insert_trend($trend_short_term, 'short_term', $api);
-      $this->insert_trend($trend_medium_term, 'medium_term', $api);
-      $this->insert_trend($trend_long_term, 'long_term', $api);
+         $this->insert_artist_trend($trend_long_term, 'long_term_artists', $api);
+         $this->insert_artist_trend($trend_medium_term, 'medium_term_artists', $api);
+         $this->insert_artist_trend($trend_short_term, 'short_term_artists', $api);
+      }
+   }
+
+   public function insert_artist_trend($trend, $range, $api) {
+      DB::delete('
+         DELETE FROM trends 
+         WHERE user_id=? AND type=?',
+         [session('user_id'), $range]
+      );
+      DB::insert('
+         INSERT INTO trends 
+         (type, user_id, updated_at) 
+         VALUES (?, ?, ?)', 
+         [$range, session('user_id'), now()]
+      );
+      $trend_id = DB::select('
+         SELECT trend_id 
+         FROM trends 
+         WHERE user_id=? AND type=?',
+         [session('user_id'), $range]
+      )[0]->trend_id;
+
+      $i = 0;
+      foreach($trend['items'] as $artist) {
+         DB::insert('
+            INSERT IGNORE INTO artists 
+            (artist_id, artist_name, artist_image, artist_uri) 
+            VALUES (?, ?, ?, ?)', 
+            [$artist['id'], $artist['name'], end($artist['images'])['url'], $artist['uri']]
+         );       
+         DB::insert('
+            INSERT IGNORE INTO artists_in_trends 
+            (trend_id, artist_id, artist_ordinal) 
+            VALUES (?, ?, ?)', 
+            [$trend_id, $artist['id'], $i]);
+         $i++;
+      }
+
+   }
+
+   public function get_song_trends($api) {
+      if ($this->should_update_trend('%songs')) {
+         $trend_short_term = $api->get_trend('tracks', 25, 0, 'short_term');
+         $trend_medium_term = $api->get_trend('tracks', 25, 0, 'medium_term');
+         $trend_long_term = $api->get_trend('tracks', 25, 0, 'long_term');
+
+         $this->insert_trend($trend_short_term, 'short_term_songs', $api);
+         $this->insert_trend($trend_medium_term, 'medium_term_songs', $api);
+         $this->insert_trend($trend_long_term, 'long_term_songs', $api);
+      }
    }
 
    public function insert_trend($trend, $range, $api) {

@@ -68,4 +68,8 @@ class Api {
         //TODO would like to add the Statify logo to the playlist
         //$this->api->updatePlaylistImage($playlistID, $statifyLogo);
     }
+
+   public function get_artist($artist_id) {
+      return $this->api->getArtist();
+   }
 }

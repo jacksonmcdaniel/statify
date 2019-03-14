@@ -54,20 +54,20 @@ class NavBar extends React.Component {
             <Paper square>
             {page=="trend" ?
                <Tabs value={value} onChange={this.handleChange} variant="fullWidth" indicatorColor="secondary" textColor="primary" >
-                  <Tab label="All Time" href="/trends/long_term">
+                  <Tab label="All Time" href="/trends/long_term_songs">
                   </Tab>
-                  <Tab label="6 Months" href="/trends/medium_term">
+                  <Tab label="6 Months" href="/trends/medium_term_songs">
                   </Tab>
-                  <Tab label="This Month" href="/trends/short_term">
+                  <Tab label="This Month" href="/trends/short_term_songs">
                   </Tab>
                </Tabs>
                :
                <Tabs value={value} onChange={this.handleChange} variant="fullWidth" indicatorColor="secondary" textColor="primary" >
-                  <Tab label="All Time" href="/artists/long_term">
+                  <Tab label="All Time" href="/artists/long_term_artists">
                   </Tab>
-                  <Tab label="6 Months" href="/artists/medium_term">
+                  <Tab label="6 Months" href="/artists/medium_term_artists">
                   </Tab>
-                  <Tab label="This Month" href="/artists/short_term">
+                  <Tab label="This Month" href="/artists/short_term_artists">
                   </Tab>
                </Tabs>
              }

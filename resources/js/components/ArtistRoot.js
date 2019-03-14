@@ -24,13 +24,13 @@ export default class ArtistRoot extends React.Component {
     }
 
     render() {
-        const { songs } = this.props;
+        const { artists } = this.props;
         return (
             <MuiThemeProvider theme={theme}>
               <Paper style={theme.paperContainer3}>
                <Grid container direction="column" alignItems="center" 
                   style={{ minHeight: '100vh' }}>
-                  <StatifyArtistTable songs={songs}/>
+                  <StatifyArtistTable artists={artists}/>
                 </Grid>
               </Paper>
             </MuiThemeProvider>
@@ -41,7 +41,6 @@ export default class ArtistRoot extends React.Component {
 if (document.getElementById('ArtistRoot')) {
     var element = document.getElementById('ArtistRoot');
     var name = element.getAttribute("name");
-    var songs = element.getAttribute("songs");
-    //console.log(songs);
-    ReactDOM.render(<ArtistRoot songs={JSON.parse(songs)}/>, document.getElementById('ArtistRoot'));
+    var artists = element.getAttribute("artists");
+    ReactDOM.render(<ArtistRoot artists={JSON.parse(artists)}/>, document.getElementById('ArtistRoot'));
 }
