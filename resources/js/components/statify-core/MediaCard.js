@@ -75,7 +75,6 @@ class MediaCard extends React.Component {
         <CardMedia
           className={classes.media}
           image={image}
-          title="Ed Sheeran"
         />
         <CardContent style={{textAlign: "center"}}>
         <div>

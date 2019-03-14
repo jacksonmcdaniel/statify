@@ -52,7 +52,7 @@ export default class HomeRoot extends React.Component {
                             : null }
                             {topArtist ?
                                 <Grid item>
-                                <MediaCard title="Top Artist" data={topArtist.artist} image={topArtist.image} href="/artists"/>
+                                <MediaCard title="Top Artist" data={topArtist.artist_name} image={topArtist.artist_image} href="/artists"/>
                                 </Grid>
                             : null }
                             {topRecommendation ?

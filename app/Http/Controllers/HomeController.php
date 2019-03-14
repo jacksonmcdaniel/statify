@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Trend;
 use App\Recommendations;
+use App\Artist;
 
 class HomeController extends Controller
 {
@@ -15,13 +16,14 @@ class HomeController extends Controller
 
         $topSong = Trend::getTopSong('long_term_songs', $user_id);
         $topRecommendation = Recommendations::getTopSong($user_id);
+        $topArtist = Artist::getTopArtist('long_term_artists', $user_id);
 
             return view('home', [
                 'user_id' => session('user_id'),
                 'user_image' => session('user_image'),
                 'tabIndex' => 0,
                 'topSong' => json_encode($topSong[0]),
-                'topArtist' => json_encode($topSong[0]),
+                'topArtist' => json_encode($topArtist[0]),
                 'topRecommendation' => json_encode($topRecommendation[0]),
                 'name' => "Home"]);
         }

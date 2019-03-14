@@ -36,8 +36,8 @@ class Artist extends Model {
       $artist = DB::select('
          SELECT artists.*
          FROM artists
-         JOIN artists_in_trends ON artists.artists_id = artists_in_trends.artists_id
-         WHERE artists.artists_id = artists.artists_id AND artists_in_trends.trend_id=? AND artists_in_trends.artists_ordinal=0',
+         JOIN artists_in_trends ON artists.artist_id = artists_in_trends.artist_id
+         WHERE artists.artist_id = artists.artist_id AND artists_in_trends.trend_id=? AND artists_in_trends.artist_ordinal=0',
          [$trend_id]
       );
       return $artist;
