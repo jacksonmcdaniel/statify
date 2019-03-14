@@ -20,7 +20,7 @@ class ArtistController extends Controller
           'user_image' => session('user_image'),
           'tabIndex' => 0,
           'name' => "Top Artists",
-        	'artists' => $artistss]);
+        	'artists' => $artists]);
     }
 
     public function show($name) {
