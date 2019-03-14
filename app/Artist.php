@@ -30,7 +30,13 @@ class Artist extends Model {
          FROM trends
          WHERE user_id=? AND type=?',
          [$user_id, $type]
-      )[0]->trend_id;
+      );
+
+      if ($trend_id == null) {
+         return null;
+      }
+
+      $trend_id = $trend_id[0]->trend_id;
 
 
       $artist = DB::select('

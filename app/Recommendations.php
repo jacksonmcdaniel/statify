@@ -35,8 +35,13 @@ class Recommendations extends Model {
          FROM recommendations 
          WHERE user_id=?',
          [$user_id]
-      )[0]->recommendation_id;
+      );
 
+      if ($recommendation_id == null) {
+         return null;
+      }
+
+      $recommendation_id = $recommendation_id[0]->recommendation_id;
 
       $songs = DB::select('
          SELECT songs.* 
