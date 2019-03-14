@@ -26,12 +26,13 @@ class ApiConnectionController extends Controller {
          'show_dialog' => true,
          'scope' => [
             'playlist-read-private',
+            'playlist-modify-private',
             'user-read-private',
             'user-top-read',
             'user-read-recently-played',
             'user-read-email',
             'user-follow-read',
-            'playlist-modify-private'
+            'ugc-image-upload'
          ],
       ];
 
