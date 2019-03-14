@@ -8,6 +8,7 @@ use SpotifyWebAPI;
 use App\Song;
 use App\Trend;
 use App\Api;
+use App\User;
 
 class TrendController extends Controller {
 
@@ -21,7 +22,7 @@ class TrendController extends Controller {
          'user_image' => session('user_image'),
          'songs' => $songs,
          'tabIndex' => 0,
-         'name' => "Trends"]);
+         'name' => "Top Songs"]);
     }
 
    public function show($name) {
@@ -36,10 +37,19 @@ class TrendController extends Controller {
            $index = 2;
        }
 
-       if ($friend_id == null) {
-           $songs = Trend::getSongs($name, $user_id);
-       } else {
+       if ($friend_id != null) {
            $songs = Trend::getSongs($name, $friend_id);
+
+           $friendUserInfo = User::getUserInfo($friend_id);
+           return view('trends', [
+           'user_id' => session('user_id'),
+           'user_image' => session('user_image'),
+           'songs' => $songs,
+           'tabIndex' => $index,
+           'name' => ($friendUserInfo->name . "'s Top Songs")
+           ]);
+       } else {
+           $songs = Trend::getSongs($name, $user_id);
        }
 
        return view('trends', [
@@ -47,7 +57,7 @@ class TrendController extends Controller {
            'user_image' => session('user_image'),
            'songs' => $songs,
            'tabIndex' => $index,
-           'name' => "Trends"
+           'name' => "Top Songs"
        ]);
    }
 }

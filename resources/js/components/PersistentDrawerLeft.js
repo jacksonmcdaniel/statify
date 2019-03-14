@@ -213,8 +213,8 @@ class PersistentDrawerLeft extends React.Component {
               <MenuItem color="primary" onClick={this.handleClose} component="a" href="/ApiConnection">Login</MenuItem>}
             </div>
           </Toolbar>
-          {name=='Trends' ? <NavBar value={value} page="trend"/> : null}
-          {name=='Top Artists' ? <NavBar value={value} page="artist"/> : null}
+          {new RegExp(`(Trends|Songs)`).test(name) ? <NavBar value={value} page="trend"/> : null}
+          {new RegExp(`(Artists)`).test(name) ? <NavBar value={value} page="artist"/> : null}
           <Modal
           aria-labelledby="simple-modal-title"
           aria-describedby="simple-modal-description"
@@ -267,7 +267,7 @@ class PersistentDrawerLeft extends React.Component {
             {user_id ? 
               <ListItem button key={"trend"} component="a" onClick={this.handleTrendsPage} href="/trends">
                 <ListItemIcon><MusicNoteIcon /></ListItemIcon>
-                <ListItemText primary={"Trends"} />
+                <ListItemText primary={"Top Songs"} />
               </ListItem>
               : null}
               {user_id ? 

@@ -16,11 +16,11 @@ export default class SignInRoot extends React.Component {
     }
 
     render() {
-        const { viewModel, user_image } = this.props;
+        const { viewModel, user_image, name } = this.props;
 
         return (
             <MuiThemeProvider theme={theme}>
-            <PersistentDrawerLeft trends={this.state.trends} value={viewModel['value']} name={viewModel['name']} user_id={viewModel['user_id']} user_image={user_image}/>
+            <PersistentDrawerLeft trends={this.state.trends} value={viewModel['value']} name={name} user_id={viewModel['user_id']} user_image={user_image}/>
             </MuiThemeProvider>
         );
     }
@@ -29,5 +29,6 @@ export default class SignInRoot extends React.Component {
 if (document.getElementById('SignInRoot')) {
     var element = document.getElementById('SignInRoot');
     var user_image = element.getAttribute("user_image");
-    ReactDOM.render(<SignInRoot viewModel={signInRootViewModel} user_image={user_image} />, document.getElementById('SignInRoot'));
+    var name = element.getAttribute("name");
+    ReactDOM.render(<SignInRoot viewModel={signInRootViewModel} user_image={user_image} name={name} />, document.getElementById('SignInRoot'));
 }
