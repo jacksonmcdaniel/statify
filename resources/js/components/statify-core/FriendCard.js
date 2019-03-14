@@ -47,8 +47,10 @@ function FriendCard(props) {
             <Divider variant="inset"/>
             <Button size="medium" color="primary" className={classes.margin} href="/home">
             <Avatar>
-              <PersonIcon />
-            </Avatar>
+          {image != "" ?
+            <img src={image}  width={40} height={40} mode='fit'/>
+          : <AccountCircle /> }
+          </Avatar>
             </Button>
           </Grid>
         </List>
@@ -61,6 +63,7 @@ function FriendCard(props) {
 FriendCard.propTypes = {
   classes: PropTypes.object.isRequired,
   name: PropTypes.string.isRequired,
+  image: PropTypes.string.isRequired,
 };
 
 export default withStyles(styles)(FriendCard);
