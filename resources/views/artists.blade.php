@@ -8,6 +8,6 @@
 @section('content')
 
 @section('content')
-    <div id="ArtistRoot" name="{{$name}}" songs="{{$songs}}"></div>
+    <div id="ArtistRoot" name="{{$name}}" artists="{{$artists}}"></div>
 
 @endsection

@@ -12,7 +12,7 @@ use App\Api;
 class TrendController extends Controller {
 
    public function index() {
-      $songs = Trend::getSongs('long_term', session('user_id'));
+      $songs = Trend::getSongs('long_term_songs', session('user_id'));
       
       session()->forget('friend_id');
 
@@ -28,9 +28,9 @@ class TrendController extends Controller {
        $user_id = session('user_id');
        $friend_id = session('friend_id');
 
-       if ($name == "long_term") {
+       if ($name == "long_term_songs") {
            $index = 0;
-       } else if ($name == "medium_term") {
+       } else if ($name == "medium_term_songs") {
            $index = 1;
        } else {
            $index = 2;

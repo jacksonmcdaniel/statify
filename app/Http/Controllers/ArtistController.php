@@ -4,16 +4,15 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Trend;
+use App\Artist;
 
 class ArtistController extends Controller
 {
-    //
      public function index() {
      	$user_id = session('user_id');
-        $name = 'long_term';
+        $name = 'long_term_artists';
 
-        $songs = Trend::getSongs($name, $user_id);
+        $artists = Artist::getArtists($name, $user_id);
 
 
         return view('artists', [
@@ -21,28 +20,28 @@ class ArtistController extends Controller
           'user_image' => session('user_image'),
           'tabIndex' => 0,
           'name' => "Top Artists",
-        	'songs' => $songs]);
+        	'artists' => $artistss]);
     }
 
     public function show($name) {
       $user_id = session('user_id');
 
-      if ($name=="long_term") {
+      if ($name=="long_term_artists") {
           $index = 0;
       }
-      else if ($name=="medium_term") {
+      else if ($name=="medium_term_artists") {
           $index = 1;
       }
       else {
           $index = 2;
       }
 
-      $songs = Trend::getSongs($name, $user_id);
+      $artists = Artist::getArtists($name, $user_id);
      
       return view('artists', [
          'user_id' => $user_id,
          'user_image' => session('user_image'),
-         'songs' => $songs,
+         'artists' => $artists,
          'tabIndex' => $index,
          'name' => "Top Artists"
       ]);

@@ -13,7 +13,7 @@ class HomeController extends Controller
 
         if ($user_id != null) {
 
-        $topSong = Trend::getTopSong('long_term', $user_id);
+        $topSong = Trend::getTopSong('long_term_songs', $user_id);
         $topRecommendation = Recommendations::getTopSong($user_id);
 
             return view('home', [
