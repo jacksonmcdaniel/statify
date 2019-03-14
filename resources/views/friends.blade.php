@@ -7,7 +7,6 @@
 
 @section('content')
 
-    <script>console.log("{{$friends}}")</script>
 	<div id="Friends" friends="{{$friends}}"></div>
 
 @endsection

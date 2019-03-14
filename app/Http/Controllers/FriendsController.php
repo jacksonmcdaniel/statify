@@ -70,7 +70,6 @@ class FriendsController extends Controller
             'user_id' => $uid,
             'friends' => \GuzzleHttp\json_encode($friends),
             'user_image' => session('user_image'),
-            'friends' => $friends,
             'tabIndex' => 0,
             'name' => "Friends"]);
 
