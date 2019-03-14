@@ -22,6 +22,12 @@ const styles = theme => ({
     minWidth: 700,
     borderStyle: 'solid',
   },
+  column:{
+    maxWidth: 5,
+  },
+  column2:{
+    maxWidth: 100,
+  }
 });
 
 class StatifyArtistTable extends React.Component {
