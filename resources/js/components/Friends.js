@@ -31,9 +31,8 @@ export default class Friends extends React.Component {
                 <Paper style={theme.paperContainer2}>
                     <Grid container spacing={24} style={{ minHeight: '100vh'}}>
                         {friends.map(friend => (
-                            <FriendCard key={friend.user_id} name={friend.name} friend_id={friend.user_id}/>
+                            <FriendCard key={friend.user_id} name={friend.name} friend_id={friend.user_id} image={friend.image}/>
                           ))}
-                        <FriendCard name="friend name"/>
                         
                     </Grid>
                 </Paper>
